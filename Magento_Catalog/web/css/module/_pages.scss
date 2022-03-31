@@ -1,0 +1,123 @@
+.pages {
+  .pages-label {
+    @extend %u-sr-only;
+  }
+}
+
+.pages-items {
+  @extend %u-flex-row-xcenter-ycenter;
+  justify-content: flex-start;
+  margin: 0;
+
+  @include respond-to-down(smm) {
+    font-size: $font-size-xs;
+    justify-content: center;
+  }
+
+  .label {
+    @extend %u-sr-only;
+  }
+
+  > .item {
+    > a,
+    > .page {
+      @include size($pagination-item-size);
+      display: block;
+      line-height: $pagination-item-size;
+      text-align: center;
+      margin: 0 $pagination-item-spacing-x;
+      text-decoration: none;
+
+      @include respond-to-down($category-layout-breakpoint) {
+        margin: 0 ($pagination-item-spacing-x * 0.2);
+      }
+
+      &.action {
+        @extend %u-bg-color-transition;
+        @extend %u-flex-row-xcenter-ycenter;
+        @include size($pagination-button-size);
+        @include ms-icon($pagination-icon-next, $pagination-icon-size);
+        padding: 0;
+        box-sizing: border-box;
+        background: $pagination-button-bg;
+
+        &.previous {
+          &:before {
+            content: map_get($ms-icons, $pagination-icon-previous);
+          }
+        }
+
+        @include hover {
+          background: rgba($pagination-button-bg, 0.3);
+        }
+
+        span {
+          @extend %u-sr-only;
+        }
+      }
+    }
+
+    &:first-child {
+      > a,
+      > .page {
+        margin-left: 0;
+      }
+    }
+
+    &:last-child {
+      > a,
+      > .page {
+        margin-right: 0;
+      }
+    }
+
+
+    &.current .page,
+    &.current a {
+      background: $pagination-item-active-bg;
+      color: $pagination-item-active-color;
+    }
+  }
+}
+
+.limiter {
+  @extend %u-flex-row-xcenter-ycenter;
+  justify-content: flex-start;
+
+  @include respond-to-down(smm) {
+    font-size: $font-size-xs;
+    margin-top: spacers(2);
+  }
+
+  /*@include respond-to-down(smm) {
+    display: none !important;
+  }*/
+
+  .label {
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-right: spacers(3);
+  }
+
+  .limiter-text {
+    display: inline-block;
+    margin-left: spacers(3);
+
+    @include respond-to-down(smm) {
+      margin-left: 0;
+    }
+  }
+
+  .limiter-options {
+    min-width: 80px;
+  }
+}
+
+.toolbar-pager > .limiter:only-child {
+  margin-top: 0;
+}
+
+.sorter-label,
+.limiter-text {
+  font-size: $font-size-base;
+}

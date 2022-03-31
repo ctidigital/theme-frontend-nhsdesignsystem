@@ -1,0 +1,117 @@
+.payment-method-braintree .payment-method-content {
+  .cvv {
+    ._with-tooltip {
+      position: relative;
+
+      .hosted-control {
+        width: 100px;
+      }
+    }
+
+    .field-tooltip {
+      width: 92px;
+      position: absolute;
+      bottom: 3px;
+      right: -7px;
+      margin: 0;
+      padding: 0;
+      background: none;
+      border: 0 none;
+
+      img {
+        max-width: 222px;
+        height: auto;
+        margin: 0;
+
+        @include respond-to-up(smm) {
+          max-width: 300px;
+        }
+
+        @include respond-to-up(md) {
+          max-width: 364px;
+        }
+      }
+    }
+
+    .field-tooltip-action.action-cvv {
+      display: inline-block;
+      background: transparent;
+      border: 0 none;
+      border-radius: 0;
+      font-size: 14px;
+      text-decoration: underline;
+      appearance: none;
+      line-height: 53px;
+      margin-left: 4px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .field-tooltip-content {
+      @include absolute(auto, -34px, 18px);
+      padding: spacers(2);
+      transform: translateY(-30%) translateX(0%);
+      margin: 0;
+      z-index: z('above');
+      visibility: hidden;
+      opacity: 0;
+      background: $white;
+      border: 1px solid $nhsuk-border-color;
+      box-shadow: $shadow-tooltip;
+
+      @include respond-to-up(smm) {
+        right: -110px;
+        bottom: 8px;
+      }
+
+      @include respond-to-up(md) {
+        right: -175px;
+        bottom: -2px;
+      }
+
+      @include respond-to-up(lg) {
+        transform: translateX(100%);
+        right: 0;
+        bottom: 1px;
+      }
+
+      &:before {
+        display: none;
+      }
+
+      &:after {
+        @include triangle('bottom', currentcolor, 0.5em);
+        position: absolute;
+        bottom: -10px;
+        right: 32%;
+
+        @include respond-to-up(smm) {
+          right: 50%;
+        }
+
+        @include respond-to-up(md) {
+          right: 57%;
+        }
+
+        @include respond-to-up(lg) {
+          right: auto;
+          left: -12px;
+          bottom: 20px;
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    .action-cvv._active {
+      background: $white;
+      font-feature-settings: normal;
+
+      + .field-tooltip-content {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}

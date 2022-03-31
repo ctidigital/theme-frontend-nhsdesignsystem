@@ -1,0 +1,44 @@
+.load.indicator {
+  @include loader();
+  position: absolute;
+
+  > span {
+    display: none;
+  }
+}
+
+.loading-mask {
+  @include loading-mask();
+
+  .loader {
+    @include loading-abs();
+
+    > img:not(.image-placeholder) {
+      display: none;
+    }
+
+    > img.image-placeholder {
+      position: relative;
+      display: block;
+      margin: 0 auto;
+    }
+
+    > p {
+      display: none;
+    }
+  }
+}
+
+body {
+  > .loading-mask {
+    z-index: $loader-z - 1;
+  }
+}
+
+._block-content-loading {
+  position: relative;
+}
+
+[data-role='main-css-loader'] {
+  display: none;
+}

@@ -1,0 +1,46 @@
+.mosaic {
+  &--layout-1 {
+    margin-top: -1 * $mosaic-col-gutter;
+
+    .mosaic__item-1 {
+      position: relative;
+    }
+
+    .mosaic__item-2 {
+      @include respond-to-up(smm) {
+        top: 0;
+        right: 0;
+      }
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        top: 0;
+        left: $mosaic-col-width;
+      }
+    }
+
+    .mosaic__item-3 {
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .mosaic__item-4 {
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        bottom: 0;
+        left: $mosaic-col-width;
+      }
+    }
+
+    .mosaic__item-5 {
+      @include respond-to-up(smm) {
+        top: $mosaic-col-width;
+        right: 0;
+      }
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        top: auto;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+/*
+ * Layout of One page checkout styles
+ */
+.checkout-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: spacers(4);
+  justify-content: center;
+  min-height: 700px;
+
+  @include respond-to-up(lg) {
+    justify-content: flex-start;
+  }
+
+  > .opc-progress-bar,
+  > .opc-progress-bar-wrapper,
+  > .opc-estimated-wrapper,
+  > .messages {
+    width: 100%;
+  }
+
+  > .messages,
+  > .opc-wrapper {
+    width: 100%;
+
+    @include respond-to-up(smm) {
+      width: 90%;
+    }
+
+    @include respond-to-up(lg) {
+      width: calc(65% - 20px);
+    }
+
+    @include respond-to-up(xl) {
+      width: calc(100% - #{($opc-sidebar-width + 60px)});
+    }
+  }
+
+  > .ui-effects-wrapper,
+  > .messages {
+    order: 5;
+  }
+
+  > .ui-effects-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+  }
+
+  > .opc-sidebar {
+    @include respond-to-up(lg) {
+      position: -moz-sticky;
+      position: -o-sticky;
+      position: -ms-sticky;
+      position: sticky;
+      top: 10px;
+      z-index: 1;
+      background: transparent;
+      width: 35%;
+      margin-left: 20px;
+    }
+
+    @include respond-to-up(xl) {
+      width: $opc-sidebar-width;
+      margin-left: 60px;
+    }
+
+    &.custom-slide .modal-inner-wrap {
+      background: $white;
+
+      @include respond-to-up(lg) {
+        background: transparent;
+        max-height: none;
+        height: auto;
+      }
+    }
+
+    [data-role='focusable-start'],
+    [data-role='focusable-end'] {
+      display: none;
+    }
+  }
+
+  & + .message {
+    margin-top: spacers(4);
+  }
+
+  .custom-slide .action-close {
+    padding: spacers(2);
+    top: 0;
+    right: 0;
+  }
+}
+
+.checkout-index-index {
+  background: gray('5');
+
+  .page-title-wrapper {
+    @extend %u-sr-only;
+  }
+
+  .checkout-container {
+    > .loading-mask {
+      z-index: z('heavenly') + 30;
+    }
+  }
+
+  .header.links {
+    display: none;
+  }
+}
+
+.checkout-index-index {
+  .action.nav-toggle {
+    display: none;
+  }
+}

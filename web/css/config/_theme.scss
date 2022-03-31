@@ -1,0 +1,649 @@
+/**
+ * Collection of generic/global variables used across the theme
+ */
+
+// Intrinsic Placeholders
+$placeholder-intrinsic-bg:   gray('4') !default;
+$placeholder-banners-ratio:  () !default; // h x w
+$placeholder-banners-ratio:  map-merge((
+        'xs': (800 / 700), // h x w
+        'md':  (500 / 992), // h x w
+        'xxl': (500 / 1440), // h x w
+), $placeholder-banners-ratio);
+
+// Site Logo
+$site-logo-mobile-height:     28px !default;
+$site-logo-mobile-width:      auto !default;
+
+// Language/Store Switcher
+$switcher-padding:            spacers(3) !default;
+$switcher-spacing-x:          spacers(3) !default;
+$switcher-spacing-y:          spacers(3) !default;
+
+$show-homepage-promo-block:   true !default;
+
+// Customer message spacing
+$customer-message-spacing-x:    spacers(2) !default;
+
+// Header Panel
+$header-panel-height:         42px !default;
+$header-panel-text-color:     $body-color !default;
+$header-panel-bg:             $white !default;
+$header-panel-padding:        0 $container-padding !default;
+$header-panel-hide-under:     $tweakpoint-nav-toggle !default;
+$header-user-icon-size:       20px !default;
+$customer-menu-dropdown-width-md: 158px !default;
+
+// Header Content
+$header-content-bg:             $color_nhsuk-blue !default;
+$header-content-color:          $white !default;
+
+$header-content-padding:        0 $container-padding !default;
+$header-content-min-height-sm:  99px !default;
+$header-content-min-height-md:  119px !default;
+
+
+// Navigation Section (Mobile)
+$default-magento-nav:           true !default;
+$nav-section-bg:                $nhsuk-link-color !default;
+$nav-section-item-bg:           gray('5') !default;
+$nav-section-item-color:        $black !default;
+$nav-section-item-active-bg:    $white !default;
+$nav-section-item-active-color: $black !default;
+$nav-section-height:            48px !default;
+$nav-section-width:             140px !default;
+$nav-section-icon-size:         (icon-size(s) + 4px) !default;
+$menu-icon:                     'menu' !default;
+$menu-icon-size:                icon-size(m) !default;
+$menu-button-width:             48px !default;
+$menu-button-height:            $menu-button-width !default;
+$menu-active-background:        lighten($header-content-bg, 10) !default;
+$menu-margin-right:             spacers(3) !default;
+$navigation-item-bg:            transparent !default;
+$navigation-item-bg-desktop:    $color_nhsuk-blue !default;
+$navigation-item-color:         $body-color !default;
+$navigation-item-color-desktop: $white !default;
+$navigation-item-selected-bg:   gray('3') !default;
+$navigation-item-selected-color: $white !default;
+$navigation-mega-menu-bg:           $color_nhsuk-blue !default;
+$navigation-mega-menu-color:        $white !default;
+$navigation-mega-menu-font-size:    $font-size-base * 1.75 !default;
+$navigation-mega-menu-hover-bg:     $color_nhsuk-blue !default;
+$navigation-mega-menu-hover-color:  $white !default;
+$navigation-mega-menu-padding:      spacers(3) spacers(4) spacers(4) !default;
+$navigation-mega-menu-col-width:    350px !default;
+$navigation-mega-menu-item-padding: spacers(2) spacers(4) !default;
+$navigation-mega-menu-item-height:  51px !default;
+$navigation-mega-menu-heading-padding: spacers(2) spacers(4) !default;
+$navigation-mega-menu-shop-all-size: auto !default;
+$navigation-item-spacing-mobile:    spacers(4) !default;
+$navigation-item-spacing-desktop:   12px nhsuk-spacing(3) !default;
+$navigation-item-border-mobile:     1px solid theme-color(light) !default;
+$navigation-item-icon-forwards:     'chevron-right' !default;
+$navigation-item-icon-backwards:    'chevron-left' !default;
+
+
+// Search Bar & Auto complete
+$search-icon:                     'search' !default;
+$search-icon-size:                icon-size(s) * 1.5 !default;
+$search-button-width:             48px !default;
+$search-button-height:            $menu-button-width !default;
+$search-active-background:        lighten($header-content-bg, 10) !default;
+$search-top-offset:               $header-content-min-height-sm !default;
+$search-backdrop:                 theme-color('light') !default;
+$search-input-height-sm:          46px !default;
+$search-input-height-md:          55px !default;
+$search-input-width:              100% !default;
+$search-input-width-md:           400px !default;
+$search-input-width-lg:           645px !default;
+$search-input-bg:                 $white !default;
+$search-input-border:             1px solid $header-content-bg !default;
+$search-autocomplete-bg:          $search-input-bg !default;
+$search-autocomplete-hover-bg:    theme-color(light) !default;
+$search-autocomplete-color:       $body-color !default;
+$search-autocomplete-padding-x:   spacers(3) !default;
+$search-autocomplete-padding-y:   spacers(2) !default;
+$search-autocomplete-spacing-y:   spacers(1) !default;
+$search-autocomplete-border-color:        $header-content-bg !default;
+$search-autocomplete-border-color-light:  rgba($header-content-bg, 0.15) !default;
+$search-loader-enabled:           false !default;
+$search-loader-period:            4s !default;
+$search-loader-color:             $body-color !default;
+$header-search-mobile-top-offset: 35px !default;
+$header-search-mobile-fullscreen:    true !default;
+
+// Footer Newsletter
+$footer-newsletter-block-bg:              gray('3') !default;
+$footer-newsletter-block-padding-x:       spacers(5) !default;
+$footer-newsletter-block-color:           $color_nhsuk-grey-1 !default;
+$footer-newsletter-label-font-size:       $font-size-base * 1.5 !default;
+$footer-newsletter-field-height:          46px !default;
+$footer-newsletter-button-width:          166px !default;
+$footer-newsletter-field-bg:              $white !default;
+$footer-newsletter-field-color:           $body-color !default;
+$footer-height-sm:                        425px !default;
+$footer-height-md:                        307px !default;
+
+// Footer Links/Content
+$footer-columns: 4 !default;
+$footer-content-padding-mobile:   spacers(3) !default;
+$footer-content-padding-desktop: spacers(4) * 3 !default;
+$footer-links-bg:                  $nhsuk-border-color !default;
+$footer-links-color:              $color_nhsuk-grey-1 !default;
+$footer-links-font-size:          $font-size-sm !default;
+$footer-links-max-width:          map_get($container-max-widths, 'xxl') !default;
+$footer-links-item-padding:       spacers(2) spacers(4) !default;
+$footer-heading-color:            inherit !default;
+$footer-heading-icon:             'plus' !default;
+$footer-heading-fluid-size-mobile:  'h4' !default;
+$footer-heading-fluid-size-desktop: 'h5' !default;
+$footer-heading-padding:          spacers(3) spacers(4) !default;
+$footer-accordion-breakpoint:     md !default;
+
+// Footer Social Links
+$footer-social-links-spacing:     spacers(2) !default;
+$footer-social-links-icon-size:   34px !default;
+
+// Footer Payments & Confidence Icons
+$footer-payments-confidence-icon-size-desktop: 64px !default;
+$footer-payments-confidence-icon-size-mobile: 54px !default;
+$footer-payments-confidence-padding: spacers(2) !default;
+
+
+// Copyright
+$copyright-padding:           spacers(2) !default;
+
+// Homepage USP
+$homepage-usp-height-mobile:  40px !default;
+$homepage-usp-height-desktop: 50px !default;
+$homepage-usp-block-bg:       $nhsuk-text-color !default;
+$homepage-usp-block-color:    $white !default;
+$homepage-usp-text-size:      $small-font-size !default;
+$homepage-usp-full-width:     true !default;
+$homepage-usp-max-width:     map_get($container-max-widths, xxl) !default;
+
+// Slick Slider
+$slick-font-family:         "ms-icon" !default;
+$slick-arrow-size:          18px !default;
+$slick-arrow-button-size:   42px !default;
+$slick-arrow-color:         theme-color(primary) !default;
+$slick-arrow-bg:            transparent !default;
+$slick-arrow-bg-radius:     0 !default;
+$slick-dot-color:           rgba($white, 0) !default;
+$slick-dot-color-active:    rgba($white, 0.6) !default;
+$slick-dot-border:          2px solid $black !default;
+$slick-dot-shadow:          0 0 0px 2px rgba(255, 255, 255, 0.43137254901960786) !default;
+$slick-prev-icon:           "chevron-left" !default;
+$slick-next-icon:           "chevron-right" !default;
+$slick-dot-size:            16px !default;
+$slick-dot-spacing:         8px !default;
+$slick-dot-infix:           true !default;
+$slick-opacity-default:     0.85 !default;
+$slick-opacity-on-hover:    1 !default;
+$slick-opacity-not-active:  0.45 !default;
+$slick-height-mobile:       500px !default;
+$slick-height-tablet:       400px !default;
+$slick-height-desktop:      400px !default;
+$slick-bg:                  $white !default;
+
+$slider-content-color:          $white !default;
+$slider-content-width:           80% !default; // mobile only
+$slider-content-dots-offset:     64px !default;
+$slider-sub-heading-spacing-mt:  spacers(3) !default;
+$slider-sub-heading-spacing-mb:  spacers(4) !default;
+$slider-content-padding:        spacers(3) !default;
+$slider-content-padding-md:     spacers(3) !default;
+$slider-sub-heading-size:       $font-size-base !default;
+$slider-content-show-bg:        true !default;
+$slider-content-bg:             theme-color('primary') !default;
+$slider-content-align:          center !default;
+$slider-content-shadow:         1px 2px 30px $black !default;
+$slider-content-color-light:    theme-color('primary') !default;
+$slider-content-bg-light:       $white !default;
+$slider-content-shadow-light:   1px 2px 30px $black !default;
+$slider-scrim-color-light:      linear-gradient(90deg, rgba($white,0.4) 50%, rgba($white,0) 100%) !default;
+$slider-scrim-color-dark:       linear-gradient(90deg, rgba($black,0.4) 50%, rgba($black,0) 100%) !default;
+$homepage-slider-bg:             $white !default;
+$homepage-slider-height-mobile:  492px !default;
+$homepage-slider-height-tablet:  415px !default;
+$homepage-slider-height-desktop:  762px !default;
+$homepage-slider-full-width:    false !default;
+
+// Homepage Promo Blocks
+$promo-block-columns:                 repeat(2, minmax(120px, 1fr)) !default;
+$promo-block-columns-lg:              1fr 1fr 1fr 1fr !default;
+$promo-block-column-gap:              1.5em !default;
+$promo-block-content-fluid-size:      'h2' !default;
+$promo-block-content-color:           $black !default;
+$promo-block-content-padding:         20% !default;
+$promo-block-content-padding-mobile:  1.5em !default;
+
+// Mosaic Promo Block
+$mosaic-col-gutter: spacers(2) !default;
+$mosaic-item-width: 270px !default;
+$mosaic-item-height: 270px !default;
+$mosaic-col-width: 25% !default;
+$mosaic-content-zoom-amount: 1.2 !default;
+$mosaic-content-zoom-transition: transform .35s ease-in-out !default;
+$scrim-opacity: 0.75 !default;
+$mosaic-inner-padding: spacers(3) * 2 !default;
+
+// Minicart Block
+$block-minicart-background:     gray('5') !default;
+$block-minicart-color:          theme-color(primary) !default;
+$block-minicart-border-color:   gray('4') !default;
+$block-minicart-padding:        spacers(5) spacers(4) !default;
+$block-minicart-width:          calc(100vw - #{($container-padding * 8)}) !default;
+$block-minicart-max-width:      calc(640px - #{($container-padding * 3)}) !default;
+$minicart-icon:                 'shopping-cart' !default;
+$minicart-icon-size:            40px !default;
+$minicart-button-width:         40px !default;
+$minicart-button-height:        40px !default;
+$minicart-active-background:    lighten($header-content-bg, 10) !default;
+$counter-light-bg:              $white !default;
+$counter-light-color:           theme-color(dark) !default;
+$counter-size:                  12px !default;
+
+$basket-items-border: 1px solid transparent !default;
+$basket-item-spacing-y: spacers(3) !default;
+$basket-item-image-width-sm: 60px !default;
+$basket-item-image-width-md: 100px !default;
+$basket-item-image-width-lg: 133px !default;
+$basket-item-qty-width: 110px !default;
+$basket-item-bg: $white !default;
+$basket-item-bg-border: 1px solid $white !default;
+$basket-item-padding: spacers(3) spacers(3) !default;
+$basket-item-update-panel-bg: transparent !default;
+$basket-item-update-panel-padding: spacers(3) !default;
+$basket-card-logos-size: 44px !default;
+
+$basket-main-bg: transparent !default;
+$basket-main-padding: 0 !default;
+$basket-main-width: 570px !default;
+$basket-sidebar-width: 370px !default;
+$basket-sidebar-breakpoint: lg !default;
+$basket-sidebar-spacing-x: 18px !default;
+$basket-sidebar-bg: $white !default;
+$basket-sidebar-padding: spacers(3) spacers(4) !default;
+$basket-page-spacing-y: $container-padding !default;
+
+$totals-sticky-item-bg: $white !default;
+$totals-sticky-item-border: 1px solid $nhsuk-border-color !default;
+
+// Login/Register/Forgot Password etc., Pages
+$hide-login-page-title:               true !default;
+$customer-account-padding-mobile:     $container-padding !default;
+$customer-account-padding:            spacers(5) !default;
+$customer-account-col1-width:         60% !default;
+$customer-account-col2-width:         40% !default;
+$customer-account-graphic-bg:         false !default;
+$login-form-width:                    470px !default;
+$register-form-width:                 $login-form-width !default;
+$new-customers-width:                 40ch !default;
+$new-customers-min-height:            70vh !default;
+$new-customers-brand-logo:            '../../images/logo-alt.svg' !default;
+$customer-account-light-bg:            gray('5') !default;
+$customer-account-sidebar:             auto !default;
+$account-nav-bg:                       transparent !default;
+$account-nav-bg-active:                transparent !default;
+$account-nav-color-active:             $link-hover-color !default;
+$account-nav-color:                    $nhsuk-link-color !default;
+$account-nav-padding:                  spacers(3) 0 !default;
+$account-nav-seperator:                1px solid $nhsuk-border-color;
+
+$dashboard-block-color:                     lighten($body-color, 10%) !default;
+$order-table-breakpoint:                    xl !default;
+$dashboard-block-spacing-y:                 spacers(4) !default;
+$dashboard-block-title-border:              1px solid $nhsuk-border-color !default;
+$dashboard-box-title-fluid-size:            'h5' !default;
+$dashboard-block-title-text-letter-spacing: 0 !default;
+
+$review-rating-hide-label:                  true !default;
+$review-rating-stars-count:                 5 !default;
+$review-rating-star-spacing:                spacers(1) !default;
+$review-rating-star-icon:                   'star-solid' !default;
+$review-rating-star-icon-size:              16px !default;
+$review-rating-star-icon-color:             gray('4') !default;
+$review-rating-star-icon-selected-color:    theme-color('caution') !default;
+
+$password-meter-width:              40px !default;
+$password-meter-height:             10px !default;
+$password-meter-spacing-x:          16px !default;
+$password-left-offset:              110px !default;
+$password-meter-weak-color:         theme-color('negative') !default;
+$password-meter-medium-color:       lighten(orange, 10%) !default;
+$password-meter-strong-color:       lighten(theme-color('positive'), 10%) !default;
+$password-meter-very-strong-color:  theme-color('positive') !default;
+
+$messages-padding:                  spacers(3) spacers(3) !default;
+$messages-show-border:              true !default;
+$messages-border:                   1px solid transparent !default;
+$messages-border-radius:            0 !default;
+$messages-icon-size:                m !default;
+$messages-icon-spacing-x:           spacers(3) !default;
+$messages-bottom-offset:            40px !default;
+
+$page-layout-breakpoint:               lg !default;
+$page-layout-sidebar-width:            300px !default;
+$page-layout-sidebar-spacing-y:        spacers(3) !default;
+$page-layout-sidebar-spacing-x:        spacers(5) !default;
+
+$opc-sidebar-width:                    400px !default;
+$opc-sidebar-bg:                       transparent !default;
+$opc-progress-bar-idle-bg:             theme-color(light) !default;
+$opc-progress-bar-active-bg:           $nhsuk-link-color !default;
+$opc-progress-bar-active-color:        $opc-progress-bar-active-bg !default;
+$opc-progress-bar-active-icon:         map_get($ms-icons, 'check') !default;
+$opc-progress-bar-page-bg:             $body-bg !default;
+$opc-progress-bar-max-width:           480px !default;
+$opc-progress-bar-step-size:           30px !default;
+$opc-progress-bar-step-spacing-y:      spacers(2) !default;
+$opc-progress-bar-line-width:          4px !default;
+$opc-progress-bar-margin-bottom:       spacers(3) !default;
+
+$opc-estimated-wrapper-padding:        spacers(3) !default;
+$opc-estimated-wrapper-margin-bottom:  spacers(3) !default;
+$opc-estimated-wrapper-bg:             theme-color(light) !default;
+$opc-estimated-wrapper-color:          $body-color !default;
+$opc-estimated-wrapper-price-color:    $body-color !default;
+
+$opc-step-title-fluid-size:            h4 !default;
+$opc-step-title-padding:               0 !default;
+$opc-step-title-margin-bottom:         spacers(4) !default;
+$opc-step-title-bg:                    transparent !default;
+
+$opc-summary-title-fluid-size:            h4 !default;
+$opc-summary-title-spacing-y:             spacers(3) !default;
+$opc-summary-padding:                     spacers(3) !default;
+$opc-summary-highlight-color:             theme-color(secondary) !default;
+$opc-summary-totals-label-font-size:      $font-size-base !default;
+$opc-summary-totals-price-font-size:      $font-size-base * 1.1 !default;
+$opc-summary-totals-label-font-size-2:    $font-size-base !default;
+$opc-summary-totals-border:               4px solid theme-color(dark) !default;
+
+$shipping-address-item-padding:           spacers(3) !default;
+$shipping-address-item-margin:            spacers(2) !default;
+$shipping-address-item-bg:                $opc-step-title-bg !default;
+$shipping-address-item-active-bg:         theme-color('primary') !default;
+$shipping-address-item-active-color:      $white !default;
+$shipping-address-item-width:             240px !default;
+
+$checkout-success-bg:                     $white !default;
+$checkout-success-padding-sm:             spacers(3) !default;
+$checkout-success-padding-md:             spacers(4) !default;
+$checkout-success-spacing-y:              spacers(2) !default;
+$checkout-success-max-width:              700px !default;
+$checkout-success-order-number-color:     theme-color('secondary') !default;
+$checkout-success-order-number-size:      $font-size-lg !default;
+
+$breadcrumbs-spacing-y:                   spacers(3) !default;
+$breadcrumbs-spacing-x:                   spacers(1) !default;
+$breadcrumbs-color:                       inherit !default;
+$breadcrumbs-active-color:                inherit !default;
+$breadcrumbs-font-size:                   inherit !default;
+$breadcrumbs-separator-color:             inherit !default;
+$breadcrumbs-separator:                   map_get($ms-icons, 'chevron-right') !default;
+
+$overflowed-height:                       300px !default;
+
+$category-layout-sidebar-width:           266px !default;
+$category-layout-sidebar-width-lg:        266px !default;
+$category-layout-breakpoint:              lg !default;
+$category-layout-sidebar-spacing-y:       spacers(3) !default;
+$category-layout-sidebar-spacing-x:       spacers(4) !default;
+$category-layout-bg:                      gray('5') !default;
+
+$toolbar-bg:                              $white !default;
+$toolbar-min-height:                      74px !default;
+$toolbar-color:                           inherit !default;
+$toolbar-font-size:                       12px !default;
+$toolbar-padding-x:                       spacers(4) !default;
+$toolbar-padding-y:                       spacers(3) * 0.75 !default;
+$toolbar-spacing-y:                       spacers(4) * 1.9 !default;
+$toolbar-icon-size:                       24px !default;
+$toolbar-direction-icon-size:             22px !default;
+$toolbar-icon-idle-color:                 theme-color('light') !default;
+$toolbar-icon-active-color:               $body-color !default;
+$toolbar-grid-icon:                       'grid' !default;
+$toolbar-list-icon:                       'list' !default;
+$toolbar-direction-up-icon:               'arrow-up' !default;
+$toolbar-direction-down-icon:             'arrow-down' !default;
+$toolbar-select-height:                   44px !default;
+
+$pagination-item-size:                    36px !default;
+$pagination-button-size:                  36px !default;
+$pagination-icon-previous:                'chevron-left' !default;
+$pagination-icon-next:                    'chevron-right' !default;
+$pagination-icon-size:                    12px !default;
+$pagination-button-bg:                    theme-color(light) !default;
+$pagination-item-spacing-x:               spacers(2) !default;
+$pagination-item-active-color:            inherit !default;
+$pagination-item-active-bg:               gray('4') !default;
+
+$products-grid-items:  () !default;
+@if ($main-content-contained == true) {
+  $products-grid-items: map-merge((
+          'xs': 1,
+          'smm': 2,
+          'lg': 3,
+          'xl': 3
+  ), $products-grid-items);
+} @else {
+  $products-grid-items: map-merge((
+          'xs': 1,
+          'smm': 2,
+          'lg': 3,
+          'xl': 4
+  ), $products-grid-items);
+}
+
+$product-items-spacing-y:                $toolbar-spacing-y !default;
+
+$product-item-spacing-x:                  nhsuk-spacing(2) !default;
+$product-item-spacing-x-mobile:           nhsuk-spacing(1) !default;
+$product-item-padding-mobile:             0 !default;
+$product-item-padding-desktop:            0 !default;
+$product-item-spacing-y:                  $product-item-spacing-x * 6 !default;
+$product-item-spacing-y-mobile:           $product-item-spacing-y * 6 !default;
+$product-item-bg:                         $white !default;
+$product-item-photo-bg:                   $white !default;
+$product-item-photo-spacing-y:            spacers(3) !default;
+$product-item-info-spacing-x:             spacers(3) !default;
+
+$product-item-title-font-size:            $font-size-base !default;
+$product-item-title-font-family:          $font-family-base !default;
+$product-item-title-letter-spacing:       0 !default;
+$product-item-title-line-height:          1.5 !default;
+$product-item-title-font-weight:          $font-weight-semi-bold !default;
+$product-item-title-spacing-y:            spacers(2) !default;
+
+$product-item-add-to-cart-icon:           false !default;
+$product-item-compare-icon:               'compare' !default;
+$product-item-wishlist-icon:              'heart' !default;
+$product-item-wishlist-active-icon:       'heart-solid' !default;
+$wishlist-sidebar-border:                 1px solid $nhsuk-border-color !default;
+$product-item-add-to-cart-icon-size:      22px !default;
+$product-item-action-spacing:             spacers(2) !default;
+$product-item-action-spacing-y:           spacers(3) !default;
+$product-item-photo-width:                272px !default;
+$product-item-photo-height:               204px !default;
+$product-item-active-offset:              100px !default;
+$product-item-hover-breakpoint:           md !default;
+$product-item-hover-reveal:               false !default;
+
+$block-bundle-summary-bg:                 theme-color(light) !default;
+$bundled-options-seperator:               1px solid $nhsuk-border-color !default;
+$bundled-options-w:                       60% !default;
+$bundled-options-summary-w:               40% !default;
+
+$price-font-weight:                       $font-weight-semi-bold !default;
+$price-font-size:                         $font-size-lg !default;
+$price-letter-spacing:                    0 !default;
+$price-color:                             inherit !default;
+$price-old-font-size:                     13px !default;
+$price-old-font-weight:                   $font-weight-normal !default;
+$price-old-color:                         $nhsuk-secondary-text-color !default;
+$price-ex-vat-color:                      $nhsuk-secondary-text-color !default;
+$price-label-font-size:                   13px !default;
+$price-label-color:                       $text-muted !default;
+$price-hide-inc-vat-label:                true !default;
+
+$filter-block-bg:                         $white !default;
+$filter-block-color:                      $body-color !default;
+$filter-block-padding:                    spacers(3) !default;
+$filter-block-padding-desktop:            spacers(4) !default;
+
+$filter-title-font-size:                  $font-size-base !default;
+$filter-title-font-family:                $font-family-base !default;
+$filter-title-font-weight:                700 !default;
+$filter-title-letter-spacing:             0 !default;
+$filter-title-text-transform:             none !default;
+$filter-title-color:                      theme-color(dark) !default;
+
+$filter-section-separator:                1px solid $nhsuk-border-color !default;
+$filter-item-separator:                   1px solid $nhsuk-border-color !default;
+$filter-item-color:                       $body-color !default;
+$filter-item-font-size:                   $font-size-base !default;
+$filter-options-item-spacing-y:           nhsuk-spacing(3) * 1.5 !default;
+$filter-item-padding:                     nhsuk-spacing(3) !default;
+$filter-item-checkbox-spacing-x:          nhsuk-spacing(3) !default;
+$filter-current-padding:                  nhsuk-spacing(3) !default;
+$filter-icon-font-size:                   2.1rem !default;
+$filter-icon-outer:                      'chevron-down' !default;
+$filter-icon-inner:                      'plus' !default;
+$filter-icon-inner-active:               'minus' !default;
+
+// Catalog Product View
+//
+$product-view-info-wrapper-max-width:     1080px !default;
+$product-view-media-width:                61.8037037% !default;
+$product-view-info-main-width:            (100% - $product-view-media-width) !default;
+$product-view-bg:                         $white !default;
+$product-view-media-bg:                   $white !default;
+$product-view-bg-alt:                     $category-layout-bg !default;
+$product-view-title-fluid-type:           'h2' !default;
+$product-view-info-row-spacing-y:         spacers(5) !default;
+$product-view-media-spacing-x:            spacers(4) !default;
+
+$product-sku-color:                       inherit !default;
+$product-sku-font-size:                   $font-size-xs !default;
+$product-sku-border:                      1px solid rgba($border-color, 0.5) !default;
+$product-sku-padding:                     spacers(2) !default;
+
+
+$product-stock-color:                     inherit !default;
+$product-stock-font-size:                 inherit !default;
+$product-stock-padding:                   0 spacers(2) !default;
+$product-stock-icon-size:                 12px !default;
+$product-stock-positive-bg:               theme-color('positive-subtle') !default;
+$product-stock-positive-icon:             'check' !default;
+$product-stock-negative-bg:               theme-color('negative-subtle') !default;
+$product-stock-negative-icon:             info !default;
+
+$fotorama-active-border:                  2px solid theme-color('light') !default;
+$fotorama-nav-padding:                    0 !default;
+$fotorama-fullscreen-z:                   z('heavenly') !default;
+$fotorama-media-width:                    664px !default;
+$fotorama-media-height:                   498px + 124px !default;
+
+$review-rating-star-spacing:                spacers(1) !default;
+$review-rating-star-icon:                   'star-solid' !default;
+$review-rating-star-icon-outline:           'star' !default;
+$review-rating-star-icon-size:              22px !default;
+$review-rating-star-icon-input-size:        30px !default;
+$review-rating-star-icon-color:             theme-color('tertiary') !default;
+$review-rating-star-icon-selected-color:    theme-color('tertiary') !default;
+
+$product-tab-item-padding-mobile:           spacers(4) !default;
+$product-tab-item-padding-desktop:          spacers(3) !default;
+$product-tab-item-icon-mobile:              'plus' !default;
+$product-tab-item-bg:                       theme-color(light) !default;
+$product-tab-item-color:                    rgba($body-color, 0.5) !default;
+$product-tab-item-font-weight:              $font-weight-semi-bold !default;
+$product-tab-item-font-size-fluid:          h5 !default;
+$product-tab-item-height:                   54px !default;
+$product-tab-item-active-bg:       x         $white !default;
+$product-tab-item-active-color:             $body-color !default;
+$product-tab-breakpoint:                    lg !default;
+
+$compare-item-styles:                       true !default;
+$compare-item-counter-color:                $counter-light-bg !default;
+$compare-item-bar-color:                    $white !default;
+$compare-item-bar-bg:                       $counter-light-color !default;
+$comparison-table-seperator:                1pt solid $nhsuk-border-color !default;
+$comparison-table-padding:                  0.7rem 1rem !default;
+$comparison-table-col-width:                275px !default;
+$comparison-table-strip-bg:                 gray('4') !default;
+
+// Product list/grid blocks variables for
+// widgets, upsell, recently viewed, list widget, crossell and related blocks
+// x$product-blocks-title-fluid-size:           h4 !default;
+$block-widget-light-bg:                     transparent !default;
+$block-widget-light-color:                  $black !default;
+$block-widget-dark-bg:                      $black !default;
+$block-widget-dark-color:                   $white !default;
+$block-widget-spacing-x:                    spacers(3) !default;
+$block-widget-spacing-x-lg:                 spacers(4) !default;
+$block-widget-content-max-width:            map_get($container-max-widths, xxl) !default;
+
+// Promotional block widget
+$promotional-block-padding-x:               spacers(3) !default;
+$promotional-block-padding-y:               spacers(3) !default;
+$promotional-block-padding-x-lg:            spacers(4) !default;
+$promotional-block-padding-y-lg:            spacers(4) !default;
+$promotional-block-spacing:                 spacers(3) !default;
+$promotional-media-mb:                      spacers(3) !default;
+$promotional-heading-mb:                    spacers(3) !default;
+$promotional-desc-mb:                       spacers(3) !default;
+$promotional-block-light-bg:                $white !default;
+$promotional-block-dark-bg:                 $black !default;
+$promotional-block-light-color:             $black !default;
+$promotional-block-dark-color:              $white !default;
+
+// CMS Slider Widget
+$cms-slider-widget-padding:                 spacers(3) !default;
+
+// CMS styles
+$cms-page-title-mt: spacers(3) !default;
+$cms-page-title-mt-md: spacers(4) !default;
+
+$cms-page-col-main-mt: spacers(4) !default;
+$cms-page-col-main-mb: spacers(4) !default;
+$cms-page-col-main-mb-md: spacers(4) * 2 !default;
+
+$cms-page-list-padding: 0 spacers(4) spacers(3) spacers(4) !default;
+$cms-page-p-mb-md: spacers(4) !default;
+$cms-page-heading-pt-md: spacers(3) !default;
+
+$cms-page-h2-mb: spacers(5) !default;
+$cms-page-h3-mb: spacers(4) !default;
+$cms-page-h4-mb: spacers(3) !default;
+$cms-page-h5-mb: spacers(3) !default;
+$cms-page-h6-mb: spacers(2) !default;
+
+$cms-page-table-padding: spacers(2) !default;
+$cms-page-table-border: 1px solid $nhsuk-border-color !default;
+$cms-page-th-td-padding: spacers(2) !default;
+
+$cms-blockquote-border: 5px solid theme-color(primary) !default;
+$cms-blockquote-padding: spacers(3) spacers(3) * 2 spacers(3) spacers(5) !default;
+$cms-blockquote-margin: spacers(4) auto !default;
+$cms-blockquote-width-md: 80% !default;
+$cms-blockquote-background: gray('5') !default;
+$cms-blockquote-font-size: $font-size-lg !default;
+$cms-blockquote-line-height: 1.6 !default;
+$cms-blockquote-quote-color: theme-color(primary) !default;
+$cms-blockquote-quote-size: $cms-blockquote-font-size * 2 !default;
+$cms-blockquote-cite-color: theme-color(primary) !default;
+$cms-blockquote-cite-mt: spacers(3) !default;
+
+$qty-stepper-enabled: false !default;
+$qty-stepper-button-width: 36px !default;
+$qty-stepper-button-padding: spacers(2) !default;
+$qty-stepper-max-width: 150px !default;
+$qty-stepper-up-icon: 'plus' !default;
+$qty-stepper-down-icon: 'minus' !default;
+$qty-stepper-icon-size: $font-size-base !default;
+$qty-stepper-wrapper-width: 100% !default;
+$qty-stepper-field-width: calc(100% - #{$qty-stepper-button-width * 2}) !default;
+$qty-stepper-button-border-color: $nhsuk-form-border-color !default;

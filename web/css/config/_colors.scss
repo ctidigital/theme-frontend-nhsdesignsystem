@@ -1,0 +1,84 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+
+//
+// Color system
+// Mapped the Theme colours to use NHS Colour Palette Variables from the file below
+// DHSC-theme/web/css/vendor/nhsuk-frontend/packages/core/settings/_colours.scss
+//
+
+// stylelint-disable
+
+// Monotones
+$white:    $color_nhsuk-white !default;
+$black:    $color_nhsuk-black !default;
+/* Commented below out as we need replace them with NHS colours */
+/*$gray-70:  #F0F4F5 !default;
+$gray-100: #f8f9fa !default;
+$gray-150: #eeeded !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dddcdb !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-550: #bdbdbd !default;
+$gray-600: #767676 !default;
+$gray-625: #858585 !default;
+$gray-650: #6c757d !default;
+$gray-700: #4a4a4a !default;
+$gray-800: #343a40 !default;
+$gray-850: #333333 !default;
+$gray-875: #2A2A2A !default;
+$gray-900: #212529 !default;*/
+
+$grays: () !default;
+$grays: map-merge((
+        '1': $color_nhsuk-grey-1,
+        '2': $color_nhsuk-grey-2,
+        '3': $color_nhsuk-grey-3,
+        '4': $color_nhsuk-grey-4,
+        '5': $color_nhsuk-grey-5
+), $grays);
+
+
+// Colour Palette
+// COLOURS PALETTE IS DEFINED WITHIN NHS COLOURS
+// PLEASE USE THAT INSTEAD OF THE BELOW
+//
+//// You can add more entries to the $colors map.
+//// To find name for Colour use 'Name that colour' (http://chir.ag/projects/name-that-color)
+//
+//$colors: () !default;
+//$colors: map-merge((
+//        'green-leaf':   #2e6e0b,
+//        'snow-flurry':  #e0ffcf,
+//        'sunflower':    #ded31e,
+//        'cream':        #ffffcf,
+//        'milano-red':   #b70e0e,
+//        'your-pink':    #ffbebe,
+//        'picton-blue':  #1BA8E9,
+//        'pattens-blue': #def5ff
+//), $colors);
+
+// Theme colours
+$theme-colors: () !default;
+$theme-colors: map-merge((
+        'primary':    $black,
+        'secondary':  $color_nhsuk-grey-2,
+        'light':      $color_nhsuk-grey-4,
+        'dark':       $black,
+        'positive':        $color_nhsuk-green,
+        'positive-subtle': $color_shade_nhsuk-green-35,
+        'caution':         $color_nhsuk-yellow,
+        'caution-subtle':  $color_nhsuk-pale-yellow,
+        'negative':        $color_nhsuk-red,
+        'negative-subtle': $color_nhsuk-red,
+        'neutral':         $color_shade_nhsuk-blue-50,
+        'neutral-subtle':  $color_shade_nhsuk-blue-20,
+        'screen-reader-bg': $color_nhsuk-grey-5,
+        'backdrop': rgba($black, $alpha-transparency-50)
+), $theme-colors);
+// stylelint-enable
+

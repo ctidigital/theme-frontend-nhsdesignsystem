@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove -->
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceBlock name="store_switcher" remove="true"/>
+        <referenceBlock name="language_switcher" remove="true"/>
+
+        <!-- Move -->
+        <move element="copyright" destination="footer-container"/>
+        <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
+        <move element="minicart" destination="header-wrapper" after="-"/>
+        <move element="header.panel.block_container" destination="header.panel" before="b2blinks"/>
+
+        <container name="header.panel.block_container" as="header.panel.block_container" label="Header Panel Block Container" htmlTag="div" htmlClass="header-panel__block" before="-">
+            <block class="Magento\Cms\Block\Block" name="header.panel.block" >
+                <arguments>
+                    <argument name="block_id" xsi:type="string">header_panel_block</argument>
+                </arguments>
+            </block>
+        </container>
+
+        <!-- Header -->
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <!-- Footer -->
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer_links_block" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_links_block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="footer-container">
+            <block class="Magento\Cms\Block\Block" name="footer_accepted_payements_and_confidences_block" after="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_accepted_payements_and_confidences_block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

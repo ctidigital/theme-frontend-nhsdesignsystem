@@ -1,0 +1,21 @@
+/*
+ * Common Magento Utils/Misc Classes
+ *
+ */
+
+.u-aspect-ratio-placeholder {
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 100%;
+}
+
+.empty {
+  color: $text-muted;
+}
+
+._hidden,
+.u-no-display,
+.no-display {
+  @extend %u-no-display;
+}

@@ -1,0 +1,102 @@
+.product[role="tablist"]:not(.options) {
+  > [role="tab"] {
+    @include respond-to-up($product-tab-breakpoint) {
+      float: left;
+      width: auto;
+      margin: 0 2px;
+    }
+
+    &:first-child {
+      @include respond-to-up($product-tab-breakpoint) {
+        margin-left: 0;
+      }
+    }
+  }
+
+  [role="tabpanel"] {
+    padding: 0 $product-tab-item-padding-mobile $product-tab-item-padding-desktop $product-tab-item-padding-mobile;
+    background: $product-tab-item-active-bg;
+
+    @include respond-to-up($product-tab-breakpoint) {
+      padding: spacers(5) 10%;
+      float: right;
+      margin-left: -100%;
+      width: 100%;
+      margin-top: $product-tab-item-height;
+    }
+
+    .value p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .switch {
+    @extend %u-flex-row-xcenter-ycenter;
+    @include ms-icon($product-tab-item-icon-mobile, inherit, after);
+    @include fluid-type($product-tab-item-font-size-fluid);
+    justify-content: space-between;
+    color: $product-tab-item-color;
+    background: $product-tab-item-bg;
+    padding: $product-tab-item-padding-mobile;
+    font-weight: $product-tab-item-font-weight;
+    line-height: 1.1;
+
+    @include respond-to-down($product-tab-breakpoint) {
+      font-size: $font-size-lg;
+    }
+
+    @include respond-to-up($product-tab-breakpoint) {
+      padding: $product-tab-item-padding-desktop $product-tab-item-padding-desktop * 2;
+    }
+
+    @include hover {
+      text-decoration: none;
+    }
+
+    &:after {
+      @include respond-to-up($product-tab-breakpoint) {
+        display: none;
+      }
+    }
+
+    .counter {
+      padding: spacers(1) spacers(2);
+      border-radius: 1000px;
+      font-size: $font-size-xs;
+      background: gray(4);
+      text-align: center;
+      line-height: $font-size-xs;
+      margin-left: 5px;
+      position: relative;
+      top: -4px;
+
+      @include respond-to-down($product-tab-breakpoint) {
+        display: none;
+      }
+    }
+  }
+
+  .title.active .switch {
+    color: $product-tab-item-active-color;
+    background: $product-tab-item-active-bg;
+
+    &:after {
+      content: map-get($ms-icons, 'minus');
+    }
+  }
+
+  .additional-attributes-wrapper .table-caption {
+    display: none;
+  }
+
+  .additional-attributes-wrapper > *:last-child {
+    margin-bottom: 0;
+  }
+
+  .additional-attributes {
+    th,
+    td {
+      padding: spacers(1);
+    }
+  }
+}

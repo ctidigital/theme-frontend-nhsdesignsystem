@@ -1,0 +1,95 @@
+
+// NHS variables
+@import "vendor/nhsuk-frontend/packages/core/settings/all";
+@import "vendor/nhsuk-frontend/packages/core/tools/all";
+@import "vendor/nhsuk-frontend/packages/core/generic/box-sizing";
+
+@import "icon-font-map";
+
+// Functions
+//
+@import "functions/strip-unit";
+@import "functions/assert";
+@import "functions/maps";
+@import "functions/position";
+@import "functions/size";
+@import "functions/tint";
+@import "functions/inline";
+@import "functions/typography";
+@import "functions/respond-to";
+
+// Mixins
+//
+@import "mixins/clearfix";
+@import "mixins/aspect-ratio";
+@import "mixins/object-fit";
+@import "mixins/loader";
+@import "mixins/hover";
+@import "mixins/image";
+@import "mixins/lists";
+@import "mixins/reset-text";
+@import "mixins/screen-reader";
+@import "mixins/visibility";
+@import "mixins/text-hide";
+@import "mixins/text-truncate";
+@import "mixins/float";
+@import "mixins/text-emphasis";
+@import "mixins/respond-to";
+@import "mixins/fixed-type";
+@import "mixins/fluid-type";
+@import "mixins/flex";
+@import "mixins/triangle";
+@import "mixins/fixed-backdrop";
+@import "mixins/icon";
+@import "mixins/modals";
+@import "mixins/input-placeholder";
+@import "mixins/buttons";
+@import "mixins/dropdown";
+@import "mixins/full-width";
+@import "mixins/sticky";
+@import "mixins/align";
+@import "mixins/scrim";
+
+// Placeholders
+//
+@import "placeholders/screen-reader";
+@import "placeholders/display";
+@import "placeholders/lists";
+@import "placeholders/flex";
+
+
+// Config
+//
+@import "config/fonts";
+@import "config/colors";
+@import "config/spacing";
+@import "config/icon";
+@import "config/buttons";
+@import "config/z-index";
+@import "config/body";
+@import "config/paragraph";
+@import "config/links";
+@import "config/breakpoints";
+@import "config/tweakpoints";
+@import "config/layout";
+@import "config/loaders";
+@import "config/components";
+@import "config/typography";
+@import "config/fluid-type";
+@import "config/fixed-type";
+@import "config/vfx";
+@import "config/forms";
+@import "config/modals";
+@import "config/dropdown";
+@import "config/theme";
+@import "placeholders/fixed-backdrop";
+@import "placeholders/close";
+@import "placeholders/icon";
+@import "placeholders/typography";
+@import "placeholders/vfx";
+@import "placeholders/full-width";
+@import "placeholders/sticky";
+@import "placeholders/products-widgets-title";
+@import "placeholders/spacing";
+
+

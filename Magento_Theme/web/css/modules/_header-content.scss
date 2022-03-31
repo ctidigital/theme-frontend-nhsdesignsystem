@@ -1,0 +1,47 @@
+/**
+ * Main Header Wrapper
+ *
+ */
+.header.content {
+  @extend %u-flex-row-xcenter-ycenter;
+  position: relative; // Required for mobile search stacking
+  justify-content: flex-start;
+  background: $header-content-bg;
+  color: $header-content-color;
+  padding: $header-content-padding;
+  min-height: $header-content-min-height-sm;
+  overflow-x: hidden;
+
+  @include respond-to-up($tweakpoint-nav-toggle) {
+    min-height: $header-content-min-height-md;
+    overflow: visible;
+  }
+
+  // Layout for contents
+  .minicart-wrapper {
+    order: 3;
+  }
+
+  .block-search {
+    margin-left: auto;
+    margin-right: spacers(1);
+    order: 2;
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      margin-right: spacers(3);
+    }
+  }
+}
+
+.page-header {
+  position: relative;
+  z-index: z(fixed);
+
+  @include respond-to-up($tweakpoint-nav-toggle) {
+    background: $header-content-bg;
+  }
+}
+
+#cookie-status {
+  display: none;
+}

@@ -1,0 +1,259 @@
+// Shipping
+.shipping-information {
+  border-bottom: 1px solid darken($opc-estimated-wrapper-bg, 5%);
+
+  @include respond-to-up(lg) {
+    border-bottom: 0 none;
+  }
+
+  .ship-to,
+  .ship-via {
+    background: $opc-sidebar-bg;
+    margin-bottom: $opc-summary-title-spacing-y;
+
+    @include respond-to-up(lg) {
+      padding: $opc-summary-padding;
+    }
+  }
+
+  .ship-to {
+    border-bottom: 1px solid darken($opc-estimated-wrapper-bg, 5%);
+
+    @include respond-to-up(lg) {
+      border-bottom: 0 none;
+    }
+  }
+
+  .shipping-information-title {
+    @extend %u-flex-row-xcenter-ycenter;
+    @include fluid-type($opc-summary-title-fluid-size);
+    font-weight: $font-weight-bold;
+    margin-bottom: $opc-summary-title-spacing-y;
+    background: $opc-sidebar-bg;
+    justify-content: space-between;
+  }
+
+  .action-edit {
+    color: $nhsuk-link-color;
+    text-transform: capitalize;
+   /* @include ms-icon(edit);
+    padding: spacers(1);
+
+    > span {
+      @extend %u-sr-only;
+    }*/
+  }
+}
+
+.table-checkout-shipping-method {
+  width: 100%;
+  background: $opc-step-title-bg;
+  margin-bottom: spacers(3);
+
+
+  th,
+  td {
+    padding: spacers(2) spacers(3);
+    border-bottom: 1px solid $nhsuk-border-color;
+
+    @include respond-to-down(md) {
+      display: block;
+      text-align: center;
+      padding: 0;
+      border-bottom: 0 none;
+    }
+
+    &.col-method,
+    .price {
+      @include respond-to-down(md) {
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    &.col-carrier {
+      @include respond-to-down(md) {
+        color: $text-muted;
+      }
+    }
+  }
+
+  th {
+    border-bottom-width: 2px;
+  }
+
+  thead {
+    @include respond-to-down(md) {
+      display: none;
+    }
+  }
+
+  tr {
+    @include respond-to-down(md) {
+      display: block;
+      padding: spacers(2);
+      border-bottom: spacers(2) solid $white;
+    }
+  }
+
+  th {
+    background: darken($opc-step-title-bg, 5%);
+
+    @include respond-to-down(md) {
+      display: none;
+    }
+  }
+
+  .store-container-inner {
+    width: 100%;
+  }
+
+  .shipping-method-row {
+    &.is-active {
+      background: darken($opc-step-title-bg, 2%);
+    }
+  }
+}
+
+#shipping-method-buttons-container {
+  margin-bottom: 0;
+
+  .action {
+    margin-bottom: 0;
+  }
+
+  @include respond-to-up(md) {
+    justify-content: flex-end;
+  }
+}
+
+[name="shippingAddress.custom_attributes.address_finder"] .button {
+  padding: spacers(2);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.shipping-address-items {
+  @extend %u-flex-row-xcenter-ycenter;
+  flex-wrap: wrap;
+
+  @include respond-to-up(lg) {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .shipping-address-item {
+    @extend %u-bg-color-transition;
+    @include ms-icon('check');
+    position: relative;
+    width: $shipping-address-item-width;
+    background: $shipping-address-item-bg;
+    padding: $shipping-address-item-padding;
+    padding-right: 62px;
+    margin: $shipping-address-item-margin;
+    max-width: 100%;
+    border: 1px solid $nhsuk-border-color;
+    border-bottom-width: 4px;
+
+    &:before {
+      @extend %u-transform-fade-transition;
+      @include absolute($shipping-address-item-padding, $shipping-address-item-padding);
+      padding: spacers(2);
+      border: 1px solid $shipping-address-item-active-color;
+      transform: translateY(90%);
+      background: theme-color('positive');
+      font-feature-settings: normal;
+      opacity: 0;
+    }
+
+    .edit-address-link {
+      box-sizing: border-box;
+      font-weight: $font-weight-bold;
+      text-decoration: underline;
+      padding: spacers(3) 0;
+    }
+
+    &.selected-item {
+      background: $shipping-address-item-active-bg;
+      color: $shipping-address-item-active-color;
+
+      &:focus {
+        border: 2px solid $nhsuk-focus-text-color;
+        box-shadow: inset 0 0 0 2px;
+        outline: $nhsuk-focus-width solid $nhsuk-focus-color; /* 1 */
+        outline-offset: 0;
+      }
+
+      a {
+        color: $shipping-address-item-active-color;
+      }
+
+      &:before {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+
+      .action-select-shipping-item {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+  .action-select-shipping-item {
+    /*@extend %button-cheer;*/
+    @extend %u-transform-fade-transition;
+    margin: $shipping-address-item-padding auto 0;
+  }
+}
+
+#checkout-step-shipping .action-show-popup {
+ /* @extend %button-shout;*/
+  margin: $input-margin-y * 0.5 auto $input-margin-y auto;
+
+  &:before {
+    content: '+ ';
+    display: inline-block;
+    margin-right: 8px;
+  }
+}
+
+input[data-placeholder="null"]::placeholder {
+  color: white;
+  opacity: 0;
+}
+input[data-placeholder="null"]::-webkit-input-placeholder {
+  color: white;
+  opacity: 0;
+}
+
+input[data-placeholder="null"]::-moz-placeholder {
+  color: white;
+  opacity: 0;
+}
+
+input[data-placeholder="null"]:-ms-input-placeholder {
+  color: white;
+  opacity: 0;
+}
+
+// Hide float labels for Street Address lines
+// to avoid the 'null' issue
+.checkout-shipping-address {
+  .field {
+    &[name="shippingAddress.street.0"],
+    &[name="shippingAddress.street.1"],
+    &[name="shippingAddress.street.2"],
+    &[name="shippingAddress.street.3"],
+    &[name="shippingAddress.street.4"],
+    &[name="shippingAddress.street.5"],
+    &[name="shippingAddress.street.6"] {
+      label {
+        display: none;
+      }
+    }
+  }
+
+  .info.message {
+    margin-bottom: 0;
+  }
+}

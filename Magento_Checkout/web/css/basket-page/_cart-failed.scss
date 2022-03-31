@@ -1,0 +1,72 @@
+.block-cart-failed {
+  @include nhsuk-responsive-padding(4);
+  @include nhsuk-responsive-margin(8, 'bottom');
+
+  border: $nhsuk-border-width-mobile solid $nhsuk-error-color;
+
+  @include govuk-media-query($from: tablet) {
+    border: $nhsuk-border-width solid $nhsuk-error-color;
+  }
+
+  .actions-toolbar {
+    margin: 0 auto;
+
+    @media screen and (max-width: 48.0525em) {
+      margin-bottom: spacers(2);
+    }
+  }
+
+  .action-delete {
+    margin-left: auto;
+    @include nhsuk-link-style-default;
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .item-info td {
+    border-bottom: 0 none !important;
+
+    @media screen and (max-width: 48.0525em) {
+      flex-direction: column;
+    }
+  }
+
+  .cart.table-wrapper {
+    margin-bottom: spacers(3);
+  }
+
+  .action.tocart {
+    float: left;
+    margin-bottom: 0;
+  }
+
+  .action.clear {
+    float: right;
+    margin-bottom: 0;
+  }
+
+  .col {
+    > .product-item-photo {
+      @include respond-to-up(lg) {
+        float: left;
+      }
+    }
+
+    > .product-item-details {
+      @include respond-to-up(lg) {
+        float: right;
+        margin-left: spacers(3);
+      }
+    }
+  }
+
+  .message.error {
+    @media screen and (max-width: 48.0525em) {
+      margin-bottom: spacers(2);
+    }
+  }
+}

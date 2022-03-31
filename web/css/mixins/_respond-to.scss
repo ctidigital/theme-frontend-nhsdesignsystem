@@ -1,0 +1,73 @@
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin respond-to-up($name, $_breakpoints: $breakpoints) {
+  $min: respond-to-min($name, $_breakpoints);
+  @if $min {
+    @media screen and (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin respond-to-down($name, $_breakpoints: $breakpoints, $useFraction: false) {
+  $max: respond-to-min($name, $_breakpoints);
+
+  @if $useFraction == true {
+    $max: respond-to-max-in($name, $_breakpoints);
+  }
+
+  @if $max {
+    @media screen and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin respond-to-between($lower, $upper, $_breakpoints: $breakpoints) {
+  $min: respond-to-min($lower, $_breakpoints);
+  $max: respond-to-max($upper, $_breakpoints);
+
+  @if $min != null and $max != null {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include respond-to-up($lower) {
+      @content;
+    }
+  } @else if $min == null {
+    @include respond-to-down($upper) {
+      @content;
+    }
+  }
+}
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin respond-to-only($name, $_breakpoints: $breakpoints) {
+  $min: respond-to-min($name, $_breakpoints);
+  $max: respond-to-max($name, $_breakpoints);
+
+  @if $min != null and $max != null {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include respond-to-up($name) {
+      @content;
+    }
+  } @else if $min == null {
+    @include respond-to-down($name) {
+      @content;
+    }
+  }
+}

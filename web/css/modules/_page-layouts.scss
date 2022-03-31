@@ -1,0 +1,89 @@
+@import "../vendor/nhsuk-frontend/packages/core/objects/main-wrapper";
+
+body {
+  overflow-x: hidden;
+
+  .page-main {
+    @include govuk-main-wrapper;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+  }
+
+  .sidebar {
+    margin-bottom: $page-layout-sidebar-spacing-y;
+  }
+
+  // Hide sidebar additional for mobile
+  .sidebar-additional {
+    @include respond-to-down($page-layout-breakpoint) {
+      display: none;
+    }
+  }
+
+  // 3 columns is disabled by default to act as 2 columns
+  &.page-layout-3columns,
+  &.page-layout-2columns-right,
+  &.page-layout-2columns-left {
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .main {
+      flex: 1 1 auto;
+      max-width: 100%;
+      width: 100%;
+      order: 2;
+
+      @include respond-to-up($page-layout-breakpoint) {
+        width: auto;
+      }
+    }
+
+    .sidebar-container {
+      width: 100%;
+      order: 1;
+
+      @include respond-to-up($page-layout-breakpoint) {
+        width: $page-layout-sidebar-width;
+        margin-right: $page-layout-sidebar-spacing-x;
+      }
+    }
+  }
+
+  &.page-layout-2columns-right {
+    .main {
+      @include respond-to-up($page-layout-breakpoint) {
+        order: 1;
+      }
+    }
+
+    .sidebar-container {
+      @include respond-to-up($page-layout-breakpoint) {
+        order: 2;
+        margin-right: 0;
+        margin-left: $page-layout-sidebar-spacing-x;
+      }
+    }
+  }
+
+  .main,
+  .columns {
+    @include clearfix();
+  }
+
+  &.cms-index-index {
+    .page-main {
+      padding-top: 0;
+    }
+  }
+}
+
+.column.main > [data-content-type="row"] {
+  padding: 0 $container-padding;
+}

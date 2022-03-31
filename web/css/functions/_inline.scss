@@ -1,0 +1,9 @@
+/// Mixin handling inline-block and vertical-align at once.
+/// If no align is specified, then the `vertical-align` property won't be output.
+/// @param {String} $align [null] - Vertical align
+/// @example scss - Center Inline-block vertically
+///  @include inline-block($align: middle)
+@mixin inline-block($align: null) {
+  display: inline-block;
+  vertical-align: $align;
+}

@@ -1,0 +1,18 @@
+//  Paypal billing agreement
+.form-new-agreement {
+    .actions-toolbar {
+        margin-left: 0;
+    }
+}
+//
+//  Desktop
+//  _____________________________________________
+
+@include respond-to-up(md) {
+    .form-new-agreement {
+        .fieldset .legend,
+        .actions-toolbar {
+            margin-left: 0;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.checkout-methods-items {
+  padding: spacers(4) 0 0;
+  margin: 0;
+
+  > .item {
+    margin-bottom: spacers(2);
+    text-align: center;
+
+    button.checkout {
+      margin: 0 auto;
+    }
+
+    button:not(.checkout) {
+      box-sizing: border-box;
+      width: auto;
+      margin: 0;
+
+      img {
+        /* fixes size of images when button contains image - paypal button */
+        max-width: 30%;
+        width: auto;
+        margin: 0;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .action.checkout {
+    max-width: 290px;
+  }
+
+  .cart-summary & {
+    margin-bottom: 0.7rem;
+    padding-top: 0;
+  }
+}

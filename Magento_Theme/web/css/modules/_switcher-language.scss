@@ -1,0 +1,81 @@
+/**
+ * Language Switcher
+ */
+.switcher {
+  margin: $switcher-spacing-y $switcher-spacing-x;
+
+  .options {
+    @include dropdown();
+
+    ul.dropdown {
+      animation: u-animation-slide-down-small $transition-duration-ease-out $transition-timing-sharp;
+      animation-delay: 0.02s;
+      animation-fill-mode: both;
+    }
+  }
+
+  .label {
+    @include sr-only();
+  }
+
+  .switcher-trigger {
+    padding: $switcher-padding;
+
+    &:hover,
+    &:focus {
+      outline: 0 none;
+    }
+  }
+
+  .switcher-option a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+
+.switcher-trigger,
+.switcher-options,
+.switcher {
+  height: 100%;
+}
+
+.switcher-language {
+
+  .header.panel & {
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &.switcher .options {
+    @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+      width: 100%;
+    }
+
+    .switcher-trigger {
+      @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+        justify-content: space-between;
+      }
+    }
+
+    &.active ul.dropdown {
+      @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+        margin-top: 0;
+      }
+
+      &:before,
+      &:after {
+        @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .view-default {
+    display: block;
+    font-weight: normal;
+  }
+}

@@ -1,0 +1,86 @@
+.product-reviews-summary {
+
+  .product-info-main & {
+    margin-bottom: $product-view-info-row-spacing-y * 0.25;
+  }
+
+  .rating-summary {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+
+    @include respond-to-up(md) {
+      width: 100px;
+    }
+  }
+
+  .reviews-actions {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+
+    @include respond-to-up(md) {
+      width: calc(100% - 124px);
+    }
+
+  }
+
+  .action.view {
+    display: inline-block;
+    width: auto;
+    padding: 0;
+    text-transform: none;
+    font-size: $font-size-sm;
+    color: $text-muted;
+    vertical-align: top;
+    letter-spacing: 0;
+
+    &:after {
+      display: none;
+    }
+
+    @include respond-to-down(smm) {
+      width: 100%;
+      text-align: left;
+    }
+
+    & + .action.add {
+      @include respond-to-up(smm) {
+        margin-left: spacers(3);
+      }
+
+      &:before {
+        @include respond-to-up(smm) {
+          content: '|';
+          margin-right: spacers(3);
+        }
+      }
+    }
+  }
+
+  .action.add {
+    /*@extend %button-whisper;*/
+    display: inline-block;
+    vertical-align: top;
+    font-size: $font-size-xs;
+    width: auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin-left: 0;
+    line-height: 22px;
+    color: $nhsuk-link-color;
+    background: none;
+    border: 0 none;
+    box-shadow: none;
+
+
+    @include respond-to-down(smm) {
+      width: 100%;
+      text-align: left;
+    }
+  }
+}
+
+.catalog-product-view .page-title {
+  margin-bottom: $product-view-info-row-spacing-y * 0.4;
+}

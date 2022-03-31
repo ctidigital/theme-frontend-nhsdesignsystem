@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var $block \Magento\Company\Block\Company\CompanyInfo
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+<?php if ($block->getCompany()): ?>
+        <div class="field company-name">
+            <label class="label" for="company-name"><span><?= $escaper->escapeHtml(__('Company')) ?></span>
+            </label>
+            <div class="control">
+                <input type="text" id="company-name" name="company-name" value="<?= $escaper->escapeHtml($block->getCompanyName()) ?>" title="<?= $escaper->escapeHtml(__('Company')) ?>" class="input-text" disabled aria-disabled="true">
+            </div>
+        </div>
+        <div class="field job-title">
+            <label class="label" for="job-title"><span><?= $escaper->escapeHtml(__('Job Title')) ?></span></label>
+            <div class="control">
+                <input type="text" id="job-title" name="job-title" value="<?= $escaper->escapeHtml($block->getCompanyName()) ?>" title="<?= $escaper->escapeHtml(__('Job Title')) ?>" class="input-text" disabled aria-disabled="true">
+            </div>
+        </div>
+<?php endif; ?>

@@ -1,0 +1,77 @@
+%customer-account-layout {
+  display: flex;
+  flex-direction: column;
+
+  @include respond-to-up(lg) {
+    flex-direction: row;
+  }
+}
+
+%customer-account-layout-col1 {
+  @extend %u-flex-col-xcenter-ycenter;
+  padding: $customer-account-padding-mobile;
+  padding-top: $customer-account-padding-mobile * 2;
+  padding-bottom: $customer-account-padding-mobile * 2;
+  width: 100%;
+  background: $customer-account-light-bg;
+
+  @include respond-to-up(lg) {
+    padding: $customer-account-padding;
+    width: $customer-account-col1-width;
+  }
+}
+
+%customer-account-layout-col2 {
+  @extend %u-flex-col-xcenter-ycenter;
+  padding: $customer-account-padding-mobile;
+  padding-top: $customer-account-padding-mobile * 3;
+  width: 100%;
+  position: relative;
+  text-align: center;
+
+  @include respond-to-up(lg) {
+    padding: $customer-account-padding;
+    width: $customer-account-col2-width;
+    min-height: $new-customers-min-height;
+  }
+
+  @if $customer-account-graphic-bg {
+    @include ms-icon('chevron-down', 20px);
+    background: url(#{$customer-account-graphic-bg}) no-repeat top left;
+    background-size: cover;
+
+    &:before {
+      @include absolute(0, auto, auto, 50%);
+      @include size(48px);
+      border-radius: 100%;
+      background: $white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -24px;
+      margin-top: -24px;
+      box-shadow: $shadow-tooltip;
+
+      @include respond-to-up(lg) {
+        @include absolute(50%, auto, auto, 0);
+        content: map_get($ms-icons, 'chevron-right');
+        margin-left: -24px;
+        margin-top: -24px;
+      }
+    }
+  }
+}
+
+.customer-account-layout {
+  @extend %customer-account-layout;
+}
+
+.customer-account-layout-col1 {
+  @extend %customer-account-layout-col1;
+}
+
+.customer-account-layout-col2,
+.login-container > .customer-account-login-block,
+.login-container > [data-content-type="html"] {
+  @extend %customer-account-layout-col2;
+}

@@ -1,0 +1,17 @@
+.product.sku {
+  @extend %u-flex-row-xcenter-ycenter;
+  padding: $product-sku-padding;
+  font-size: $product-sku-font-size;
+  color: $product-sku-color;
+  border: $product-sku-border;
+
+  .type {
+    padding-right: spacers(2);
+    font-weight: normal;
+    color: $text-muted;
+  }
+
+  .value {
+    font-weight: $font-weight-bold;
+  }
+}

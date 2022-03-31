@@ -1,0 +1,79 @@
+.products-grid {
+  .product-item-info {
+    position: relative;
+   // z-index: z('below') + 1;
+    border: 1px solid transparent;
+    border-bottom: 0 none;
+    //overflow: hidden; /* hide to show requisition list item dropdown */
+    /* transition: box-shadow $transition-duration-ease-out
+      $transition-timing-ease-out;*/
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0), 0 5px 5px rgba(0, 0, 0, 0);
+    background: $product-item-bg;
+    padding: $product-item-padding-mobile;
+
+    @include respond-to-up(md) {
+      padding: $product-item-padding-desktop;
+    }
+
+    .product-item-photo {
+      transition: transform $transition-duration $transition-timing-ease-in, opacity $transition-duration $transition-timing-ease-in, visibility $transition-duration $transition-timing-ease-in;
+      backface-visibility: hidden;
+      transform: translateY(0%);
+    }
+
+    .product-item-details {
+      transition: transform $transition-duration $transition-timing-ease-in, opacity $transition-duration $transition-timing-ease-in, visibility $transition-duration $transition-timing-ease-in;
+      backface-visibility: hidden;
+      padding: spacers(2);
+      padding-top: 0;
+      // transform: translateY(0%);
+      background: rgba($white, 0);
+
+      @include respond-to-up(md) {
+        padding: $product-item-info-spacing-x;
+        padding-top: 0;
+      }
+    }
+
+    @if $product-item-hover-reveal {
+      .product-item-inner {
+        @include respond-to-up($product-item-hover-breakpoint) {
+          @include absolute(auto, 0, 10px);
+          padding: 0 $product-item-info-spacing-x;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(100%);
+          z-index: z('above') + 2;
+        }
+      }
+    }
+  }
+
+  @if $product-item-hover-reveal {
+    .product-item.is-active .product-item-info {
+      @include respond-to-up($product-item-hover-breakpoint) {
+        z-index: z('above') + 1;
+        border-color: rgba($border-color, 0.5);
+        background: $white;
+        box-shadow: 0 14px 56px rgba(0, 0, 0, 0.05),
+          0 10px 20px rgba(0, 0, 0, 0.07);
+
+        .product-item-photo {
+          transform: translateY(-4%);
+        }
+
+        .product-item-details {
+          position: relative;
+          z-index: z('above');
+          transform: translateY(-1 * $product-item-active-offset);
+          background: rgba($white, 1);
+        }
+
+        .product-item-inner {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}

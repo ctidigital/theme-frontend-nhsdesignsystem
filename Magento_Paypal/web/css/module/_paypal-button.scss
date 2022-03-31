@@ -1,0 +1,68 @@
+//  PayPal checkout button
+.paypal {
+  &.after {
+    &:before {
+      content: '- ' attr(data-label) ' -';
+      display: block;
+      margin: spacers(2) spacers(2) spacers(3);
+      text-transform: uppercase;
+    }
+  }
+  &.before {
+    &:before {
+      content: '- ' attr(data-label) ' -';
+      display: block;
+      margin: spacers(3) spacers(2);
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  &.acceptance {
+    display: block;
+    margin: 0 0 spacers(2);
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.box-tocart,
+.block-minicart {
+  .paypal {
+    margin-top: spacers(3);
+    text-align: center;
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.paypal-button-widget {
+  .paypal-button {
+    margin-top: spacers(2);
+  }
+}
+
+.paypal-express-in-context-mini-cart-container {
+  max-width: 223px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.catalog-product-view.paypal-enabled {
+  .box-tocart {
+    margin-bottom: 170px;
+  }
+
+  .actions > button,
+  .actions > div {
+    margin-bottom: spacers(3);
+  }
+
+  .product-info-price {
+    margin-bottom: 200px;
+  }
+}

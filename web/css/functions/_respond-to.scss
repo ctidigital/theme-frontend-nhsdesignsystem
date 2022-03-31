@@ -1,0 +1,57 @@
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 320px, md: 768px, lg: 992px, xl: 1200px, xxl: 1440px)
+//
+// The map defined in the `$breakpoints` global variable is used as the `$breakpoints` argument by default.
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> respond-to-next(sm)
+//    md
+//    >> respond-to-next(sm, (xs: 0, sm: 320px, md: 768px, lg: 992px, xl: 1200px, xxl: 1440px))
+//    md
+//    >> respond-to-next(sm, $breakpoint-names: (xs sm md lg xl xxl))
+//    md
+@function respond-to-next($name, $_breakpoints: $breakpoints, $breakpoint-names: map-keys($_breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> respond-to-min(sm, (xs: 0, sm: 320px, md: 768px, lg: 992px, xl: 1200px, xxl: 1440px))
+//    576px
+@function respond-to-min($name, $_breakpoints: $breakpoints) {
+  $min: map-get($_breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.02px
+// to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+//    >> respond-to-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767.98px
+@function respond-to-max($name, $_breakpoints: $breakpoints) {
+  $next: respond-to-next($name, $_breakpoints);
+  @return if($next, respond-to-min($next, $_breakpoints) - .02px, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.02px
+// to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+//    >> respond-to-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767.98px
+@function respond-to-max-in($name, $_breakpoints: $breakpoints) {
+  $next: $name;
+  @return if($next, respond-to-min($next, $_breakpoints) - .02px, null);
+}

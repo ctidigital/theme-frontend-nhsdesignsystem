@@ -1,0 +1,27 @@
+.stock {
+  padding: $product-stock-padding;
+  font-size: $product-stock-font-size;
+  color: $product-stock-color;
+
+  &:after {
+    position: relative;
+    top: 1px;
+    margin-left: 3px;
+  }
+
+  &.available {
+    @include ms-icon($product-stock-positive-icon, $product-stock-icon-size, 'after');
+    color: $product-stock-positive-bg;
+  }
+
+  &.unavailable {
+    @include ms-icon($product-stock-negative-icon, $product-stock-icon-size * 1.5, 'after');
+
+    &:after {
+      top: 4px;
+    }
+    color: $product-stock-negative-bg;
+  }
+}
+
+// .attribute.overview, .product.alert

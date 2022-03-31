@@ -1,0 +1,86 @@
+/*
+ * Form specific styles
+ */
+
+.form-orders-search {
+  max-width: 600px;
+  margin: spacers(3) auto;
+}
+
+.block-orders-returns .block-title {
+  text-align: center;
+}
+
+.g-recaptcha + .field {
+  display: none;
+}
+
+.form-addbysku {
+  max-width: 1280px;
+  margin: spacers(4) auto spacers(5) auto;
+
+    .form-addbysku-inner {
+        display: block;
+
+        @include respond-to-up($tweakpoint-nav-toggle) {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box {
+            width: 100%;
+
+            @include respond-to-up($tweakpoint-nav-toggle) {
+                width: 48%;
+            }
+        }
+    }
+
+  .deletable-item-title {
+    display: none;
+  }
+
+  .note {
+    color: $text-muted;
+  }
+
+  [for="customer_sku_csv"] {
+    font-weight: $font-weight-bold;
+  }
+}
+
+.quickorder-index-index .page-title {
+  margin: spacers(4) auto;
+  max-width: 1280px;
+}
+
+/*
+* used for styling purposes
+*
+.amform-form {
+    padding: 0 16px;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+*/
+
+/* remove all settings from legend on payment method page in checkout (extra height appearing before payment method title)*/
+.checkout-index-index {
+    .form.payments>.fieldset>legend {
+        height: 0;
+        font-size: 0;
+        display: none;
+        line-height: 0;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.field.field-customer_telephone {
+  margin-top: spacers(3);
+
+  @include respond-to-up(md) {
+    margin-top: spacers(3) * 1.5;
+  }
+}

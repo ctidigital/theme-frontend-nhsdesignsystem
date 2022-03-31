@@ -1,0 +1,45 @@
+//------------------------------------//
+//  Theme Settings                   //
+//-----------------------------------//
+// Do not remove this.
+@import "../../../web/css/settings";
+//-----------------------------------//
+
+// NHS header styles
+@import "../../../web/css/vendor/nhsuk-frontend/packages/components/header/header";
+
+//
+// MagentoTheme Module styles
+//
+@import "modules/welome-greet";
+@import "modules/logo";
+@import "modules/header-panel";
+@import "modules/header-content";
+@import "modules/switcher-language";
+@import "modules/customer-menu";
+
+@import "modules/homepage-usp-block";
+@import "modules/homepage-promo-block";
+
+@import "modules/nav/nav-toggle";
+@import "modules/nav/nav-sections-items";
+@import "modules/nav/navigation";
+@import "modules/nav/nav-offcanvas";
+@import "modules/nav/navigation-animation";
+
+@import "modules/search/block-search";
+@import "modules/search/minisearch";
+@import "modules/search/search-autocomplete";
+@import "modules/search/search-loader";
+
+@import "modules/google-autocomplete";
+
+@import "modules/minicart/minicart-wrapper";
+@import "modules/minicart/block-minicart";
+
+@import "modules/page-title";
+
+@import "modules/footer/newsletter";
+@import "modules/footer/links";
+@import "modules/footer/footer-payments-confidences";
+@import "modules/footer/copyright";

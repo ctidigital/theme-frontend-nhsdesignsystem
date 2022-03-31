@@ -1,0 +1,40 @@
+<?php
+   $homepageUSPBlock = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('homepage_usp_block')->toHtml();
+?>
+
+<div class="homepage-usp-block js-usp-slider">
+    <?php
+        echo $homepageUSPBlock;
+    ?>
+</div>
+
+
+<script type="text/x-magento-init">
+    {
+        ".js-usp-slider > ul": {
+            "js/slider": {
+                "slickSettings" : {
+                    "slidesToShow": 4,
+                    "slidesToScroll": 1,
+                    "dots": false,
+                    "arrows": false,
+                    "fade": true,
+                    "speed": 900,
+                    "cssEase": "ease-in-out",
+                    "responsive": [{
+                      "breakpoint": 768,
+                      "settings": {
+                        "slidesToShow": 1,
+                        "autoplay": true,
+                        "autoplaySpeed": 3000
+                      }
+                    },
+                    {
+                      "breakpoint": 4400,
+                      "settings": "unslick"
+                    }]
+                }
+            }
+        }
+    }
+</script>

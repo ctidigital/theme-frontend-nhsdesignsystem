@@ -1,0 +1,69 @@
+.mosaic {
+  position: relative;
+  height: 100%;
+  margin-bottom: spacers(2);
+
+  &__item {
+    position: relative;
+
+    @include respond-to-up(smm) {
+      position: absolute;
+    }
+
+    &--portrait {
+      @include aspect-ratio($mosaic-item-width, $mosaic-item-height);
+
+      @include respond-to-up(smm) {
+        @include aspect-ratio($mosaic-item-width, $mosaic-item-height * 2);
+        width: $mosaic-col-width * 2;
+      }
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        width: $mosaic-col-width;
+      }
+    }
+
+    &--square {
+      @include aspect-ratio($mosaic-item-width, $mosaic-item-height);
+
+      @include respond-to-up(smm) {
+        width: $mosaic-col-width * 2;
+      }
+
+      @include respond-to-up($tweakpoint-nav-toggle){
+        width: $mosaic-col-width;
+      }
+    }
+
+    &--landscape {
+      @include aspect-ratio($mosaic-item-width, $mosaic-item-height);
+
+      @include respond-to-up(smm) {
+        @include aspect-ratio($mosaic-item-width * 2, $mosaic-item-height);
+        position: relative;
+      }
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        position: absolute;
+        width: $mosaic-col-width * 2;
+      }
+    }
+  }
+}
+
+.mosaic-container {
+  &__title {
+    div,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+

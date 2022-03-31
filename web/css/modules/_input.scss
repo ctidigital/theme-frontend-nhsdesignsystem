@@ -1,0 +1,302 @@
+@import "../vendor/nhsuk-frontend/packages/core/objects/form-group";
+@import "../vendor/nhsuk-frontend/packages/components/input/input";
+@import "../vendor/nhsuk-frontend/packages/components/select/select";
+@import "../vendor/nhsuk-frontend/packages/components/textarea/textarea";
+@import "../vendor/nhsuk-frontend/packages/components/label/label";
+@import "../vendor/nhsuk-frontend/packages/components/hint/hint";
+@import "../vendor/nhsuk-frontend/packages/components/error-message/error-message";
+@import "../vendor/nhsuk-frontend/packages/components/fieldset/fieldset";
+
+// Labels
+.label {
+  @extend .nhsuk-label;
+}
+
+/**
+ * Input element styles
+ */
+input[type="text"]:not(.nhsuk-search__input),
+input[type="email"],
+input[type="tel"],
+input[type="file"],
+input[type="number"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="password"],
+.amform-form input.amform-date {
+  @extend .nhsuk-input;
+  //padding: $input-padding-y $input-padding-x;
+  //border: $input-border-width solid $input-border-color;
+  //border-radius: $input-border-radius;
+
+  //&:focus {
+  //  border-color: $input-border-focus-color;
+  //}
+  //
+  field._error &,
+  .field-mage-error &,
+  &.mage-error {
+    @extend .nhsuk-input--error;
+  }
+  //
+  //&.valid {
+  //  border-color: $input-valid-color;
+  //}
+}
+
+select {
+  @extend .nhsuk-select;
+  //-webkit-appearance: none;
+  //-moz-appearance: none;
+  //-ms-appearance: none;
+  //appearance: none;
+  //background: $white url(#{$input-select-arrow}) no-repeat 100% 45%;
+  //background-size: 50px 50px;
+  //padding-right: 50px;
+  //text-indent: .01em;
+  //box-sizing: border-box;
+  //vertical-align: baseline;
+
+  .field._error &,
+  .field-mage-error &,
+  &.mage-error {
+    @extend .nhsuk-input--error;
+  }
+}
+
+textarea {
+  @extend .nhsuk-textarea;
+  //&.mage-error {
+  //  animation: u-animation-shake $transition-duration $transition-timing-ease-in;
+  //  animation-fill-mode: both;
+  //  border-color: $input-error-color !important;
+  //}
+  //
+  //&.valid {
+  //  border-color: $input-valid-color !important;
+  //}
+}
+
+.control > input[type="text"],
+.control > input[type="email"],
+.control > input[type="password"],
+.control > input[type="tel"],
+.control > input[type="time"],
+.control > input[type="number"],
+.control > input[type="file"],
+.control > input[type="datetime-local"],
+.control > select,
+.control > textarea {
+  width: 100%;
+}
+
+//Input Place holder styles (Global)
+
+@include placeholder {
+  color: $input-placeholder-color;
+}
+
+
+// Error message
+div.field-error,
+div.mage-error {
+  @extend .nhsuk-error-message;
+  order: 2;
+
+/*  padding: $input-padding-x / 2 0;
+  font-size: $input-validation-font-size;
+  background: transparent;
+  color: $input-error-color;
+  text-align: left;
+  width: 100%;
+  animation: u-animation-slide-down-small $transition-duration $transition-timing-ease-in;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;*/
+}
+
+// Field
+form .field {
+  @extend .nhsuk-form-group;
+
+  &.field-mage-error {
+    @extend .nhsuk-form-group--error;
+  }
+}
+
+
+.amform-form-fieldset .field .tooltip-element,
+.field.note {
+  @extend .nhsuk-hint;
+}
+
+// Reorder error message to match the NHS design system using flex order
+//
+.field .control {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  > .label {
+    order: 1;
+  }
+
+  //> div.mage-error,
+  //> div.field-error {
+  //  &:before {
+  //    @include absolute(0, auto, auto, 0);
+  //    content: '';
+  //    width: $nhsuk-border-width-form-group-error;
+  //    height: 100%;
+  //    background: $nhsuk-error-color;
+  //    // border-left: $nhsuk-border-width-form-group-error solid $nhsuk-error-color;
+  //    /*padding-left: nhsuk-spacing(3);*/
+  //  }
+  //}
+
+  > input,
+  > select,
+  > textarea {
+    order: 3;
+  }
+
+  > .nested {
+    order: 4;
+    font-feature-settings: normal;
+  }
+}
+
+.fieldset {
+  @extend .nhsuk-fieldset;
+
+  legend {
+    @extend .nhsuk-fieldset__legend;
+  }
+}
+.field.street > [for="street_1"] {
+  @extend  %u-sr-only;
+  font-feature-settings: normal;
+}
+
+.field.street > .control > .field {
+  margin-bottom: 0;
+
+  + #street_1 {
+    @include nhsuk-responsive-margin(4, 'bottom');
+  }
+}
+
+[name="shippingAddress.street.1"] {
+  .label {
+    display: none;
+  }
+}
+
+[name="shippingAddress.street.0"].field {
+  margin-bottom: spacers(2);
+}
+
+.admin__control-fields legend.label {
+  font-size: $font-size-base;
+  font-weight: normal;
+}
+
+.captcha-image.control {
+  @extend %u-flex-col-xcenter-ycenter;
+  @include ms-icon('arrow-up', $input-margin-y);
+  position: relative;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  &:before {
+    @include absolute($input-margin-y * -1, auto, auto, 50%);
+    margin-top: 2px;
+    color: darken($input-border-color, 20%);
+    transform: translateX(-50%);
+
+    @include respond-to-up(md) {
+      left: 95px;
+      transform: translateX(0%);
+    }
+  }
+
+  @include respond-to-up(md) {
+    flex-direction: row;
+  }
+
+  .captcha-img {
+    margin-right: spacers(3);
+    border: $input-border-width solid darken($input-border-color, 40%);
+  }
+}
+
+.field-tooltip {
+  .field-tooltip-action,
+  .label {
+    display: none;
+  }
+
+  .field-tooltip-content {
+    @extend .nhsuk-hint;
+  }
+
+  .choice &,
+  .radio & {
+    @extend .nhsuk-radios__hint;
+
+  }
+}
+
+// Hide all placeholders globally
+// to match NHS Design system
+//
+input[placeholder]::placeholder {
+  color: rgba(255, 255, 255, 0) !important;
+  opacity: 0;
+}
+input[placeholder]::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0) !important;
+  opacity: 0;
+}
+
+input[placeholder]::-moz-placeholder {
+  color: rgba(255, 255, 255, 0) !important;
+  opacity: 0;
+}
+
+input[placeholder]:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0) !important;
+  opacity: 0;
+}
+
+// Number Type Input
+// remove arrows from number type input fields globally
+// hides number spinner from showing on firefox
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.field.captcha {
+  margin-top: spacers(4);
+}
+
+.amform-form-fieldset .field .tooltip-element {
+  margin-top: 4px;
+  color: rgba($nhsuk-secondary-text-color, 0);
+
+  &:after {
+    content: attr(tooltip);
+    display: inline-block;
+    margin-top: -2rem;
+    color: $nhsuk-secondary-text-color;
+  }
+}
+
+.choice input[name="hide-similar-properties"] + label {
+  padding-top: 0;
+}

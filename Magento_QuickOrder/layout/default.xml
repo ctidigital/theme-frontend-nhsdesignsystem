@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <remove src="Magento_QuickOrder::css/module.css"/>
+        <css src="Magento_QuickOrder::css/quickorder.css"/>
+    </head>
+    <body>
+        <referenceBlock name="quick_order_link" remove="true"/>
+
+        <referenceBlock name="top.links">
+            <block class="Magento\QuickOrder\Block\Link" name="quick_order_link_top_link" ifconfig="btob/website_configuration/quickorder_active" before="-">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">item link quick-order-link nhsuk-u-nowrap</argument>
+                    <argument name="sortOrder" xsi:type="number">111</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

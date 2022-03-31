@@ -1,0 +1,88 @@
+.my-orders-search-advanced {
+  padding: spacers(3);
+  border: 1px solid $nhsuk-border-color;
+
+  .fieldset.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: spacers(3);
+
+    &.filter-summary {
+      margin-bottom: 0;
+    }
+  }
+
+  .filters-collapse {
+    margin-left: auto;
+    margin-bottom: 0;
+
+    .action.secondary.filter-close {
+      display: none;
+    }
+  }
+
+  .fieldset.info.extra-order-search {
+    display: none;
+  }
+
+  .search-sku {
+    border: $nhsuk-border-width-form-element solid $nhsuk-form-border-color;
+  }
+
+  #product-name-sku {
+    width: 300px;
+
+    &::placeholder {
+      color: $color_nhsuk-grey-1 !important;
+      opacity: 1;
+    }
+    &:-ms-input-placeholder {
+      color: $color_nhsuk-grey-1 !important;
+      opacity: 1;
+    }
+    &::-webkit-input-placeholder {
+      color: $color_nhsuk-grey-1 !important;
+      opacity: 1;
+    }
+  }
+}
+
+.extra-order-search {
+  .field-50 {
+    display: inline-block;
+    min-width: 200px;
+  }
+
+  .actions-toolbar {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    justify-content: flex-end;
+
+  .primary > a,
+  .action.primary {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .fields.group {
+    display: flex;
+
+    .field {
+      margin-right: 4px;
+      font-feature-settings: normal;
+    }
+  }
+}
+
+.extra-order-search .ui-datepicker-trigger {
+  position: absolute;
+  right: 3px;
+  top: 28px;
+  z-index: 2;
+  order: 4;
+  height: 32px;
+  padding-right: 14px;
+  padding-left: 4px;
+  background: $white;
+}

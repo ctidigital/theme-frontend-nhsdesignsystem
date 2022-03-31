@@ -1,0 +1,28 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko foreach: getRegion('messages') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
+<div>
+    <!-- ko if: isFormVisible -->
+    <h4 data-bind="i18n: 'Keep track of your order'"></h4>
+    <p>
+        <span data-bind="i18n: 'You can track your order status by creating an account with us.'"></span>
+        <span data-bind="i18n: 'The email address you have checked out with is'"></span>&nbsp;<span class="order-email" data-bind="text: getEmailAddress()"></span>
+    </p>
+    <a class="action primary signup" data-bind="attr: { href: getUrl() }">
+        <span data-bind="i18n: 'Create an Account'" />
+    </a>
+    <!-- /ko -->
+    <!-- ko if: accountCreated -->
+    <h2 data-bind="i18n: 'Thank you'"></h2>
+    <p>
+        <span data-bind="i18n: 'Further instructions to create an account with has been sent to'"></span>
+        <span class="order-email" data-bind="text: getEmailAddress()"></span>
+    </p>
+    <!-- /ko -->
+</div>

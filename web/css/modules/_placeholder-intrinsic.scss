@@ -1,0 +1,36 @@
+/**
+ * Intrinsic placeholder for lazy loaded image blocks
+ */
+.placeholder-intrinsic {
+  display: block;
+
+  // Intrinsic Ratio Box
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 100%; // Default to square
+
+  // Custom Styling
+  background: $placeholder-intrinsic-bg;
+
+  &--4x3 {
+    padding-top: 75%;
+  }
+
+  &--16x9 {
+    padding-top: 56.25%;
+  }
+
+  &--banner {
+    @each $_bp, $_ratio in $placeholder-banners-ratio {
+      @include respond-to-up(#{$_bp}) {
+        padding-top: $_ratio * 100%;
+      }
+    }
+  }
+
+  &__item {
+    @include absolute(0, auto, auto, 0);
+    @include size(100%);
+  }
+}

@@ -1,0 +1,8 @@
+@mixin sticky($_top: 10px, $_z-index: z('sticky')) {
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: $_top;
+  z-index: $_z-index;
+}

@@ -1,0 +1,29 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<nav class="opc-progress-bar-wrapper" aria-label="Checkout progress indicator">
+    <span class="nhsuk-u-visually-hidden"><!-- ko i18n: 'Step ' --><!-- /ko --><span data-bind="text: currentStep(steps().sort(sortItems)).id"></span><!-- ko i18n: ' of ' --><!-- /ko --><span data-bind="text: progressStepCount(steps().sort(sortItems))"></span><!-- ko i18n: ': ' --><!-- /ko --><span data-bind="i18n: currentStep(steps().sort(sortItems)).title"><!-- ko i18n: ' step' --><!-- /ko --></span>
+     </span>
+    <ol class="opc-progress-bar">
+    <!-- ko foreach: { data: steps().sort(sortItems), as: 'item' } -->
+        <!-- ko if: ($parent.isNotLoggedIn(item)) -->
+            <li class="opc-progress-bar-item" data-bind="css: item.isVisible() ? '_active' : ($parent.isProcessed(item) ? '_complete' : ''), attr: { 'aria-current' : ($parent.isProcessed(item) ? 'step' : null)}" >
+                <!-- ko if: ($parent.isProcessed(item)) -->
+                <button data-bind="click: $parent.navigateTo" tabindex="0">
+                    <span>
+                        <strong data-bind="i18n: item.title"></strong>
+                    </span>
+                </button>
+                <!-- /ko -->
+                <!-- ko ifnot: ($parent.isProcessed(item)) -->
+                    <span data-bind="i18n: item.title, click: $parent.navigateTo"></span>
+                <!-- /ko -->
+            </li>
+        <!-- /ko -->
+    <!-- /ko -->
+    </ol>
+</nav>
+<div data-bind="html: window.checkoutConfig.order_lock_warning"></div>

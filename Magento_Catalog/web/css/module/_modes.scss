@@ -1,0 +1,42 @@
+
+.modes {
+  @extend %u-flex-row-xcenter-ycenter;
+  display: none;
+  margin-right: spacers(3);
+
+  @include respond-to-up(md) {
+    display: flex;
+  }
+}
+
+.modes-label {
+  margin-right: spacers(2);
+  display: none;
+}
+
+.modes-mode {
+  @include size($toolbar-icon-size);
+  overflow: hidden;
+  display: inline-block;
+  color: $toolbar-icon-idle-color;
+
+  span {
+    @extend %u-sr-only;
+  }
+
+  &.active {
+    color: $toolbar-icon-active-color;
+  }
+}
+
+.mode-list {
+  @include ms-icon($toolbar-list-icon, $toolbar-icon-size);
+}
+
+.mode-grid {
+  @include ms-icon($toolbar-grid-icon, $toolbar-icon-size);
+
+  & + .mode-list {
+    margin-left: spacers(2);
+  }
+}

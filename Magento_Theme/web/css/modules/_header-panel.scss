@@ -1,0 +1,117 @@
+/**
+ * Panel Header Styles
+ */
+.header.panel {
+  @extend %u-flex-row-xcenter-ycenter;
+  @extend %u-font-small;
+  @include size(100%, auto);
+  justify-content: flex-end;
+  background: $header-panel-bg;
+  padding: $header-panel-padding;
+  min-height: $header-panel-height;
+
+  .checkout-index-index & {
+    justify-content: center;
+  }
+
+  @if ($header-panel-hide-under != false) {
+    display: none;
+
+    @include respond-to-up($header-panel-hide-under) {
+      display: flex;
+    }
+  }
+
+  > .header.links {
+    a[href$="/quickorder/"] {
+      white-space: nowrap;
+    }
+  }
+}
+
+.page-header > .panel.wrapper {
+  background: $header-panel-bg;
+}
+
+.header-panel__block,
+.header.links {
+  @extend %u-list-unstyled;
+  @extend %u-flex-col-xcenter-ycenter;
+  margin-bottom: 0;
+
+  .header.panel & {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    color: $header-panel-text-color;
+  }
+}
+
+/*.header.links {
+  a {
+    display: inline-block;
+    color: $header-panel-text-color;
+  }
+}*/
+
+.header-panel__block {
+  .header.panel & {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    max-width: 528px;
+    padding: 0.7rem 0.7rem 0.7rem 0;
+    margin-right: auto;
+
+    > p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+//
+// Add 'or' using data-label attribute
+//
+.header.panel > .header {
+  height: 100%;
+}
+
+.header.panel > .header > .authorization-link {
+  @extend %u-flex-row-xcenter-ycenter;
+
+ /* Hide the `or` after login
+ &:after {
+    content: attr(data-label);
+    margin: 0 spacers(3);
+  }*/
+}
+
+.header.panel > .header > .authorization-link {
+  @include ms-icon('user', $header-user-icon-size) {
+    margin-right: spacers(3);
+  }
+}
+
+.welcome__message {
+  @extend %u-flex-row-xcenter-ycenter;
+  // padding-left: $customer-message-spacing-x;
+
+  @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+    padding: spacers(2) 0;
+    background: $dropdown-toggle-active-bg;
+  }
+
+  &:before {
+    @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+      display: none;
+    }
+  }
+}
+
+
+.nav-open .cookie-status-message ~ .page-wrapper .page-header > .header.content {
+  @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+}

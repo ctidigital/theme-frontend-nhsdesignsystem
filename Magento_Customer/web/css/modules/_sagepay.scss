@@ -1,0 +1,53 @@
+.tokens-wrapper {
+  margin-bottom: spacers(3);
+}
+
+.tokens-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.token-item {
+  margin-bottom: spacers(3);
+
+  @include respond-to-up(md) {
+    margin-right: spacers(2);
+  }
+
+  @include respond-to-up(lg) {
+    margin-right: spacers(3);
+  }
+  .action.delete {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: right;
+
+    > span {
+      @include ms-icon(trash);
+
+      &:before {
+        position: relative;
+        top: 2px;
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .jp-card-container {
+    @include respond-to-down(smm) {
+      width: 270px;
+    }
+
+    .jp-card {
+      @include respond-to-down(smm) {
+        min-width: 265px;
+      }
+    }
+  }
+}

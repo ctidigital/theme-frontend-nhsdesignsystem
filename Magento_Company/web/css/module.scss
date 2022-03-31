@@ -1,0 +1,28 @@
+//------------------------------------//
+//  Theme Settings                   //
+//-----------------------------------//
+// Do not remove this.
+@import "../../../web/css/settings";
+//-----------------------------------//
+
+@import "modules/config";
+@import "modules/fonts";
+@import "modules/jstree";
+@import "modules/company";
+
+.form-create-account {
+  background-color: $white;
+  margin: 0 auto;
+}
+
+.company-account-index .page-main {
+  max-width: 540px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.company-account-create .page-title {
+  max-width: 470px;
+  margin-right: auto;
+  margin-left: auto;
+}

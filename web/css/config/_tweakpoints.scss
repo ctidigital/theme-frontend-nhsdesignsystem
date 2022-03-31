@@ -1,0 +1,11 @@
+// Tweakpoints
+//
+// Define the custom out of ordinary minimum dimensions,
+// adapting to different sizes/properties, for use in media queries.
+$tweakpoints: () !default;
+$tweakpoints: map-merge((
+        'tweakpoints-small-range': 'only screen and (max-width: #{map_get($breakpoints, md) - 1})',
+        'tweakpoints-large-range': 'only screen and (max-width: #{map_get($breakpoints, lg) - 1})'
+), $tweakpoints);
+
+$tweakpoint-nav-toggle: lg !default;

@@ -1,0 +1,198 @@
+@import "../vendor/nhsuk-frontend/packages/components/warning-callout/warning-callout";
+
+.messages {
+   &.page {
+     .messages-fixed-wrapper {
+       @extend %u-transform-fade-transition;
+       @include fixed(auto, 0, 0, 0);
+       width: 100%;
+       max-width: map_get($container-max-widths, xxl);
+       margin: 0 auto;
+       z-index: z('heavenly');
+       opacity: 0;
+       visibility: hidden;
+       transform: translateY(180px);
+       pointer-events: none;
+
+       @include respond-to-up(md) {
+         bottom: $messages-bottom-offset;
+       }
+
+       @include respond-to-up(xxl) {
+         max-width: calc(#{map_get($container-max-widths, xxl)} - 40px);
+       }
+
+       &.message--show {
+         opacity: 1;
+         visibility: visible;
+         transform: translateY(0px);
+         pointer-events: auto;
+         margin-bottom: spacers(3);
+       }
+
+       &.message--checkout-cart {
+         position: relative;
+         bottom: auto;
+         z-index: 1;
+       }
+     }
+   }
+ }
+
+.message {
+  @extend %u-flex-row-xcenter-ycenter;
+  @extend .message.info.empty; /* borrow bottom spacing */
+  @include ms-icon('info', $messages-icon-size);
+  max-width: 100%;
+  padding: $messages-padding;
+  border-radius: $messages-border-radius;
+
+  @include respond-to-up(md) {
+    justify-content: flex-start;
+  }
+
+  @if $messages-show-border == true {
+    border: $messages-border;
+  }
+
+  &:before {
+    padding-left: $messages-icon-spacing-x;
+    padding-right: $messages-icon-spacing-x;
+  }
+
+  &.info {
+    background: theme-color('neutral-subtle');
+    color: $white;
+
+    a {
+      color: $white;
+    }
+
+    &:before {
+      color: $white;
+    }
+  }
+
+  &.error {
+    background: theme-color('negative-subtle');
+    border-color: theme-color('negative');
+    color: $white;
+
+    a {
+      color: $white;
+    }
+
+    &:before {
+      color: $white;
+    }
+  }
+
+  &.company-warning,
+  &.warning {
+    background: theme-color('caution-subtle');
+    border-color: theme-color('caution');
+  }
+
+  &.notice {
+    background: gray(3);
+    border-color:  $nhsuk-border-color;
+
+    &:before {
+      color: $nhsuk-text-color;
+    }
+
+    .message--checkout-cart & {
+      background: theme-color('caution-subtle');
+      border-color: theme-color('caution');
+
+      &:before {
+        color: darken(theme-color('caution'), 10%);
+      }
+    }
+  }
+
+  &.success {
+    @include ms-icon('check', 16px);
+    background: theme-color('positive');
+    border-color: theme-color('positive');
+    color: $white;
+
+    &:before {
+      color: $white;
+    }
+  }
+
+  &.empty {
+    background: gray(5);
+    border-color: $nhsuk-border-color;
+  }
+
+
+  & + .message {
+    margin-top: spacers(2);
+  }
+
+  &._hidden {
+    @extend %u-no-display;
+  }
+
+
+  &.success,
+  &.error,
+  &.info {
+    a {
+      color: $white;
+
+      &:focus {
+        color: $body-color;
+      }
+    }
+  }
+}
+
+.message-text {
+  flex: 1 1 auto;
+  max-width: 100%;
+
+  &:empty + .message-close {
+    display: none;
+  }
+}
+
+.message-close {
+  @extend %u-close;
+  margin-left: auto;
+  cursor: pointer;
+  padding: 0;
+
+  @include respond-to-down(smm) {
+    padding: 0.5rem;
+  }
+}
+
+.message.info.empty {
+  margin-bottom: spacers(5);
+
+  @include respond-to-up(md) {
+    margin-bottom: spacers(3);
+  }
+}
+
+.messages > div {
+  div[data-bind]:empty {
+    & + .action {
+      display: none;
+    }
+  }
+}
+
+.checkout-index-index .nhsuk-warning-callout {
+  max-width: 948px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.checkout-cart-index .nhsuk-warning-callout {
+  max-width: 958px;
+  margin-left: auto;
+  margin-right: auto;
+}

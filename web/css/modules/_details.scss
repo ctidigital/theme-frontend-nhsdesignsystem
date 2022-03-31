@@ -1,0 +1,94 @@
+@import "../vendor/nhsuk-frontend/packages/components/details/details";
+@import "../vendor/nhsuk-frontend/packages/core/styles/typography";
+@import "../vendor/nhsuk-frontend/packages/core/utilities/typography";
+
+body .am-custom-tab .accordion-container {
+    > p {
+        @extend .nhsuk-body-m;
+        color: $nhsuk-text-color;
+        letter-spacing: normal;
+    }
+
+    > h1 {
+        @extend .nhsuk-heading-xl;
+        color: $nhsuk-text-color;
+        letter-spacing: normal;
+    }
+}
+
+body .am-custom-tab .accordion-container ul.ui-tabs-nav {
+    @extend .nhsuk-expander-group;
+
+    > li {
+        @extend .nhsuk-expander;
+        @extend .nhsuk-details;
+        padding: 12px 16px 16px;
+
+        @include respond-to-up(md) {
+            padding: 20px 24px 24px;
+        }
+
+        > i {
+            display: none;
+        }
+
+        > h2 {
+            @extend .nhsuk-details__summary-text;
+            @extend .nhsuk-body-m;
+            color: $nhsuk-text-color;
+            letter-spacing: normal;
+        }
+
+        > p {
+            @extend .nhsuk-body-m;
+            color: $nhsuk-text-color;
+            letter-spacing: normal;
+        }
+    }
+
+    > li input[type=checkbox] {
+
+        ~ h2 {
+            @include nhsuk-focused-text();
+
+            &:before {
+                background: $nhsuk-focus-color url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__minus' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' aria-hidden='true'%3E%3Ccircle cx='12' cy='12' r='10' fill='002f5c'%3E%3C/circle%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M8 12h8'%3E%3C/path%3E%3C/svg%3E%0A") left -2px center no-repeat;
+            }
+        }
+
+        &:checked  {
+            ~ h2 {
+                background-color: transparent;
+                box-shadow: none;
+                color: $nhsuk-text-color;
+                outline: 0;
+                margin-bottom: 0;
+
+                &:before {
+                    background: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__plus' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' aria-hidden='true'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23005eb8'%3E%3C/circle%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M12 8v8M8 12h8'%3E%3C/path%3E%3C/svg%3E%0A") left -2px center no-repeat;
+                }
+            }
+
+            ~ p {
+                margin-bottom: 0;
+            }
+        }
+
+        &:focus {
+            ~ h2 {
+                @include nhsuk-focused-text();
+
+                &:before {
+                    background: $nhsuk-focus-color url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__minus' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' aria-hidden='true'%3E%3Ccircle cx='12' cy='12' r='10' fill='002f5c'%3E%3C/circle%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M8 12h8'%3E%3C/path%3E%3C/svg%3E%0A") left -2px center no-repeat;
+                }
+            }
+        }
+    }
+}
+
+/* apply text size overrides for amasty tab content */
+body .am-attachments .am-fileline,
+body .amform-text,
+body .am-custom-tab {
+    @extend .nhsuk-body-m;
+}

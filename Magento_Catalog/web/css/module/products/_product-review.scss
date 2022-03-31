@@ -1,0 +1,242 @@
+.review-add {
+  .block-title {
+    display: none;
+  }
+}
+
+.review-legend {
+  span {
+    display: block;
+  }
+}
+
+.label + br {
+  display: none;
+}
+
+.review-field-ratings .label {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semi-bold;
+  margin-bottom: 0;
+
+  > span {
+    position: relative;
+
+    &:after {
+      content: '*';
+      margin-left: 4px;
+      color: theme-color(negative);
+    }
+  }
+}
+
+.review-form .choice .label {
+  @extend %u-sr-only;
+}
+
+.review-form-actions {
+  .action.primary {
+/*    @extend %button-promo;*/
+
+    @include respond-to-down(smm) {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: $font-size-xs;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+}
+
+.review-control-vote {
+  @include ms-icon($review-rating-star-icon-outline, $review-rating-star-icon-input-size);
+  color: $review-rating-star-icon-color;
+  position: relative;
+  width: 100%;
+  height: $review-rating-star-icon-input-size;
+  margin-bottom: spacers(4);
+
+  &:before {
+    @include absolute(0, auto, auto, 0);
+    color: $review-rating-star-icon-selected-color;
+    -webkit-font-smoothing: subpixel-antialiased;
+    letter-spacing: 1px;
+    z-index: z(below);
+
+    @if ($review-rating-stars-count > 0) {
+      $content: '';
+
+      @for $i from 1 to $review-rating-stars-count+1 {
+        $content: $content + map_get($ms-icons, $review-rating-star-icon-outline);
+        color: $review-rating-star-icon-color;
+      }
+      content: $content;
+    }
+  }
+
+  label {
+    @include ms-icon($review-rating-star-icon, $review-rating-star-icon-input-size);
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    z-index: z(above);
+
+    > span {
+      @extend %u-sr-only;
+    }
+
+    &:before {
+      color: $review-rating-star-icon-selected-color;
+      -webkit-font-smoothing: subpixel-antialiased;
+      letter-spacing: 1px;
+      opacity: 0;
+    }
+
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  .rating-1 {
+    z-index: z(above) + 5;
+
+    &:before {
+      content: map_get($ms-icons, $review-rating-star-icon);
+    }
+  }
+
+  .rating-2 {
+    z-index: z(above) + 4;
+
+    &:before {
+      content: map_get($ms-icons, $review-rating-star-icon) + map_get($ms-icons, $review-rating-star-icon);
+    }
+  }
+
+  .rating-3 {
+    z-index: z(above) + 3;
+
+    &:before {
+      content: map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon);
+    }
+  }
+
+  .rating-4 {
+    z-index: z(above) + 2;
+
+    &:before {
+      content: map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon);
+    }
+  }
+
+  .rating-5 {
+    z-index: z(above) + 1;
+
+    &:before {
+      content: map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon)
+              + map_get($ms-icons, $review-rating-star-icon);
+    }
+  }
+
+  .radio {
+    display: none;
+
+    &:checked + label {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.review-list {
+  .block-title {
+    @extend %nhs-h3;
+  }
+
+  .review-title {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: spacers(2);
+  }
+
+  .review-item {
+    @extend %u-flex-col-xcenter-ycenter;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: spacers(2);
+    margin-bottom: spacers(5);
+    background-color: #FBFBFB;
+
+    @include respond-to-up(lg) {
+      padding: spacers(4) spacers(5);
+      flex-direction: row;
+    }
+
+    .review-title {
+      width: 100%;
+    }
+
+    .review-ratings {
+      margin-bottom: spacers(4);
+
+      @include respond-to-up(lg) {
+        width: 30%;
+        margin-bottom: 0;
+      }
+    }
+
+    .review-details {
+      color: $text-muted;
+
+      @include respond-to-up(lg) {
+        margin-left: 30%;
+        width: 70%;
+      }
+
+      .review-author {
+        margin-right: spacers(3);
+      }
+
+      .review-author,
+      .review-date {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+    }
+
+    .review-content {
+      margin-bottom: spacers(4);
+
+      @include respond-to-up(lg) {
+        width: 70%;
+      }
+    }
+  }
+}
+.review-items {
+  list-style: none;
+  padding: 0;
+}
+
+.review-toolbar {
+  display: none;
+}
+
+.review-items + .review-toolbar {
+  display: block;
+  margin-bottom: spacers(5);
+}

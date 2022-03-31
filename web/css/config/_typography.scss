@@ -1,0 +1,49 @@
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:             'Frutiger W01', -apple-system, BlinkMacSystemFont , Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-heading:          'Frutiger W01', -apple-system, BlinkMacSystemFont , Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+// stylelint-enable value-keyword-case
+
+$font-size-base:              $nhsuk-base-font-size !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                ($font-size-base * 1.25) !default;
+$font-size-sm:                ($font-size-base * .875) !default;
+$font-size-xs:                ($font-size-base * .75) !default;
+
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-semi-bold:       600 !default;
+$font-weight-bold:            600 !default;
+
+$font-weight-base:            $font-weight-normal !default;
+$line-height-base:            strip-unit($nhsuk-base-line-height/$nhsuk-base-font-size) !default;
+
+$headings-margin-bottom:      ($spacer / 2) !default;
+$headings-font-family:        false !default;
+$headings-font-weight:        600 !default;
+$headings-line-height:        1.25 !default;
+
+$headings-style-weight:       600 !default;
+$headings-style-transform:    none !default;
+
+$small-font-size:             80% !default;
+
+$text-muted:                  $nhsuk-secondary-text-color !default;
+
+$blockquote-small-color:      $nhsuk-secondary-text-color !default;
+$blockquote-font-size:        ($font-size-base * 1.25) !default;
+
+$hr-border-color:             rgba($black, .1) !default;
+$hr-border-width:             $border-width !default;
+
+$dt-font-weight:              $font-weight-bold !default;
+
+$list-inline-padding:         .5rem !default;
+
+$hr-margin-y:                 $spacer !default;
+$hr-width:                    1px !default;
+$hr-bg:                       $nhsuk-border-color !default;

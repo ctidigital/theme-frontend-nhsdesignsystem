@@ -1,0 +1,293 @@
+//  PayPal Review Order page
+.paypal-express-review {
+    background: gray(5);
+
+    .page-main {
+        background: $white;
+        padding: spacers(3);
+
+        @include respond-to-up(lg) {
+            padding: spacers(5);
+        }
+    }
+
+    .page-title {
+        @include fluid-type($opc-step-title-fluid-size);
+        padding: $opc-step-title-padding;
+        margin-bottom: $opc-step-title-margin-bottom;
+        background: $opc-step-title-bg;
+        font-weight: $font-weight-bold;
+    }
+}
+
+.paypal-review {
+    .block-order-details-view {
+        .block-content {
+            @extend %u-flex-row-xcenter-ycenter;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 0 $opc-step-title-padding;
+
+            @include respond-to-up(lg) {
+                justify-content: space-between;
+            }
+
+            .box {
+                width: 100%;
+
+                @include respond-to-up(lg) {
+                    width: 33%;
+                }
+
+                &.box-order-billing-address {
+                    max-width: 268px;
+
+                    .box-content {
+                        margin-bottom: spacers(3);
+                    }
+                }
+            }
+        }
+
+        .primary,
+        .action.update {
+            margin-bottom: 0;
+        }
+
+        .action.update {
+            box-sizing: border-box;
+            max-width: none;
+        }
+    }
+
+    .table-paypal-review-items {
+        width: 100%;
+        margin-bottom: spacers(4);
+
+        .table-caption {
+            @extend %u-sr-only;
+        }
+
+        thead th {
+            padding-bottom: spacers(2);
+        }
+
+        > .cart.item{
+            td {
+                padding-bottom: spacers(2);
+            }
+
+            &:last-of-type {
+                td {
+                    padding-bottom: spacers(4);
+                }
+            }
+        }
+
+        [data-th="Product Name"] {
+            text-align: center;
+
+            @include respond-to-up(md) {
+                text-align: left;
+            }
+        }
+
+        .product-item-photo {
+            display: inline-block;
+            width: 80px;
+
+            @include respond-to-up(md) {
+                width: 100px;
+            }
+        }
+
+        .product-item-details {
+            display: inline-block;
+            width: 100%;
+
+            @include respond-to-up(md) {
+                width: calc(100% - 150px);
+                margin-left: 10px;
+            }
+        }
+
+        .cart.item > tr {
+            border-bottom: 8px solid transparent;
+        }
+
+        .col {
+            &.price,
+            &.subtotal {
+                text-align: right;
+            }
+
+            &.name {
+                text-align: center;
+
+                @include respond-to-up(md) {
+                    text-align: left;
+                }
+            }
+
+            &.qty {
+                width: 50px;
+                text-align: center;
+
+                @include respond-to-up(smm) {
+                    width: 100px;
+                }
+
+                @include respond-to-up(md) {
+                    width: 162px;
+                }
+            }
+        }
+
+        .opc-block-summary {
+            display: table-footer-group;
+            vertical-align: middle;
+
+            > * {
+                padding: 0;
+                background: #F7F7F7;
+            }
+
+            th,
+            td {
+                padding: spacers(2) spacers(3);
+            }
+
+            th {
+                text-align: right;
+                padding-right: spacers(3);
+            }
+
+            td {
+                text-align: right;
+            }
+        }
+    }
+
+}
+
+.paypal-review-title {
+    background: $opc-step-title-bg;
+    margin-bottom: $opc-step-title-margin-bottom;
+    text-align: center;
+
+    @include respond-to-up(smm) {
+        text-align: left;
+    }
+
+    > strong {
+        @include fluid-type($opc-step-title-fluid-size);
+        padding: $opc-step-title-padding;
+        font-weight: $font-weight-bold;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+
+       @include respond-to-up(smm) {
+           width: auto;
+           text-align: left;
+       }
+    }
+
+    .action.edit {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0.5rem;
+        margin-left: 1rem;
+        width: 100%;
+
+        @include respond-to-up(smm) {
+            width: auto;
+        }
+    }
+}
+
+.items-qty {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    .item {
+        white-space: nowrap;
+    }
+    .title {
+        &:after {
+            content: ': ';
+        }
+    }
+}
+
+.item-options {
+    dt {
+        display: inline-block;
+        &:after {
+            content: ': ';
+        }
+    }
+    dd {
+        margin: 0;
+    }
+}
+
+
+
+//  Discounts
+.paypal-review-discount {
+    @extend %u-flex-row-xcenter-ycenter;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: spacers(2) auto spacers(5) auto;
+    max-width: 800px;
+
+    .block {
+        margin-bottom: spacers(4);
+        margin-top: 0;
+        width: 100%;
+        border: 1px solid $text-muted;
+
+        @include respond-to-up(lg) {
+            width: 390px;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+/*@include respond-to-up('md') {
+    .paypal-review {
+
+        .block-content {
+            @include clearfix();
+
+            .box-order-shipping-address,
+            .box-order-shipping-method,
+            .box-order-shipping-method + .box-order-billing-address {
+                float: left;
+                width: 33%;
+            }
+            .box-order-shipping-address {
+                padding: 0 5%;
+                width: 34%;
+            }
+        }
+
+        .column.main & {
+            .actions-toolbar {
+                margin-left: 0;
+            }
+        }
+
+        .col.subtotal,
+        .mark,
+        .amount {
+            text-align: right;
+        }
+    }
+}*/

@@ -1,0 +1,394 @@
+// styleguide:ignore:start
+// Dropdown panel arrow for the box
+// this will use direction property to add the arrow in
+// direction passed in.
+//
+@mixin dropdown-list-arrow($direction: top) {
+  &:after,
+  &:before {
+    position: absolute;
+    content: '';
+    transform: scaleX(1.4);
+  }
+
+  &:before {
+    @include triangle($direction, $dropdown-list-background, 7px);
+    z-index: 3;
+
+    @if $direction == top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: -10px;
+    } @else if $direction == left {
+      top: calc(50% - 4px);
+      left: 0;
+      margin-left: -10px;
+      transform: scaleY(1.4) scaleX(1);
+    } @else if $direction == bottom {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+    } @else if $direction == right {
+      top: calc(50% - 4px);
+      right: 0;
+      margin-right: -10px;
+      transform: scaleY(1.4) scaleX(1);
+    }
+  }
+
+  &:after {
+   @include triangle($direction, $dropdown-list-border-color, 7px);
+    transform: scaleX(1.4) translateY(1px);
+
+    @if $direction == top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: -11px;
+    } @else if $direction == left {
+      top: calc(50% - 4px);
+      left: 0;
+      margin-left: -12px;
+      transform: scaleY(1.4) scaleX(1) translateX(1px);
+    } @else if $direction == bottom {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
+    } @else if $direction == right {
+      top: calc(50% - 4px);
+      right: 0;
+      margin-right: -10px;
+      transform: scaleY(1.4) scaleX(1) translateX(1px);
+    }
+  }
+}
+
+// styleguide:ignore:end
+
+// styleguide:ignore:start
+// Dropdown list panel styles
+// based on direction specified
+// Requires 'dropdown-list-arrow()' mixin from _dropdown-list-arrow.scss
+//
+@mixin dropdown-list($direction, $_dropdown-options-selector:$dropdown-options-selector) {
+  $_direction: #{opposite-direction($direction)};
+
+  #{$_dropdown-options-selector} {
+    @include dropdown-list-arrow($_direction);
+    position: absolute;
+    z-index: $dropdown-list-z;
+    display: none;
+    width: $dropdown-list-width;
+    margin-#{$_direction}: 10px;
+    padding: $dropdown-list-padding;
+    border: $dropdown-list-border;
+    background: $dropdown-list-background;
+    box-shadow: $dropdown-list-shadow;
+
+    @if $direction == 'top' {
+      top: -14px;
+      left: 0;
+      transform: translateY(-100%);
+    } @else if $direction == 'right' {
+      top: 50%;
+      right: -14px;
+      transform: translateY(-50%) translateX(100%);
+    } @else if $direction == 'bottom' {
+      top: auto;
+      left: 0;
+    } @else if $direction == 'left' {
+      top: 50%;
+      left: -14px;
+      transform: translateX(-100%) translateY(-50%);
+    }
+
+    > li {
+      padding: $dropdown-list-item-padding;
+
+      @include hover-focus() {
+        background-color: $dropdown-list-item-hover-background;
+        cursor: pointer;
+      }
+
+      &:first-child {
+        @if ($direction == 'top') or ($direction == 'bottom') {
+          margin-#{$_direction}: 1px;
+        }
+      }
+    }
+  }
+
+  &.active {
+    overflow: visible;
+
+    #{$dropdown-options-selector} {
+      display: block;
+    }
+  }
+}
+
+// styleguide:ignore:end
+
+// Dropdown Standard
+//
+// To set Dropdown default styles use the **dropdown($direction: $dropdown-direction)** mixin.
+//
+// `@include dropdown();`
+//
+// markup:
+// <div style="height: 290px;">
+// <div class="actions dropdown example-dropdown-1 active">
+//    <button class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+//        <span>button + dropdown</span>
+//    </button>
+//    <ul class="dropdown">
+//        <li>
+//            <span class="item">One</span>
+//        </li>
+//        <li>
+//            <span class="item">Two</span>
+//        </li>
+//        <li>
+//            <span class="item">Three</span>
+//        </li>
+//    </ul>
+//  </div>
+// <div class="actions dropdown example-dropdown-2 active">
+//    <button class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+//        <span>button + dropdown</span>
+//    </button>
+//    <ul class="dropdown">
+//        <li>
+//            <span class="item">One</span>
+//        </li>
+//        <li>
+//            <span class="item">Two</span>
+//        </li>
+//        <li>
+//            <span class="item">Three</span>
+//        </li>
+//    </ul>
+//  </div> <br/><br/>
+// <div class="actions dropdown example-dropdown-3 active">
+//    <button class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+//        <span>button + dropdown</span>
+//    </button>
+//    <ul class="dropdown">
+//        <li>
+//            <span class="item">One</span>
+//        </li>
+//        <li>
+//            <span class="item">Two</span>
+//        </li>
+//        <li>
+//            <span class="item">Three</span>
+//        </li>
+//    </ul>
+//  </div>
+// <div class="actions dropdown example-dropdown-4 active">
+//    <button class="action toggle" data-toggle="dropdown" aria-haspopup="true">
+//        <span>button + dropdown</span>
+//    </button>
+//    <ul class="dropdown">
+//        <li>
+//            <span class="item">One</span>
+//        </li>
+//        <li>
+//            <span class="item">Two</span>
+//        </li>
+//        <li>
+//            <span class="item">Three</span>
+//        </li>
+//    </ul>
+//  </div>
+//</div>
+//
+// Styleguide 2.14.2
+//
+@mixin dropdown($direction: $dropdown-direction, $_dropdown-toggle-selector: $dropdown-toggle-selector, $__dropdown-options-selector: $dropdown-options-selector) {
+  @include clearfix();
+  @include dropdown-list($direction, $__dropdown-options-selector);
+  display: inline-block;
+  position: relative;
+
+  #{$_dropdown-toggle-selector} {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    white-space: normal;
+    padding-right: 9px;
+
+    @if $direction == 'left' {
+      &:before {
+        @include size($dropdown-arrow-size);
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: $dropdown-arrow-padding;
+        padding-left: 0;
+        content: map-get($ms-icons, $dropdown-arrow);
+        transform-origin: 50% 50%;
+        font-size: $dropdown-arrow-font-size;
+        line-height: $dropdown-arrow-size;
+        transform: rotate(90deg) translateX(0) translateY(0);
+      }
+    } @else {
+      &:after {
+        @include size($dropdown-arrow-size);
+        display: inline-block;
+        vertical-align: middle;
+        content: map-get($ms-icons, $dropdown-arrow);
+        font-family: $dropdown-arrow-font;
+        font-size: $dropdown-arrow-font-size;
+        line-height: $dropdown-arrow-size;
+        transform-origin: 50% 50%;
+        transform-origin: $dropdown-arrow-size * 0.5 $dropdown-arrow-size * 0.5;
+        transform: rotate(0deg) translateX(0) translateY(0);
+        transition: transform $transition-duration $transition-timing-ease-in;
+        will-change: transform;
+        backface-visibility: hidden;
+
+        @if $direction == 'top' {
+          padding-right: 0;
+          padding-left: 0;
+          transform: rotate(180deg) translateX(0) translateY(0);
+        } @else if $direction == 'right' {
+          padding-top: 9px;
+          padding-left: 0;
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+
+  &.active {
+    #{$_dropdown-toggle-selector} {
+      background: $dropdown-toggle-active-bg;
+      box-shadow: $shadow-tooltip;
+
+      &:after {
+        transform: rotate(180deg) translateX(0) translateY(0);
+
+        @if $direction == 'top' {
+          transform: rotate(0deg) translateX(0) translateY(0);
+        } @else if $direction == 'right' {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+}
+
+// Dropdown Split
+//
+// To set Dropdown split styles use the **dropdown-split()** mixin.
+//
+// `@include dropdown-split();`
+//
+// markup:
+// <div style="height: 160px;">
+// <div class="actions dropdown example-dropdown-5 active">
+//  <button href="#" class="action split">
+//      <span>Spit button</span>
+//  </button>
+//  <button data-toggle="dropdown" class="action toggle" aria-haspopup="true">
+//      <span>Select</span>
+//   </button>
+//    <ul class="dropdown">
+//        <li>
+//            <span class="item">One</span>
+//        </li>
+//        <li>
+//            <span class="item">Two</span>
+//        </li>
+//        <li>
+//            <span class="item">Three</span>
+//        </li>
+//    </ul>
+//  </div>
+//</div>
+//
+//
+// Styleguide 2.14.3
+//
+@mixin dropdown-split($direction) {
+  @include clearfix();
+  @include dropdown-list($direction);
+  display: inline-block;
+  position: relative;
+
+  #{$dropdown-split-selector} {
+    @if $direction == 'left' {
+      float: right;
+    }
+  }
+
+  #{$dropdown-toggle-selector} {
+    position: relative;
+    cursor: pointer;
+    margin-left: -5px;
+    padding: .94em;
+    text-align: center;
+
+    > span {
+      @include visually-hidden();
+    }
+
+    @if $direction == 'left' {
+      float: right;
+
+      &:before {
+        @include size(20px);
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 2px;
+        padding-left: 0;
+        content: map-get($ms-icons, $dropdown-arrow);
+        transform-origin: 50% 50%;
+        transform: rotate(90deg);
+      }
+    } @else {
+      &:after {
+        @include size(20px);
+        display: inline-block;
+        vertical-align: middle;
+        padding-top: 2px;
+        padding-left: 0;
+        content: map-get($ms-icons, $dropdown-arrow);
+        transform-origin: 50% 50%;
+        transform: rotate(0deg);
+
+        @if $direction == 'top' {
+          padding-right: 0;
+          padding-left: 0;
+          transform: rotate(180deg);
+        } @else if $direction == 'right' {
+          padding-top: 2px;
+          padding-left: 0;
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+
+  #{$dropdown-options-selector} {
+    @if (($direction == 'bottom') or ($direction == 'top')) {
+      &:after,
+      &:before {
+        right: 46px;
+        left: auto;
+      }
+    }
+  }
+  &.active {
+    #{$dropdown-toggle-selector} {
+      box-shadow: $button-active-shadow;
+    }
+  }
+}

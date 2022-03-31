@@ -1,0 +1,89 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Company\Block\Company\Register\Profile $block
+ */
+?>
+<div class="block block-company-profile-account">
+    <div class="block-title">
+        <h4><?= $block->escapeHtml(__('Company Information')) ?></h4>
+    </div>
+    <div class="block-content">
+        <div class="box box-account-information">
+            <div class="box-content">
+                <?php $companyInformation = $block->filterEmptyFields($block->getCompanyInformation()); ?>
+                <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+
+                <?php foreach ($companyInformation as $field) : ?>
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            <?= $block->escapeHtml($field->getLabel()) ?>
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            <?= $block->escapeHtml($field->getValue()) ?>
+                        </dd>
+                    </div>
+                <?php endforeach; ?>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+<div class="block block-company-profile-address">
+    <div class="block-title">
+        <h4><?= $block->escapeHtml(__('Legal Address')) ?></h4>
+    </div>
+    <div class="block-content">
+        <div class="box box-address-information">
+            <div class="box-content">
+                <address>
+                    <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+                    <?php $addressInformation = $block->filterEmptyFields($block->getAddressInformation()); ?>
+                    <?php foreach ($addressInformation as $field) : ?>
+                        <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                                <?= $block->escapeHtml($field->getLabel()) ?>
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                                <?= $block->escapeHtml($field->getValue()) ?>
+                            </dd>
+                        </div>
+                    <?php endforeach; ?>
+                    </dl>
+                </address>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+<div class="block block-company-profile-contacts">
+    <div class="block-title">
+        <h4>
+            <?= $block->escapeHtml(__('Company Administrator')) ?>
+        </h4>
+    </div>
+    <div class="block-content">
+        <div class="box box-contact-information">
+            <div class="box-content">
+                <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+                <?php $adminInformation = $block->filterEmptyFields($block->getAdminInformation()); ?>
+                <?php foreach ($adminInformation as $field) : ?>
+                    <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                            <?= $block->escapeHtml($field->getLabel()) ?>
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                            <?= $block->escapeHtml($field->getValue()) ?>
+                        </dd>
+                    </div>
+                <?php endforeach; ?>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+/**
+ * Loader to be used across the site
+ * Use this variable
+ */
+
+$loader-svg: '../images/loaders/invert/oval.svg' !default;
+$loader-gif: '../images/loaders/invert/oval.gif' !default;
+$loader-bg: rgba($white, .9)  !default;
+$loader-size: 160px !default;
+$loader-show-text: false !default;
+$loader-z: z('heavenly') !default;

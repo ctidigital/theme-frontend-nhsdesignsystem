@@ -1,0 +1,21 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko if: (addressOptions.length > 1) -->
+<div class="form">
+    <div class="field field-select-billing fl-wrap fl-wrap-select fl-is-active">
+        <label class="label fl-label" for="billing_address_id"><span data-bind="i18n: 'Select Address'"></span></label>
+        <div class="control" data-bind="if: (addressOptions.length > 1)">
+            <select id="billing_address_id" class="select fl-select" name="billing_address_id" data-bind="
+            options: addressOptions,
+            optionsText: addressOptionsText,
+            value: selectedAddress,
+            event: {change: onAddressChange(selectedAddress())};
+        "></select>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

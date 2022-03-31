@@ -1,0 +1,330 @@
+.filter {
+  color: $filter-block-color;
+  background: $filter-block-bg;
+  padding: $filter-block-padding;
+  border: 1px solid $nhsuk-border-color;
+
+  @include respond-to-up($category-layout-breakpoint) {
+    padding: $filter-block-padding-desktop;
+  }
+
+  &.block:not(.active) {
+    width: 100%;
+  }
+
+  .item > a:hover {
+    text-decoration: none;
+  }
+}
+
+%filter-title {
+  font-size: $filter-title-font-size;
+  font-family: $filter-title-font-family;
+  font-weight: normal;
+  letter-spacing: $filter-title-letter-spacing;
+  text-transform: $filter-title-text-transform;
+  color: $filter-title-color;
+
+  @include respond-to-up($category-layout-breakpoint) {
+    font-weight: $filter-title-font-weight;
+  }
+}
+
+.filter-options-title,
+.filter-subtitle,
+.filter-current-subtitle,
+.filter-title {
+  @extend %filter-title;
+}
+
+.filter-subtitle {
+  @extend %u-sr-only;
+}
+
+.filter-options-title,
+.filter-title {
+  @include ms-icon($filter-icon-inner, inherit, after);
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:after {
+    @extend %u-transform-transition;
+    @include absolute(50%, 0);
+    margin-top: ($filter-icon-font-size * -0.5);
+    font-size: $filter-icon-font-size;
+  }
+
+  &[aria-expanded=true],
+  &.active {
+    &:after {
+      content: map-get($ms-icons, $filter-icon-inner-active);
+    }
+  }
+}
+
+.filter-title {
+  &:after {
+    content: map_get($ms-icons, $filter-icon-outer);
+    font-size: $filter-icon-font-size;
+    margin-top: ($filter-icon-font-size * -0.5);
+  }
+}
+
+.filter-current-subtitle {
+  font-size: $filter-title-font-size * 0.8;
+
+  @include respond-to-up($category-layout-breakpoint) {
+    font-size: $filter-title-font-size;
+  }
+}
+
+.filter-options-title {
+  font-size: $filter-title-font-size;
+
+  &:after {
+    margin-left: -4px;
+
+    @include respond-to-up($category-layout-breakpoint) {
+      margin-left: 0;
+      content: map_get($ms-icons, $filter-icon-inner);
+    }
+  }
+}
+
+.filter-options-item {
+  padding: 0 0 $filter-options-item-spacing-y 0;
+
+  .filter-options-content {
+    padding: $filter-options-item-spacing-y 0 0 0;
+
+    @include respond-to-up($category-layout-breakpoint) {
+      padding: $filter-options-item-spacing-y 0;
+    }
+
+    .count {
+      &:before {
+        content: '(';
+        margin-left: 4px;
+      }
+
+      &:after {
+        content: ')';
+      }
+    }
+
+    .no-results-message {
+      font-size: $font-size-sm;
+      color: $text-muted;
+      text-align: center;
+      margin: $paragraph-margin-bottom 0;
+    }
+
+    .actions {
+      text-align: center;
+
+      > .secondary {
+        display: inline-block;
+      }
+    }
+
+    .action.show-more {
+/*      @extend %button-whistle;*/
+      width: auto;
+    }
+
+    .field.search {
+
+      .control {
+        @include ms-icon('search', $search-icon-size);
+        position: relative;
+
+        &:before {
+          @include absolute(50%, 1px);
+          padding: 0 spacers(3);
+          transform: translateY(-50%);
+          background: $input-bg;
+          color: $text-muted;
+        }
+      }
+    }
+
+    .filter-search {
+      font-size: $filter-title-font-size * 0.8;
+      margin-bottom: $filter-item-padding;
+    }
+  }
+
+  .item {
+    color: $filter-item-color;
+    font-size: $filter-item-font-size;
+    border-bottom: $filter-item-separator;
+    padding: $filter-item-padding 0;
+  }
+}
+
+.filter-title {
+  strong {
+    display: block;
+    width: 100%;
+
+    &[aria-expanded=true] {
+      margin-bottom: $filter-options-item-spacing-y;
+    }
+
+    &:focus {
+      outline: 0 none;
+    }
+  }
+
+  &:after {
+    pointer-events: none;
+
+    .active & {
+      content: map_get($ms-icons, 'x');
+      font-size: 23px;
+      top: -6px;
+      margin-top: 8px;
+      right: 6px;
+    }
+  }
+
+  @include respond-to-up($category-layout-breakpoint) {
+    display: none;
+  }
+}
+
+.filter-content {
+  @extend %u-transform-fade-transition;
+  display: block;
+  visibility: hidden;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+
+  @include respond-to-up($category-layout-breakpoint) {
+    visibility: visible;
+    opacity: 1;
+    overflow: visible;
+    max-height: none;
+    transform: translateY(0px);
+  }
+
+  .active & {
+    visibility: visible;
+    overflow: visible;
+    opacity: 1;
+    max-height: 8000px;
+    transform: translateY(0px);
+  }
+
+  .items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > .item:last-child {
+      border-bottom: 0 none;
+    }
+  }
+}
+
+.filter-current {
+  padding: $filter-current-padding $filter-current-padding 0 $filter-current-padding;
+  border: $filter-section-separator;
+  border-bottom: 0 none;
+
+  .filter-current-subtitle {
+    display: block;
+    padding-bottom: $filter-options-item-spacing-y;
+  }
+
+  & + .filter-actions {
+    padding: $filter-current-padding;
+    padding-top: $filter-options-item-spacing-y;
+    margin-bottom: $filter-options-item-spacing-y;
+    border: $filter-section-separator;
+    border-top: 0 none;
+
+    @include respond-to-up($category-layout-breakpoint) {
+      margin-bottom: $filter-options-item-spacing-y * 2;
+    }
+  }
+
+  .items > .item {
+    padding: spacers(1) 0;
+  }
+
+  .item {
+    @extend %u-flex-row-xcenter-ycenter;
+    justify-content: flex-start;
+  }
+
+  .filter-label {
+    @extend %u-sr-only;
+  }
+
+  .filter-value {
+    @extend %u-flex-row-xcenter-ycenter;
+    @include icon-button('check');
+    color: $text-muted;
+    font-size: $filter-item-font-size;
+
+    &:before {
+      font-size: 12px;
+      margin-right: 8px;
+    }
+  }
+
+  .action.remove {
+    @include icon-button(trash, $filter-item-font-size);
+    padding: 0;
+    box-sizing: border-box;
+    float: right;
+    margin-left: auto;
+    text-decoration: none;
+
+    @include respond-to-up($category-layout-breakpoint) {
+      float: none;
+    }
+  }
+}
+
+.action.filter-clear {
+  padding: 0;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bold;
+
+  @include respond-to-up($category-layout-breakpoint) {
+    text-align: right;
+  }
+}
+
+.filter-options input[type="checkbox"] + label {
+  color: $filter-item-color;
+  margin-bottom: 0;
+
+  &:before {
+    margin-right: $filter-item-checkbox-spacing-x;
+  }
+}
+
+.filter-content {
+  .swatch-option {
+    height: 30px;
+  }
+}
+
+.filter-options > .filter-options-item {
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}

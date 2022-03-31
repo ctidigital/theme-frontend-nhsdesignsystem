@@ -1,0 +1,19 @@
+//------------------------------------//
+//  Theme Settings                   //
+//-----------------------------------//
+// Do not remove this.
+@import "../../../web/css/settings";
+//-----------------------------------//
+
+.cms-no-route {
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .page-footer {
+    flex: 1 1 auto;
+    height: 100%;
+  }
+}

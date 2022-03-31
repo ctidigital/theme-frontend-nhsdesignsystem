@@ -1,0 +1,86 @@
+@mixin loader(
+  $_loader-z-index: $loader-z,
+  $_loader-size: $loader-size,
+  $_loader-text: $loader-show-text
+) {
+  @include fixed(0, 0, 0, 0);
+  background-color: $loader-bg;
+  z-index: $_loader-z-index;
+
+  &:before {
+    @include absolute(0, 0, 0, 0);
+    @include loader-svg();
+    @include size($_loader-size);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: '';
+    margin: auto;
+
+    @if ($_loader-text == true) {
+      content: attr(data-text);
+      text-align: center;
+      vertical-align: baseline;
+      padding: 130px 0 0;
+    }
+  }
+}
+
+@mixin loading($_is_module: false) {
+  position: relative;
+  background-color: $loader-bg;
+  z-index: $loader-z - 1;
+
+  &:before {
+    @if $_is_module == true {
+      @include loader-svg-module();
+    }
+    @if $_is_module == false {
+      @include loader-svg();
+    }
+    @include absolute(0, 0, 0, 0);
+    background-color: $loader-bg;
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: '';
+    z-index: $loader-z;
+  }
+}
+
+@mixin loading-abs() {
+  @include absolute(0, 0, 0, 0);
+
+  &:before {
+    @include loader-svg();
+    @include absolute(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: '';
+  }
+}
+
+// This is being included from blank theme
+@mixin loading-mask($_loader-z: $loader-z) {
+  @include fixed(0, 0, 0, 0);
+  margin: auto;
+  background-color: $loader-bg;
+  z-index: $_loader-z - 1;
+}
+
+@mixin loader-svg() {
+  background-image: url($loader-svg);
+
+  //IE hack for SVG Loader fallback to GIF
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    background-image: url($loader-gif);
+  }
+}
+
+@mixin loader-svg-module() {
+  background-image: url('../' + $loader-svg);
+
+  //IE hack for SVG Loader fallback to GIF
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    background-image: url('../' + $loader-gif);
+  }
+}

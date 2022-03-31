@@ -1,0 +1,72 @@
+.product-item {
+  .swatch-option {
+    height: 30px;
+
+    @include respond-to-down(smm) {
+      height: 24px !important;
+      width: 24px !important;
+      min-width: 24px !important;
+      font-size: $font-size-xs !important;
+      padding: 0 !important;
+    }
+  }
+
+  [class^="swatch-opt-"] {
+    @extend %u-transform-fade-transition;
+    @include absolute(0, 0);
+    background: $white;
+    visibility: hidden;
+    z-index: z('above') + 1;
+    padding: $product-item-info-spacing-x;
+    opacity: 0;
+    transform: translateY(0%);
+    transition-duration: 0.2s;
+
+    &:before {
+      content: 'Choose options:';
+      display: block;
+      font-weight: $font-weight-bold;
+
+      @include respond-to-down(smm) {
+        font-size: $font-size-xs;
+      }
+    }
+  }
+
+  .show-swatches {
+    position: relative;
+
+    [class^="swatch-opt-"] {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%);
+
+      @include respond-to-up(md) {
+        transform: translateY(-20%);
+      }
+    }
+  }
+}
+
+body .products-grid,
+body .products-list {
+  .product-item-photo {
+    &.is-loading {
+      @include loading(true);
+      z-index: z('below');
+
+      &:before {
+        z-index: z('above');
+      }
+    }
+  }
+
+  body .product-image-wrapper {
+    @include aspect-ratio($product-item-photo-width, $product-item-photo-height);
+    padding-bottom: 0 !important;
+  }
+
+  body .swatch-option-loading {
+    content: '';
+  }
+}

@@ -1,0 +1,8 @@
+%u-sr-only {
+  @include sr-only();
+}
+
+%u-sr-only-focusable {
+  @include sr-only();
+  @include sr-only-focusable();
+}

@@ -1,0 +1,36 @@
+// Register
+.form-create-account {
+  @extend %u-flex-col-xcenter-ycenter;
+  width: $register-form-width;
+
+  .legend {
+    @extend %u-sr-only;
+  }
+
+  .field-recaptcha {
+    margin-bottom: spacers(3);
+  }
+
+  > *,
+  .actions-toolbar {
+    width: 100%;
+  }
+
+  .actions-toolbar>.secondary .action.back {
+    display: none;
+  }
+}
+
+.customer-account-layout {
+  .page-title {
+    @extend %nhs-h3;
+    text-align: left;
+    width: 100%;
+  }
+
+  .page-title-wrapper {
+    width: 100%;
+    max-width: $register-form-width;
+
+  }
+}

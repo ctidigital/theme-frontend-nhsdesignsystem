@@ -1,0 +1,26 @@
+.pager {
+  @include clearfix;
+  padding: spacers(3) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: spacers(3) 0;
+
+  .toolbar-amount {
+    margin-bottom: 0;
+    width: auto;
+    flex: 1 0 auto;
+  }
+
+  .limiter {
+    width: auto;
+
+    .limiter-label {
+      padding-right: spacers(2);
+    }
+
+    .limiter-text {
+      padding-left: spacers(2);
+    }
+  }
+}

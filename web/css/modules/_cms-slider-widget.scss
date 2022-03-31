@@ -1,0 +1,10 @@
+.cms-slider-block {
+  .slick-slide {
+    padding: $cms-slider-widget-padding;
+  }
+
+  .slick-next:before,
+  .slick-prev:before {
+    color: $block-widget-light-color;
+  }
+}

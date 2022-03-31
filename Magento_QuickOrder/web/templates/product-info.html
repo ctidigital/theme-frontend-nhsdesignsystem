@@ -1,0 +1,57 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<% if (data.name) { %>
+<div class="nhsuk-inset-text">
+    <span class="nhsuk-u-visually-hidden">Product details: </span>
+    <div class="product-info">
+        <div class="product-image">
+            <img src="<%- data.thumbnailUrl %>" alt="<%- data.name %>">
+        </div>
+        <div class="product-name">
+            <p class="name">
+                <% if (data.notVisibleInSite === true) { %>
+                <%- data.name %>
+                <% } else { %>
+                <a href="<%- data.url %>"><%- data.name %></a>
+            <% } %>
+            </p>
+            <p class="price"><%- data.price %></p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        require([
+            'jquery'
+        ], function ($) {
+            $(function () {
+                $('.product-info').closest('.field.sku').removeClass('field-mage-error');
+            });
+        });
+    </script>
+</div>
+<% } %>
+<% if (data.result) { %>
+<div class="product-error">
+    <div
+    <% if (data.isError) { %>
+        data-role="error-message"
+    <% } %>
+    class="<% if (data.isError) { %> mage-error<% } else { %>message notice<% } %>"
+    >
+    <% if (data.code === 'failed_sku') { data.result = _.i18n('We cannot find [SKU] within our catalogue.').replace('[SKU]', data.sku) }%>
+        <div><%- data.result %></div>
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function ($) {
+        $(function () {
+            $('.product-error').closest('.field.sku').addClass('field-mage-error');
+        });
+    });
+</script>
+<% } %>

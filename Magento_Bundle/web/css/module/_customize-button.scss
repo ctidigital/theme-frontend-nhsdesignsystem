@@ -1,0 +1,14 @@
+.action.primary.customize {
+  @include ms-icon('settings');
+  width: 100%;
+  max-width: none;
+  margin-bottom: spacers(3);
+
+  &:before {
+    margin-right: spacers(2);
+  }
+}
+
+.action.back.customization {
+  display: none;
+}

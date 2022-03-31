@@ -1,0 +1,31 @@
+%u-bg-color-transition {
+  transition: background-color $transition-duration-ease-in $transition-timing-ease-in;
+  will-change: background-color;
+  backface-visibility: hidden;
+}
+
+%u-transform-transition {
+  transition: transform $transition-duration $transition-timing-ease-in;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+%u-transform-fade-transition {
+  transition: transform $transition-duration $transition-timing-ease-in, opacity $transition-duration $transition-timing-ease-in, visibility $transition-duration $transition-timing-ease-in;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+%u-max-height-transition {
+  transition: max-height $transition-duration $transition-timing-ease-in, visibility $transition-duration $transition-timing-ease-in;
+  will-change: max-height;
+  backface-visibility: hidden;
+}
+
+%u-animation-ken-burns {
+  animation: u-animation-ken-burns 300s infinite linear;
+}
+
+%u-animation-spin {
+  animation: u-animation-spin 4s infinite linear;
+}

@@ -1,0 +1,28 @@
+// Import NHS FE Styles for Link
+@import "../vendor/nhsuk-frontend/packages/core/elements/links";
+
+/*
+.action.tocompare {
+  @include nhsuk-link-style-no-visited-state;
+  text-decoration: underline;
+}*/
+
+
+.extra-order-search .ui-datepicker-trigger {
+  @include nhsuk-link-style-default;
+}
+
+.breadcrumbs a[aria-current="page"] {
+  color: $body-color !important;
+  text-decoration: none;
+
+
+  &:hover:not(:focus) {
+    text-decoration: underline;
+  }
+
+  &:hover,
+  &:focus {
+    color: $body-color;
+  }
+}

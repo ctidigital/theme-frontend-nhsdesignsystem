@@ -1,0 +1,33 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+ -->
+
+<div data-bind="{
+    attr: {
+        'id': getReCaptchaId() + '-wrapper'
+    },
+    'afterRender': renderReCaptcha()
+}">
+    <div class="g-recaptcha"></div>
+    <!-- ko if: (!getIsInvisibleRecaptcha()) -->
+    <div class="field">
+        <div class="control">
+            <label>
+            <input type="checkbox"
+                   value=""
+                   class="required-captcha checkbox"
+                   name="recaptcha-validate-"
+                   id="recaptcha-validate-"
+                   data-validate="{required:true}"
+            />
+            <span class="nhsuk-u-visually-hidden">
+                Recaptcha validation
+            </span>
+            </label>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>

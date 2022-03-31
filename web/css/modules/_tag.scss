@@ -1,0 +1,68 @@
+@import "../vendor/nhsuk-frontend/packages/components/tag/tag";
+
+.order-status {
+  @extend .nhsuk-tag;
+  font-feature-settings: normal;
+}
+
+.filter-summary {
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  li {
+    @extend .nhsuk-tag;
+    margin-left: spacers(2);
+    margin-bottom: spacers(2);
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  li > span,
+  .action-remove,
+  .label {
+    display: inline;
+    font-size: $font-size-base;
+    line-height: 1.33;
+    margin: 0;
+  }
+
+  li > span {
+    margin-right: 2px;
+  }
+
+
+  .action-remove {
+    @include ms-icon(close);
+    height: 16px;
+    margin-right: 4px;
+    text-decoration: none;
+    color: $white;
+    font-feature-settings: normal;
+
+    &:focus {
+      color: $nhsuk-text-color;
+    }
+  }
+
+  .action-clear-all {
+    position: relative;
+    top: -3px;
+
+    &:before {
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+[data-role=compare-products-link] .counter {
+  @extend .nhsuk-tag;
+  @extend .nhsuk-tag--grey;
+  margin-left: spacers(2);
+}

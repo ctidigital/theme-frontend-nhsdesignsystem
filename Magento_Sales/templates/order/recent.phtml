@@ -1,0 +1,75 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate
+
+/** @var $block \Magento\Sales\Block\Order\Recent */
+?>
+<div class="block block-dashboard-orders">
+    <?php
+    $_orders = $block->getOrders();
+    $count = count($_orders);
+    ?>
+    <div class="block-title order">
+        <h2><?= $block->escapeHtml(__('Recent Orders')) ?></h2>
+        <?php if ($count > 0) : ?>
+            <a class="action view" href="<?= $block->escapeUrl($block->getUrl('sales/order/history')) ?>">
+                <span><?= $block->escapeHtml(__('View all')) ?></span>
+                <span class="nhsuk-u-visually-hidden"> <?= $block->escapeHtml(__('recent orders')) ?></span>
+            </a>
+        <?php endif; ?>
+    </div>
+    <div class="block-content">
+        <?= $block->getChildHtml() ?>
+        <?php if ($count > 0) : ?>
+            <div class="table-wrapper orders-recent">
+                <table class="data table table-order-items recent nhsuk-table-responsive" id="my-orders-table" role="table">
+                    <caption class="table-caption nhsuk-table__caption"><?= $block->escapeHtml(__('Recent Orders')) ?></caption>
+                    <thead role="rowgroup" class="nhsuk-table__head">
+                    <tr>
+                        <th role="columnheader" scope="col" class="col id"><?= $block->escapeHtml(__('Order #')) ?></th>
+                        <th role="columnheader" scope="col" class="col date"><?= $block->escapeHtml(__('Date')) ?></th>
+                        <th role="columnheader" scope="col" class="col shipping"><?= $block->escapeHtml(__('Ship To')) ?></th>
+                        <th role="columnheader" scope="col" class="col total"><?= $block->escapeHtml(__('Order Total')) ?></th>
+                        <th role="columnheader" scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                        <th role="columnheader" scope="col" class="col actions"><?= $block->escapeHtml(__('Action')) ?></th>
+                    </tr>
+                    </thead>
+                    <tbody class="nhsuk-table__body">
+                    <?php foreach ($_orders as $_order) : ?>
+                        <tr role="row" class="nhsuk-table__row">
+                            <td role="cell" data-th="<?= $block->escapeHtml(__('Order #')) ?>" class="col id nhsuk-table__cell"><?= $block->escapeHtml($_order->getRealOrderId()) ?></td>
+                            <td role="cell" data-th="<?= $block->escapeHtml(__('Date')) ?>" class="col date nhsuk-table__cell"><?= $block->escapeHtml($block->formatDate($_order->getCreatedAt())) ?></td>
+                            <td role="cell" data-th="<?= $block->escapeHtml(__('Ship To')) ?>" class="col shipping nhsuk-table__cell"><?= $_order->getShippingAddress() ? $block->escapeHtml($_order->getShippingAddress()->getName()) : "&nbsp;" ?></td>
+                            <td role="cell" data-th="<?= $block->escapeHtml(__('Order Total')) ?>" class="col total nhsuk-table__cell"><?= /* @noEscape */ $_order->formatPrice($_order->getGrandTotal()) ?></td>
+                            <td role="cell" data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col status nhsuk-table__cell"><?= $block->escapeHtml($_order->getStatusLabel()) ?></td>
+                            <td role="cell" data-th="<?= $block->escapeHtml(__('Actions')) ?>" class="col actions nhsuk-table__cell">
+                                <a href="<?= $block->escapeUrl($block->getViewUrl($_order)) ?>" class="action view">
+                                    <span><?= $block->escapeHtml(__('View Order')) ?></span>
+                                    <span class="nhsuk-u-visually-hidden"> <?= $block->escapeHtml($_order->getRealOrderId()) ?></span>
+                                </a>
+                                <?php if ($this->helper(\Magento\Sales\Helper\Reorder::class)
+                                    ->canReorder($_order->getEntityId())
+                                ) : ?>
+                                    <a href="#" data-post='<?= /* @noEscape */
+                                    $this->helper(\Magento\Framework\Data\Helper\PostHelper::class)
+                                        ->getPostData($block->getReorderUrl($_order))
+                                    ?>' class="action order">
+                                        <span><?= $block->escapeHtml(__('Reorder')) ?></span>
+                                        <span class="nhsuk-u-visually-hidden"> <?= $block->escapeHtml($_order->getRealOrderId()) ?></span>
+                                    </a>
+                                <?php endif ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php else : ?>
+            <div class="message info empty"><span><?= $block->escapeHtml(__('You have placed no orders.')) ?></span></div>
+        <?php endif; ?>
+    </div>
+</div>

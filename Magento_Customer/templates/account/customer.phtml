@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Magento\Customer\Block\Account\Customer $block */
+?>
+<?php if ($block->customerLoggedIn()) : ?>
+    <li class="customer-welcome">
+        <span class="customer-name"
+              role="link"
+              tabindex="0"
+              data-mage-init='{"dropdown":{}}'
+              data-toggle="dropdown"
+              data-trigger-keypress-button="true"
+              data-bind="scope: 'customer'">
+            <span class="greet welcome">
+                <!-- ko if: customer().fullname  -->
+                <span class="" data-bind="css: { welcome__message: customer().firstname}, text: new String('<?= $block->escapeHtml(__('Welcome, %1!', '%1')) ?>').replace('%1', customer().firstname)">
+                    </span>
+                <!-- /ko -->
+            </span>
+            <span
+                    class="action switch"
+                    data-action="customer-menu-toggle"
+                    aria-hidden="true">
+                <span><?= $block->escapeHtml(__('Change')) ?></span>
+            </span>
+        </span>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                }
+            }
+        }
+        </script>
+        <?php if ($block->getChildHtml()) :?>
+            <div class="customer-menu" data-target="dropdown">
+                <?= $block->getChildHtml() ?>
+            </div>
+        <?php endif; ?>
+    </li>
+<?php endif; ?>

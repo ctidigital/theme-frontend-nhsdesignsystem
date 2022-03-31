@@ -1,0 +1,22 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<!-- ko if: (visible)-->
+<div class="field addresses">
+    <div class="control">
+        <div class="shipping-address-items" role="radiogroup"
+             aria-labelledby="shipping-addresses-choose">
+            <div id="shipping-addresses-choose" class="nhsuk-u-visually-hidden">
+                <span data-bind="i18n: 'Choose shipping address'"></span>
+            </div>
+            <!-- ko foreach: { data: elems, as: 'element' } -->
+            <!-- ko template: element.getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+<!-- /ko -->

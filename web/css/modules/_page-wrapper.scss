@@ -1,0 +1,26 @@
+/**
+ * Page Wrapper for the whole page
+ */
+
+
+.page-wrapper {
+  margin: 0 auto;
+
+  @if $page-wrapper-contained == true {
+    max-width: map_get($container-max-widths, xxl);
+  }
+
+  @if $page-wrapper-contained == false {
+    max-width: 100%;
+
+    @if $main-content-contained == true {
+      .page-header > .panel.wrapper > .panel.header,
+      .page-header > .header.content,
+      .page-main,
+      .nav-sections .nav-sections-items {
+        max-width: map_get($container-max-widths, xxl);
+        margin: 0 auto;
+      }
+    }
+  }
+}

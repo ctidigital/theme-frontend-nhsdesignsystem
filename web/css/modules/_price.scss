@@ -1,0 +1,143 @@
+// Price Theme Styles
+//
+.price-box {
+  @extend %u-flex-col-xcenter-ycenter;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .price {
+    font-weight: $price-font-weight;
+    font-size: $price-font-size;
+    color: $price-color;
+  }
+
+  .price-label {
+    color: $price-label-color;
+    font-size: $price-label-font-size;
+  }
+
+  .old-price .price-container {
+    position: relative;
+    order: 1;
+    display: block;
+
+    &:before {
+      @include absolute(50%, 0, auto, 0);
+      margin-top: 2px;
+      height: 1px;
+      width: 100%;
+      background: rgba($price-old-color, 0.5);
+      content: '';
+    }
+
+
+    .price-label {
+      color: $price-old-color;
+    }
+
+    .price {
+      font-size: $price-old-font-size;
+      font-weight: $price-old-font-weight;
+      color: $price-old-color;
+    }
+  }
+
+  .special-price {
+    order: 2;
+  }
+
+  .price-from,
+  .price-to {
+    margin-bottom: 0;
+
+    .price-label {
+      display: inline-block;
+      text-align: right;
+      min-width: 30px;
+    }
+  }
+
+  .minimal-price {
+    margin-bottom: 0;
+  }
+}
+
+.price-including-tax,
+.price-excluding-tax {
+  display: inline;
+  width: 100%;
+  line-height: 1;
+
+  .price {
+    font-weight: $price-font-weight;
+    font-size: $price-font-size;
+    color: $price-color;
+  }
+
+  &:before {
+    content: attr(data-label);
+    color: $price-label-color;
+    font-size: $price-label-font-size;
+    margin-right: 0.3em;
+
+    @include respond-to-down(smm) {
+      position: relative;
+      display: block;
+      top: -8px;
+    }
+  }
+
+  .cart-tax-total {
+    cursor: pointer;
+    position: relative;
+
+    /* TODO: Add icon down for collapsed state on Pseudo After
+    &-expanded {
+    }*/
+  }
+}
+
+@if $price-hide-inc-vat-label == true {
+  .price-including-tax:before {
+    display: none;
+  }
+}
+
+.price-tier_price {
+  .price-excluding-tax,
+  .price-including-tax {
+    display: inline;
+  }
+}
+
+.price-including-tax + .price-excluding-tax,
+.weee[data-label] {
+  display: block;
+
+  &:before {
+    color: $price-ex-vat-color;
+  }
+
+  .price {
+    color: $price-ex-vat-color;
+    font-size: $price-label-font-size;
+    font-weight: normal;
+  }
+}
+
+.opc-block-summary {
+  .price-excluding-tax:before,
+  .price-including-tax:before {
+    @include respond-to-down(smm) {
+      top: 0;
+    }
+  }
+}
+
+
+.catalog-product-view .product-info-main .price-box,
+.page-products .product-item-info .price-box {
+  [data-price-amount="0"] {
+    display: none !important;
+  }
+}

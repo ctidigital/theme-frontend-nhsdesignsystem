@@ -1,0 +1,17 @@
+.footer-payments-confidence {
+  @extend %u-list-unstyled;
+  @extend %u-flex-row-xcenter-ycenter;
+  justify-content: flex-start;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+  padding: 0;
+
+  > li {
+    @include size($footer-payments-confidence-icon-size-mobile, auto);
+    margin: $footer-payments-confidence-padding / 2;
+
+    @include respond-to-up(lg) {
+      @include size($footer-payments-confidence-icon-size-desktop, auto);
+    }
+  }
+}

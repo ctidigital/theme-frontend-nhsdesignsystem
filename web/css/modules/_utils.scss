@@ -1,0 +1,156 @@
+.u-close {
+  @extend %u-close;
+}
+
+.u-fixed-backdrop {
+  @extend %u-fixed-backdrop;
+}
+
+.u-flex-row-center {
+  @extend %u-flex-row-xcenter-ycenter;
+}
+
+.u-flex-col-center {
+  @extend %u-flex-col-xcenter-ycenter;
+}
+
+.u-full-width {
+  @extend %u-full-width;
+}
+
+.ms-icon-align-right {
+  @extend %ms-icon-align-right;
+}
+
+.u-list-unstyled {
+  @extend %u-list-unstyled;
+}
+
+ul.disc {
+  list-style: disc;
+  list-style-position: inside;
+  margin-bottom: spacers(3);
+
+
+  ul {
+    margin-left: spacers(4);
+    list-style: circle;
+    list-style-position: inside;
+  }
+}
+
+ol.numeric {
+  list-style: numeric;
+  list-style-position: inside;
+  padding-left: 0;
+  margin-bottom: spacers(3);
+
+  ol {
+    margin-left: spacers(4);
+    list-style: lower-roman;
+    list-style-position: inside;
+  }
+}
+
+.u-sr-only {
+  @extend %u-sr-only;
+}
+
+.u-sr-only-focusable {
+  @extend %u-sr-only-focusable;
+}
+
+.u-font-small {
+  @extend %u-font-small;
+}
+
+.u-font-xsmall {
+  @extend %u-font-xsmall;
+}
+
+.u-heading-style {
+  font-weight: $nhsuk-font-bold;
+}
+
+.u-bg-color-transition {
+  @extend %u-bg-color-transition;
+}
+
+.u-transform-transition {
+  @extend %u-transform-transition;
+}
+
+.u-transform-fade-transition {
+  @extend %u-transform-fade-transition;
+}
+
+.u-max-height-transition {
+  @extend %u-max-height-transition;
+}
+
+.u-animation-ken-burns {
+  @extend %u-animation-ken-burns;
+}
+
+.u-animation-spin {
+  @extend %u-animation-spin;
+}
+
+.u-sticky {
+  @extend %u-sticky;
+}
+
+.u-section-spacing-bottom {
+ @extend %u-section-spacing-bottom;
+}
+
+.u-section-title-spacing-bottom {
+  @extend %u-section-title-spacing-bottom;
+}
+
+.u-section-spacing-y {
+  @extend %u-section-spacing-y;
+}
+
+.overflowed {
+  max-height: $overflowed-height;
+  overflow: auto;
+}
+
+html.scroll-locked,
+html.nav-open,
+html.nav-open body,
+html.scroll-locked body {
+  @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+    overflow: hidden;
+    height: 100vh;
+    //-webkit-overflow-scrolling: touch !important;
+  }
+}
+body .ui-datepicker {
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    top: 9px;
+  }
+
+  .ui-datepicker-prev span {
+    border-color: transparent $black transparent transparent;
+  }
+  .ui-datepicker-next span {
+    border-color: transparent transparent transparent $black;
+  }
+
+  .ui-datepicker-calendar .ui-datepicker-today {
+    background: $nhsuk-secondary-button-color;
+    color: $white;
+
+    .ui-state-default {
+      color: $white;
+    }
+  }
+
+  .ui-datepicker-calendar td .ui-state-hover {
+    background: $nhsuk-link-color;
+    color: $white;
+  }
+}

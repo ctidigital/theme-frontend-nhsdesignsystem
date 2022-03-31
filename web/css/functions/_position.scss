@@ -1,0 +1,41 @@
+/// Shorthand for positioning.
+/// @access private
+/// @param {String} $position - Position type (either `absolute`, `fixed` or `relative`)
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+/// Shorthand for absolute positioning.
+/// @requires {mixin} position
+/// @param {Arglist} $args - Offsets
+/// @example scss - Stretch an item over its parent.
+///  @include absolute($top: 0, $right: 0, $bottom: 0, $left: 0)
+@mixin absolute($args...) {
+  @include position(absolute, $args...);
+}
+
+/// Shorthand for relative positioning.
+/// @requires {mixin} position
+/// @param {Arglist} $args - Offsets
+/// @example scss - Offset an item over its parent.
+///  @include relative($top: 10px, $right: null, $bottom: null, $left: 10px)
+@mixin relative($args...) {
+  @include position(relative, $args...);
+}
+
+/// Shorthand for fixed positioning.
+/// @requires {mixin} position
+/// @param {Arglist} $args - Offsets
+/// @example scss - Fill an item over its parent width.
+///  @include fixed($top: 0, $right: 0)
+@mixin fixed($args...) {
+  @include position(fixed, $args...);
+}

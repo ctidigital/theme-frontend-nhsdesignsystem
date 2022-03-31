@@ -1,0 +1,25 @@
+%u-section-spacing-bottom {
+  margin-bottom: $section-spacing;
+
+  @include respond-to-up($section-spacing-breakpoint) {
+    margin-bottom: $section-spacing-lg;
+  }
+}
+
+%u-section-title-spacing-bottom {
+  margin-bottom: $section-title-spacing;
+
+  @include respond-to-up($section-spacing-breakpoint) {
+    margin-bottom: $section-title-spacing-lg;
+  }
+}
+
+%u-section-spacing-y {
+  padding-top: $section-spacing;
+  padding-bottom: $section-spacing;
+
+  @include respond-to-up($section-spacing-breakpoint) {
+    padding-top: $section-spacing-lg;
+    padding-bottom: $section-spacing-lg;
+  }
+}

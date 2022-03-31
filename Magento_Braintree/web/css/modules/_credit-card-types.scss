@@ -1,0 +1,42 @@
+.payment-method-braintree .credit-card-types {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+
+  .item {
+    position: relative;
+
+    > img {
+      padding: $braintree-credit-card-type-spacing-x;
+      display: block;
+      max-width: 100%;
+      height: auto;
+      width: 62px;
+    }
+
+    &._active {
+      @include ms-icon($braintree-credit-card-active-icon);
+      filter: grayscale(0);
+      color: $braintree-credit-card-active-color;
+
+      &:before {
+        @include absolute(0, 0);
+        background: $braintree-credit-card-active-bg;
+        border-radius: 1000px;
+        padding: 0.3rem;
+        font-size: 8px;
+      }
+    }
+
+    &._inactive {
+      filter: grayscale(1);
+    }
+  }
+}
+
+.payment-method-braintree .payment-method-content > form {
+  position: relative;
+  z-index: z('above'); // To make sure CVV tip shows on top of everything
+  background: $braintree-card-information-block-bg;
+  padding: $braintree-card-information-block-padding;
+}

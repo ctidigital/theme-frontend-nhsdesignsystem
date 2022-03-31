@@ -1,0 +1,216 @@
+.widget.block-products-list,
+.widget.block-new-products,
+.widget.block-new-products-list,
+.widget.block-new-products-images,
+.widget.block-new-products-names,
+.widget.block-viewed-products-grid,
+.widget.block-viewed-products-list,
+.widget.block-viewed-products-names,
+.widget.block-viewed-products-images,
+.block.upsell,
+.block.crosssell,
+.block.related {
+  .block-title {
+    @extend %product-blocks-title;
+    @extend %u-section-title-spacing-bottom;
+  }
+
+  .block-actions {
+    display: none;
+  }
+
+  .products-grid .product-items>.product-item {
+    @include respond-to-up(xl) {
+      width: 25%;
+    }
+  }
+
+  .product-item.is-active .product-item-info .product-item-details {
+    transform: translateY(0);
+  }
+
+  .product-item-photo > span {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .products-grid .product-item-info {
+    flex-wrap: nowrap;
+
+    .product-item-details {
+      flex-wrap: nowrap;
+    }
+  }
+
+  /* Commenting this aas the this stops the slides being equal heights
+  and makes the actions/within the grid misalinged
+  .slick-slide {
+    height: auto !important;
+  }*/
+
+  // Forcefully Override magento's
+  // default inline style width added to images
+  // to enable fluid scaling for small screens
+  span.product-image-container {
+    @include respond-to-down(xxl) {
+      width: auto !important;
+    }
+  }
+
+  .product-item .product-image-photo {
+    @include respond-to-down(xxl) {
+      margin: 0 auto !important;
+    }
+  }
+}
+
+.block.related .field.choice.related {
+  display: none;
+}
+
+.block.upsell,
+.block.crosssell,
+.block.related,
+.block.block-widget {
+  &:not(.cms-slider-block) {
+    @extend %u-section-spacing-y;
+  }
+
+  .slick-slider {
+    &.product-items {
+      margin-bottom: 0;
+    }
+  }
+
+  .products-grid .slick-slider {
+    .product-item {
+      padding-bottom: 0;
+    }
+  }
+
+  .slick-next,
+  .slick-prev {
+    background: transparent;
+  }
+
+  .slick-next {
+    right: 0;
+
+    @include respond-to-up(xxl) {
+      right: calc(#{map_get($container-max-widths, xxl) * 0.25} - 25vw);
+    }
+  }
+
+  .slick-prev {
+    left: 0;
+
+    @include respond-to-up(xxl) {
+      left: calc(#{map_get($container-max-widths, xxl) * 0.25} - 25vw);
+    }
+  }
+
+  .slick-track {
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .slick-list {
+    margin: 0 spacers(3) * 2.75;
+
+    @include respond-to-up(xxl) {
+      margin: 0;
+    }
+  }
+
+  &--light {
+    background: $block-widget-light-bg;
+
+    .slick-next:before,
+    .slick-prev:before,
+    .product-item,
+    .product-item a,
+    .block-title {
+      color: $block-widget-light-color;
+    }
+
+    @if $product-item-hover-reveal {
+      @include respond-to-up($product-item-hover-breakpoint) {
+        .product-item.is-active,
+        .product-item.is-active a {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  &--dark {
+    background: $block-widget-dark-bg;
+
+    .slick-next:before,
+    .slick-prev:before,
+    .product-item,
+    .product-item a,
+    .block-title {
+      color: $block-widget-dark-color;
+    }
+
+    .product-item-info {
+      background: transparent;
+    }
+
+    @if $product-item-hover-reveal {
+      @include respond-to-up($product-item-hover-breakpoint) {
+        .product-item.is-active,
+        .product-item.is-active a {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  &--full-width {
+    @include full-width();
+
+    .block-content {
+      max-width: $block-widget-content-max-width;
+      margin: 0 auto;
+    }
+  }
+}
+
+.block.upsell,
+.block.crosssell,
+.block.related {
+  .slick-next:before,
+  .slick-prev:before,
+  .product-item,
+  .product-item a,
+  .block-title {
+    color: $block-widget-light-color;
+  }
+}
+
+// fixes massive width applied to slick slider on recently viewed block
+.admin__data-grid-outer-wrap {
+  width: 100%;
+
+  .products-grid .product-item .action.tocart {
+    margin-bottom: 0;
+  }
+
+  .slick-track {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+.widget.block-viewed-products-grid {
+  @include respond-to-up(md) {
+    padding: 0 1rem;
+  }
+  @include respond-to-up(xxl) {
+    padding: 0;
+  }
+}

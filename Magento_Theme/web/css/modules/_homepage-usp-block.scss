@@ -1,0 +1,91 @@
+.homepage-usp-block {
+  @if $homepage-usp-full-width == true {
+    @include full-width;
+  }
+  color: $homepage-usp-block-color;
+  background: $homepage-usp-block-bg;
+  height: $homepage-usp-height-mobile;
+
+  @include respond-to-up(lg) {
+    height: $homepage-usp-height-desktop;
+  }
+
+  ul {
+    @extend %u-list-unstyled;
+    @extend %u-flex-row-xcenter-ycenter;
+    @if $homepage-usp-full-width == true {
+      max-width: $homepage-usp-max-width;
+      margin: 0 auto;
+    } @else {
+      margin: 0;
+    }
+
+    height: 100%;
+    padding: 0;
+    justify-content: space-around;
+    font-size: $homepage-usp-text-size;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    > li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $homepage-usp-height-mobile;
+      padding: 0 spacers(1);
+      margin: 0;
+      width: 100%;
+
+      @include respond-to-up(lg) {
+        width: auto;
+        height: $homepage-usp-height-desktop;
+
+          &:active,
+          &:focus {
+              background-color: $nhsuk-focus-color;
+              border-bottom: $nhsuk-focus-width solid $nhsuk-focus-text-color;
+              box-shadow: none;
+              color: $nhsuk-focus-text-color !important;
+              outline: $nhsuk-focus-width solid transparent;
+              outline-offset: $nhsuk-focus-width;
+              text-decoration: none;
+
+              > a {
+                  color: $nhsuk-focus-text-color !important;
+                  text-decoration: none;
+                  background-color: transparent;
+                  box-shadow: none;
+              }
+          }
+      }
+    }
+
+    @include respond-to-up(lg) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  .slick-slide {
+    text-align: center;
+  }
+
+  a {
+    color: inherit;
+
+    &:hover,
+    &:visited {
+        color: inherit;
+    }
+    &:focus {
+        color: $white !important;
+        background-color: transparent;
+        box-shadow: none;
+        text-decoration: underline;
+    }
+  }
+
+  /*.homepage-slider-container & {
+    position: absolute;
+    z-index: z('above');
+  }*/
+}

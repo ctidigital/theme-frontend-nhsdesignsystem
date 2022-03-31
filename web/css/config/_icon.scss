@@ -1,0 +1,14 @@
+$ms-icons: () !default;
+$ms-icons: map-merge((),
+        $ms-icons);
+
+$icon-font-family: 'ms-icons' !default;
+
+$icon-sizes: () !default;
+$icon-sizes: map-merge((
+        "xs": 14px,
+        "s": 16px,
+        "m": 32px,
+        "l": 48px,
+        "xl": 64px
+), $icon-sizes);

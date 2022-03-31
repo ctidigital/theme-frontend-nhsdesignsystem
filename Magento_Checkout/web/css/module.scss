@@ -1,0 +1,38 @@
+//------------------------------------//
+//  Theme Settings                   //
+//-----------------------------------//
+// Do not remove this.
+@import "../../../web/css/settings";
+//-----------------------------------//
+
+// NHS UK HEADINGs Copy
+%nhsuk-heading-h3 {
+  @include nhsuk-typography-responsive(24);
+
+  display: block;
+  font-weight: $nhsuk-font-bold;
+  margin-top: 0;
+
+  @include nhsuk-responsive-margin(4, 'bottom');
+}
+
+@import "basket-page/layout";
+@import "basket-page/items-table";
+@import "basket-page/summary";
+@import "basket-page/gift-options";
+@import "basket-page/discount-code";
+@import "basket-page/checkout-methods";
+@import "basket-page/totals-sticky";
+@import "basket-page/cart-failed";
+
+@import "checkout/layout";
+@import "checkout/summary";
+@import "checkout/opc";
+@import "checkout/success";
+
+/* increase min height for account pages in order to fix DHSC-363 */
+body.account .page-wrapper .page-main {
+    min-height: calc(100vh - 357px);
+}
+
+

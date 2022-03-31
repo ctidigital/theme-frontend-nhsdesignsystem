@@ -1,0 +1,117 @@
+.opc-progress-bar {
+  @extend %u-flex-row-xcenter-ycenter;
+  position: relative;
+  justify-content: space-between;
+  max-width: $opc-progress-bar-max-width;
+  margin: 0 auto $opc-progress-bar-margin-bottom auto;
+  align-items: stretch;
+
+  > .opc-progress-bar-item {
+    position: relative;
+    z-index: z('above');
+
+    &:after {
+      @include absolute($opc-progress-bar-step-size * 0.5, auto, auto, 0);
+      content: '';
+      width: 100%;
+      height: $opc-progress-bar-line-width;
+      background: $opc-progress-bar-idle-bg;
+      z-index: z('below');
+    }
+
+    &:first-child,
+    &:last-child {
+      &:after {
+        width: 50%;
+      }
+    }
+
+    &:first-child {
+      &:after {
+        left: auto;
+        right: 0;
+      }
+    }
+
+    > span {
+      cursor: pointer;
+    }
+
+    &:only-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  > li:nth-last-child(n+3),
+  li:nth-last-child(n+3) ~ li {
+    max-width: 160px;
+  }
+}
+
+ol.opc-progress-bar {
+  padding-inline-start: 0;
+}
+
+.opc-progress-bar-item {
+  @extend %u-flex-col-xcenter-ycenter;
+  position: relative;
+  width: 100%;
+  align-items: stretch;
+
+  span {
+    @extend %u-flex-col-xcenter-ycenter;
+    z-index: z('above');
+    padding-top: $opc-progress-bar-step-size + 8px;
+    text-align: center;
+
+    &:before {
+      @include absolute(0, auto, auto, 50%);
+      @include size($opc-progress-bar-step-size);
+      content: '';
+      background: $opc-progress-bar-idle-bg;
+      display: block;
+      border-radius: 100%;
+      border: ($opc-progress-bar-step-size / 5) solid $opc-progress-bar-page-bg;
+      margin-bottom: $opc-progress-bar-step-spacing-y;
+      z-index: z('above');
+      transform: translateX( #{($opc-progress-bar-step-size * -0.5)});
+    }
+  }
+
+  &._active {
+    span:before {
+      background: $opc-progress-bar-active-bg;
+    }
+
+    &:after {
+      background: $opc-progress-bar-active-bg;
+    }
+
+    span {
+      color: $opc-progress-bar-active-color;
+    }
+  }
+
+  &._complete {
+    span:before {
+      @extend %u-flex-row-xcenter-ycenter;
+      @include size($opc-progress-bar-step-size);
+      background: $opc-progress-bar-active-bg;
+      content: $opc-progress-bar-active-icon;
+      font-family: $icon-font-family;
+      color: $opc-progress-bar-idle-bg;
+      border: 0 none;
+      box-shadow: none;
+    }
+
+    &:after {
+      background: $opc-progress-bar-active-bg;
+    }
+
+    span {
+      color: $opc-progress-bar-active-color;
+    }
+  }
+}

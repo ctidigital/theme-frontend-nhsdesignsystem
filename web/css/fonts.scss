@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+// Fonts
+//
+// Font-face import declarations
+
+// Fonts
+//
+// Font-face import declarations
+
+@font-face {
+  font-display: swap;
+  font-family: 'Frutiger W01';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/frutigerlt/FrutigerLTW01-55Roman.eot?#iefix');
+  src: url('../fonts/frutigerlt/FrutigerLTW01-55Roman.eot?#iefix') format('eot'),
+  url('../fonts/frutigerlt/FrutigerLTW01-55Roman.woff2') format('woff2'),
+  url('../fonts/frutigerlt/FrutigerLTW01-55Roman.woff') format('woff'),
+  url('../fonts/frutigerlt/FrutigerLTW01-55Roman.ttf') format('truetype'),
+  url('../fonts/frutigerlt/FrutigerLTW01-55Roman.svg#7def0e34-f28d-434f-b2ec-472bde847115') format('svg');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Frutiger W01';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/frutigerlt/FrutigerLTW01-65Bold.eot?#iefix');
+  src: url('../fonts/frutigerlt/FrutigerLTW01-65Bold.eot?#iefix') format('eot'),
+  url('../fonts/frutigerlt/FrutigerLTW01-65Bold.woff2') format('woff2'),
+  url('../fonts/frutigerlt/FrutigerLTW01-65Bold.woff') format('woff'),
+  url('../fonts/frutigerlt/FrutigerLTW01-65Bold.ttf') format('truetype'),
+  url('../fonts/frutigerlt/FrutigerLTW01-65Bold.svg#eae74276-dd78-47e4-9b27-dac81c3411ca') format('svg');
+}
+
+// Icon Font
+@font-face {
+  font-family: "ms-icons";
+  src: url("../fonts/icons/icons.eot?c9f4c393f30b0f8f74dbd1f64daad06f?#iefix") format("embedded-opentype"),
+  url("../fonts/icons/icons.woff2?c9f4c393f30b0f8f74dbd1f64daad06f") format("woff2"),
+  url("../fonts/icons/icons.woff?c9f4c393f30b0f8f74dbd1f64daad06f") format("woff"),
+  url("../fonts/icons/icons.ttf?c9f4c393f30b0f8f74dbd1f64daad06f") format("truetype"),
+  url("../fonts/icons/icons.svg?c9f4c393f30b0f8f74dbd1f64daad06f#icons") format("svg");
+  font-display: block;
+}
+
+
+// To force utf-8 charset to appear on top this css file
+$dummy-charset: "\f001";
+.dummy-icon:before { content: $dummy-charset; }

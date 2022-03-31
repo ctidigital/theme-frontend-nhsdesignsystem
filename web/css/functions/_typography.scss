@@ -1,0 +1,39 @@
+/// Helper for responsive font-sizes
+/// Extracts the list of breakpoints for
+/// the given font-size
+/// @param {String} $text-size - Text size name (key)
+/// @requires {variable} $fixed-type-sizing - Responsive text sizing map
+/// @throws 'Text size `#{$text-size}` not found in $text-sizing'.
+/// @return {List}
+/// @example scss
+/// text-breakpoints-for('base'); // ('small')
+@function text-breakpoints-for($text-size, $_text-sizing: $fixed-type-sizing) {
+  $text-breakpoints: map-get($_text-sizing, $text-size);
+
+  @if $text-breakpoints {
+    @return $text-breakpoints;
+  }
+
+  @warn 'Text size `#{$text-size}` not found in $text-sizing';
+}
+
+/// Helper for responsive font-sizes
+/// Extracts the list of font-properties for
+/// the given font-size
+/// @param {String} $text-size - Text size name (key)
+/// @param {String} $breakpoint-name - Breakpoint name (key)
+/// @requires {function} text-breakpoints-for
+/// @throws 'Breakpoint `#{$breakpoint-name}` for text size `#{$text-size}` was not found'.
+/// @return {List}
+/// @example scss
+/// text-properties-for('base', 'small'); // ('font-size': 16px, 'line-height': 26px)
+@function text-properties-for($text-size, $breakpoint-name) {
+  $text-breakpoints: text-breakpoints-for($text-size);
+  $text-properties: map-get($text-breakpoints, $breakpoint-name);
+
+  @if $text-properties {
+    @return $text-properties;
+  }
+
+  @warn 'Breakpoint `#{$breakpoint-name}` for text size `#{$text-size}` was not found';
+}

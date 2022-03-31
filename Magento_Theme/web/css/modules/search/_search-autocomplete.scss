@@ -1,0 +1,155 @@
+/**
+ * Styles for ElasticSuite Autocomplete search results
+ * Default Magento Search Term autocomplete is hidden
+ */
+// Hide the default Magento search term
+.search-autocomplete {
+  top: 40px;
+
+  @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+    margin-top: $container-padding * 2;
+    max-height: calc(100vh - 160px);
+    overflow: auto;
+  }
+
+  &:empty {
+    @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+      margin: 0;
+    }
+  }
+
+  @include respond-to-down(md) {
+    margin-top: $container-padding * 0.8;
+  }
+
+  > ul[role="listbox"] {
+    color: $search-autocomplete-color;
+    background: $search-autocomplete-bg;
+    border: 1px solid $search-autocomplete-border-color-light;
+  }
+
+  [role="option"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 spacers(1);
+
+    .amount {
+      margin: 0 spacers(2);
+      color: $text-muted;
+    }
+  }
+}
+
+
+// Elasticsuite Autocomplete result
+.smile-elasticsuite-autocomplete-result {
+  color: $search-autocomplete-color;
+  background: $search-autocomplete-bg;
+  border: 1px solid $search-autocomplete-border-color-light;
+
+  @include respond-to-up($tweakpoint-nav-toggle) {
+    border-top: 0 none;
+    border-color: $search-autocomplete-border-color;
+  }
+
+  > .autocomplete-list {
+    margin-bottom: $search-autocomplete-spacing-y;
+
+    &:last-child {
+      margin-bottom: 0;
+
+      > dd:last-child {
+        margin-bottom: 0;
+        border-bottom: 0 none;
+      }
+    }
+  }
+}
+
+.autocomplete-list {
+  @include respond-to-down(md) {
+    font-size: 12px;
+  }
+
+  .price-box .price {
+    @include respond-to-down(md) {
+      font-size: 12px;
+    }
+  }
+
+  > dt,
+  > dd {
+    padding: $search-autocomplete-padding-y $search-autocomplete-padding-x;
+  }
+
+  > dd {
+    border-bottom: 1px solid $search-autocomplete-border-color-light;
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      border-color: $search-autocomplete-border-color;
+    }
+  }
+
+  [role="option"] {
+    @extend %u-bg-color-transition;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    background: rgba($search-autocomplete-hover-bg, 0);
+    animation: loader-fade $transition-duration $transition-timing-ease-in-out-quad;
+    animation-fill-mode: both;
+    cursor: pointer;
+
+    &.selected {
+      background: rgba($search-autocomplete-hover-bg, 1);
+    }
+  }
+
+  .title-term {
+    & ~ [role="option"] {
+      justify-content: space-between;
+    }
+  }
+
+  .amount {
+    color: $text-muted;
+  }
+
+  .product-image-box {
+    padding-right: $search-autocomplete-padding-x;
+  }
+}
+
+.is-minicart-open .header.content,
+.is-search-open .header.content {
+  overflow: visible;
+
+  /* Commented out to stop layout shift happening on mobile when opening minicart
+  @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+    min-height: 0;
+  }*/
+}
+
+.category-mini-crumb:not(:empty) + .qs-option-name:before {
+  display: none;
+}
+.category-mini-crumb {
+  .qs-option-name {
+    @include ms-icon(chevron-right);
+    &:before {
+      margin: 0 0.2rem;
+      position: relative;
+      top: 3px;
+    }
+  }
+}
+
+@keyframes loader-fade {
+  0%, 20% {
+    opacity: 0;
+  }
+  75%, 100% {
+    opacity: 1;
+  }
+}

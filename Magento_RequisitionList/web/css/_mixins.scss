@@ -1,0 +1,135 @@
+//
+//  Button reset
+//  ---------------------------------------------
+
+%lib-button-reset {
+    background-image: none; // Reset unusual Firefox-on-Android default style
+    background: none;
+    -moz-box-sizing: content-box; // Hack: fix Firefox button line-height problem
+    border: 0;
+    box-shadow: none;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    text-shadow: none;
+    font-weight: $font-weight-normal;
+    display: unset;
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        pointer-events: none; // Disabling of all pointer events
+        opacity: .5;
+    }
+}
+
+//
+//  Button as link
+//  ---------------------------------------------
+
+@mixin lib-button-as-link(
+    $_link-color: $link-color,
+    $_link-color-hover: $link-hover-color,
+    $_line-height: $line-height-base,
+    $_disabled_opacity: .5,
+    $_margin: 0,
+    $_padding: 0
+) {
+    line-height: $_line-height;
+    margin: $_margin;
+    padding: $_padding;
+    color: $_link-color;
+    background: none;
+    border: 0;
+    display: inline;
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        //color: $_link-color;
+        //opacity: $_disabled_opacity;
+        cursor: default;
+        pointer-events: none; // Disabling of clicks
+        text-decoration: underline;
+    }
+}
+
+@mixin visuallyhidetext{
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+@mixin abs-add-box-sizing {
+    box-sizing: border-box;
+}
+
+%abs-action-button-as-link {
+    @include lib-button-as-link($_margin: false);
+    font-weight: $font-weight-normal;
+    border-radius: 0;
+}
+
+@mixin abs-add-clearfix {
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+%abs-dropdown-items-new {
+    .items .item:last-child {
+        &:hover {
+            background: $dropdown-list-item__hover;
+        }
+    }
+
+    .action.new {
+        content: $icon-expand;
+        vertical-align: middle;
+
+        &:before {
+            margin-left: -17px;
+            margin-right: $indent__xs;
+        }
+    }
+}
+
+@mixin abs-shopping-cart-items {
+    .action {
+        &.continue {
+            @include ms-icon('chevron-left', 32px, before);
+            border-radius: $button-border-radius;
+            font-weight: $font-weight-bold;
+            padding: 7px 15px 7px 0;
+
+            &:active {
+                box-shadow: none;
+            }
+
+            &:before {
+                line-height: 16px;
+            }
+        }
+
+        &.update {
+            @include ms-icon('edit', 32px, before);
+            padding-left: $indent__xs;
+
+            &:before {
+                line-height: 16px;
+            }
+        }
+    }
+}

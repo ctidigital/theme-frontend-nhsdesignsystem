@@ -1,0 +1,96 @@
+@mixin lib-data-accordion__base() {
+    margin: 0;
+    padding: 0;
+
+    > .item.title {
+        box-sizing: border-box;
+        float: none;
+        width: 100%;
+        > .switch {
+            display: block;
+        }
+    }
+    > .item.content {
+        @include clearfix();
+        box-sizing: border-box;
+        display: block;
+        float: none;
+        margin: 0;
+
+        &.active {
+            display: block;
+        }
+    }
+}
+
+@mixin lib-data-accordion(
+    $accordion-control-background-color: null,
+    $accordion-control-background-color-hover: null,
+    $accordion-control-background-color-active: null,
+    $accordion-control-color: null,
+    $accordion-control-color-hover: null,
+    $accordion-control-color-active: null,
+    $accordion-content-background-color: null,
+    $accordion-content-colour: null
+) {
+    @include lib-data-accordion__base();
+
+    @if ($accordion-control-background-color == null) {
+        $accordion-control-background-color: $gray-2;
+    }
+    @if ($accordion-control-background-color-hover == null) {
+        $accordion-control-background-color-hover: $gray-2;
+    }
+    @if ($accordion-control-background-color-active == null) {
+        $accordion-control-background-color-active: $white;
+    }
+    @if ($accordion-control-color == null) {
+        $accordion-control-color: $black;
+    }
+    @if ($accordion-control-color-hover == null) {
+        $accordion-control-color-hover: $black;
+    }
+    @if ($accordion-control-color-active == null) {
+        $accordion-control-color-active: $black;
+    }
+
+    @if ($accordion-content-background-color == null) {
+        $accordion-content-background-color: $white;
+    }
+
+    @if ($accordion-content-colour == null) {
+        $accordion-content-colour: $black;
+    }
+
+    > .item.title {
+        margin-bottom: 4px;
+
+        > .switch {
+            background-color: $accordion-control-background-color;
+            color: $accordion-control-color;
+            border: 1px solid $gray-15;
+            padding: 20px;
+            text-decoration: none;
+        }
+        &:not(.disabled) > .switch:focus,
+        &:not(.disabled) > .switch:hover {
+            background-color: $accordion-control-background-color-hover;
+            color: $accordion-control-color-hover;
+        }
+        &:not(.disabled) > .switch:active,
+        &.active > .switch,
+        &.active > .switch:focus,
+        &.active > .switch:hover {
+            background: $accordion-control-background-color-active;
+            color: $accordion-control-color-active;
+            padding-bottom: 20px;
+        }
+    }
+    > .item.content {
+        background: $accordion-content-background-color;
+        color: $accordion-content-colour;
+        border: 1px solid $gray-15;
+        margin-bottom: 4px;
+        padding: 20px;
+    }
+}

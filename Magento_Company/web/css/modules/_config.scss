@@ -1,0 +1,54 @@
+$form-field-type-label-inline__padding: spacers(3);
+$indent__base: spacers(3);
+$indent__m: spacers(4);
+$indent__l: spacers(5);
+$indent__s: spacers(2);
+$indent__xs: spacers(1);
+
+$primary__color__light: gray('5');
+
+$links-container__z-index: z('heavenly') + 1;
+
+//  Fonts
+$icons-magento__font-name: 'magento-icons';
+$icons-magento__font-path: '../fonts/Magento-Icons';
+
+
+//  Icons
+$icon-circle-down: '\e909';
+$icon-circle-up: '\e90a';
+$icon-customer-lead: '\e908';
+$icon-move-vertical: '\e90b';
+$icon-organization: '\e906';
+$icon-person: '\e907';
+$icon-up: '\e621';
+
+$tree-icon__height: 20px;
+$tree-icon__width: 20px;
+
+//  Colors
+$color-gray60: gray('2');
+$color-gray20: gray('5');
+$color-gray52: gray('2');
+$color-gray34:  gray('3');
+$color-gray76:  gray('1');
+$color-white: $white;
+$color-black: $black;
+$color-gray82: gray('4');
+
+$company-button__color: $nhsuk-link-color;
+$company-button__hover__color: $nhsuk-link-hover-color;
+$exist-notification-message__color: $color-gray60;
+$links-container__color: $color-gray20;
+$popup-input__hover__color: $nhsuk-link-active-color;
+$tree-icon__color__base: $color-gray52;
+$tree-icon__color__dark: $color-gray34;
+$tree-icon__color__light: $color-gray76;
+$tree-leaf__background-color: $color-white;
+$tree-leaf-clicked__background-color: $nhsuk-link-color;
+$tree-leaf-clicked__color: $color-white;
+$tree-tooltip__color: $color-black;
+$nav-delimiter__border-color: $color-gray82;
+$color-green: $color-nhsuk-green;
+$tree-dnd-ok__color: #ff008000;
+$tree-dnd-error__color: #ffff0000;

@@ -1,0 +1,20 @@
+%u-close {
+  @include ms-icon('x');
+  @include size($u-close-size);
+
+  padding: $u-close-padding;
+
+  &:before {
+    @include size($u-close-size);
+   font-size: $u-close-size;
+  }
+
+  > span {
+    @extend %u-sr-only;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+

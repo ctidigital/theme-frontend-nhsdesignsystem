@@ -1,0 +1,69 @@
+%u-font-small {
+  font-size: $font-size-sm;
+}
+
+%nhs-h1 {
+  @include nhsuk-typography-responsive(48);
+
+  display: block;
+  font-weight: $nhsuk-font-bold;
+  margin-top: 0;
+
+  @include nhsuk-responsive-margin(7, 'bottom');
+}
+
+%nhs-h2 {
+  @include nhsuk-typography-responsive(32);
+
+  display: block;
+  font-weight: $nhsuk-font-bold;
+  margin-top: 0;
+
+  @include nhsuk-responsive-margin(4, 'bottom');
+}
+
+%nhs-h3 {
+  @include nhsuk-typography-responsive(24);
+
+  display: block;
+  font-weight: $nhsuk-font-bold;
+  margin-top: 0;
+
+  @include nhsuk-responsive-margin(4, 'bottom');
+}
+
+%nhs-h4 {
+  @include nhsuk-typography-responsive(22);
+
+  display: block;
+  font-weight: $nhsuk-font-bold;
+  margin-top: 0;
+
+  @include nhsuk-responsive-margin(4, 'bottom');
+}
+
+
+%nhs-h5 {
+  @include nhsuk-typography-responsive(19);
+
+  display: block;
+  font-weight: $nhsuk-font-bold;
+  margin-top: 0;
+
+  @include nhsuk-responsive-margin(4, 'bottom');
+}
+
+
+%nhs-h6 {
+  @include nhsuk-typography-responsive(19);
+
+  display: block;
+  font-weight: $nhsuk-font-bold;
+  margin-top: 0;
+
+  @include nhsuk-responsive-margin(4, 'bottom');
+}
+
+%u-font-xsmall {
+  font-size: $font-size-xs;
+}

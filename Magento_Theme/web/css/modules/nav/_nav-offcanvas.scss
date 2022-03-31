@@ -1,0 +1,80 @@
+@if $default-magento-nav {
+  .sections.nav-sections {
+    @extend %u-transform-fade-transition;
+    transform: translateX(-100%);
+    visibility: hidden;
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      transform: translateX(0%);
+      visibility: visible;
+    }
+
+    .navigation {
+      @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+        height: calc(100vh - #{$header-content-min-height-sm * 2});
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        transform: translateZ(0);
+
+        /**
+          * Fix mobile safari messing up VH units with auto-hiding navigation bar
+          * add a one item padding below to avoid this.
+         */
+        .ios-safari & {
+          height: calc(100vh - #{(($header-content-min-height-sm * 2) + 72px)});
+        }
+      }
+    }
+  }
+
+  .action.showcart,
+  .field.search > .label {
+    @extend %u-transform-fade-transition;
+    transform: translateY(0%);
+    opacity: 1;
+    transition-delay: 0.12s;
+
+  }
+
+  .action.showcart {
+    transition-delay: 0s;
+  }
+
+
+  .nav-open {
+    body {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .action.showcart,
+    .minisearch-toggle {
+      transform: translateY(-150%);
+      opacity: 0;
+      visibility: hidden;
+      transition-delay: 0s;
+    }
+
+    .action.showcart {
+      transition-delay: 0.12s;
+    }
+
+    .page-wrapper > *:not(.nav-sections):not(.page-header) {
+      visibility: hidden;
+    }
+
+    .sections.nav-sections {
+      transform: translateX(0);
+      visibility: visible;
+    }
+  }
+
+  .ios-safari.nav-open .page-header {
+    @include respond-to-down(xl) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+}

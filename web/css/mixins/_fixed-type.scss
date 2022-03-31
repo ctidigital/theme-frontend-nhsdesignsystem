@@ -1,0 +1,47 @@
+/// Adaptive Text Size helper to get the font properties (font-size & line-height) defined
+/// for a given breakpoint
+/// @param {String} $text-size - Name of the text-size
+/// @param {String} $breakpoint-name - Name of the breakpoint
+/// @requires {function} text-properties-for
+/// @example scss
+/// p {
+///   @include fixed-type('base'); // font-size: 16px; line-height: 26px;
+/// }
+@mixin fixed-type($text-size, $breakpoint-name: 'sm') {
+  $text-size-properties: text-properties-for($text-size, $breakpoint-name);
+  $has-line-height: map-has-key($text-size-properties, 'line-height');
+
+  @if $text-size-properties {
+
+    font-size: map-get($text-size-properties, 'font-size');
+    @if $has-line-height == true {
+      line-height: map-get($text-size-properties, 'line-height');
+    }
+  }
+}
+
+/// Responsive Text Size helper to get the font properties
+/// (font-size & line-height) defined. It will add media-queries automatically.
+/// @param {String} $text-size - Name of the text-size
+/// @param {String} $default-breakpoint - Default breakpoint to be used.
+/// @requires {function} text-properties-for
+/// @requires {mixin} text-size
+/// @requires {mixin} respond-to
+/// @example scss
+/// p {
+///   @include responsive-fixed-type('base'); // font-size: 16px; line-height: 26px;
+/// }
+@mixin responsive-fixed-type($text-size, $default-breakpoint: 'sm') {
+  @include fixed-type($text-size, $default-breakpoint);
+
+  $text-breakpoints-map: text-breakpoints-for($text-size);
+  $text-breakpoints-keys: map-keys($text-breakpoints-map);
+
+  @each $breakpoint-name in $text-breakpoints-keys {
+    @if $breakpoint-name != $default-breakpoint {
+      @include respond-to-up($breakpoint-name) {
+        @include fixed-type($text-size, $breakpoint-name);
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.payment-method-braintree {
+  .legend {
+    font-size: $font-size-base;
+
+    & + br {
+      display: none;
+    }
+  }
+}

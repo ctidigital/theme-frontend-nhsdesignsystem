@@ -1,0 +1,468 @@
+// NHS button style imports
+//
+@import "../vendor/nhsuk-frontend/packages/components/button/button";
+@import "../vendor/nhsuk-frontend/packages/components/action-link/action-link";
+@import "../vendor/nhsuk-frontend/packages/components/back-link/back-link";
+@import "../vendor/nhsuk-frontend/packages/components/skip-link/skip-link";
+
+%nhs-button {
+  @extend .nhsuk-button;
+}
+
+%nhs-button-secondary {
+  @extend .nhsuk-button;
+  @extend .nhsuk-button--secondary;
+}
+
+%nhs-button-reversed {
+  @extend .nhsuk-button;
+  @extend .nhsuk-button--reverse;
+}
+
+%nhs-buttin-disabled {
+    @extend .nhsuk-button;
+    @extend .nhsuk-button--disabled;
+}
+
+@if $button-styles-override == false {
+  .action.promo {
+    // @extend %button-promo;
+    @extend %nhs-button;
+  }
+
+  .action.promo,
+  .contact-index-index .form.contact .action.submit,
+  .checkout-onepage-success .checkout-success-block .action.primary,
+  .forget .action.primary,
+  .password.reset .action.primary,
+  .action.create,
+  .form-create-account .action.submit,
+  .modal-footer .action-save-address,
+  .block-wishlist .action.details,
+  .button.action.continue.primary,
+  .form-orders-search .action.search,
+  .action.login,
+  .action.add:not(#add-customer):not(#add-team),
+  .action-primary.action-accept,
+  .search-container .search-bar .action.primary,
+  .action.checkout,
+  .form-wishlist-items > .actions-toolbar .action.tocart,
+  .wishlist.share .action.primary,
+  .action.action-update,
+  .action.save,
+  .checkout-container .action.continue,
+  .action.action-gift,
+  .product-item-actions .action.tocart,
+  .form-addbysku .action.tocart,
+  .action.primary.tocart,
+  .block-cart-failed .action.tocart,
+  .form-orders-search .submit,
+  .action.primary.customize,
+  .review-form-actions .action.primary,
+  .form-address-edit [data-action="save-address"],
+  .extra-order-search .action.primary,
+  .admin__data-grid-outer-wrap ~ .actions .action.primary,
+  #add-new-role,
+  .product-item-inner .action.tocart {
+   // @extend %button-yell;
+    @extend %nhs-button;
+
+  }
+
+  .shipping-tracking-popup .action.close,
+  // .action.delete,
+  .action.apply,
+  .giftcard .action.check,
+  .action.multicheckout,
+  .action.move-to-single-skus,
+  .form-wishlist-items > .actions-toolbar .action.update,
+  .form-wishlist-items > .actions-toolbar .action.share,
+  .action.viewcart,
+  .action-secondary.action-dismiss,
+  .checkout-success-block .action.continue,
+  .checkout-success-block .action.print,
+  .action.action-cancel,
+  .modal-footer .action-hide-popup,
+  .block-cart-failed .action.clear,
+  .action.cancel,
+  .eupopup-button_1,
+  .amcform-next,
+  .amcform-prev,
+  .extra-order-search .primary > a,
+  .shipping-address-items .action-select-shipping-item,
+  .block-viewed-products-grid .action.primary.tocart,
+  .company-users-index .popup-tree.modal-popup .action:not(.primary):not(.secondary),
+  .checkout-success-block .action.primary {
+    @extend %nhs-button-secondary;
+  }
+
+  .action.change-password,
+  .action.track,
+  .action.more,
+  .shipping-information .action-edit,
+  .block-title .action.view,
+  .action.print,
+  .order-actions-toolbar .action.order,
+  .header.panel > .header.links a[href$="/customer/account/"],
+  .customer-welcome > .customer-name,
+  .action.edit:not(#edit-selected) {
+    @extend .nhsuk-action-link__link;
+    @include ms-icon('arrow-right-circle');
+
+    &:before {
+      @include print-color($nhsuk-print-text-color);
+      color: $color_nhsuk-green;
+      height: 36px;
+      left: -3px;
+      position: absolute;
+      top: -2px;
+      width: 36px;
+      font-size: 34px;
+      line-height: 36px;
+
+      @include mq($until: tablet) {
+        height: 24px;
+        left: -2px;
+        margin-bottom: 0;
+        top: 2px;
+        width: 24px;
+        font-size: 22px;
+        line-height: 24px;
+      }
+    }
+
+    span {
+      @extend .nhsuk-action-link__text;
+    }
+  }
+
+  .action.back {
+    @extend .nhsuk-back-link;
+
+    span {
+      @extend .nhsuk-back-link__link;
+      @include ms-icon('chevron-left');
+
+      &:before {
+        height: 24px;
+        left: -8px;
+        position: absolute;
+        top: -1px;
+        width: 24px;
+        font-size: 24px;
+      }
+    }
+  }
+
+
+  .action.reload,
+  .action.remind {
+    width: auto;
+    padding: 0;
+    color: $nhsuk-link-color;
+    text-decoration: underline;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+    /* action reload captcha on focus overrides */
+    .action.reload {
+        @include nhsuk-link-style-default();
+    }
+
+  .action.reload {
+    @include respond-to-down(smm, $breakpoints, true) {
+      margin-top: spacers(2);
+    }
+  }
+
+
+  .action.primary.signup {
+    display: inline-block;
+  }
+
+    .pagebuilder-button-primary,
+    .pagebuilder-button-secondary,
+    .pagebuilder-button-link {
+        @extend %u-bg-color-transition;
+
+        @include respond-to-down(smm) {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .pagebuilder-button-primary {
+        @extend %nhs-button;
+    }
+
+    .pagebuilder-button-secondary {
+        @extend %nhs-button-secondary;
+    }
+
+    .pagebuilder-button-link,
+    .requisition-list-title button {
+        @extend .nhsuk-action-link__link;
+        @include ms-icon('arrow-right-circle');
+        font-feature-settings: normal;
+        color: $nhsuk-link-color;
+
+        &:before {
+            @include print-color($nhsuk-print-text-color);
+            color: $color_nhsuk-green;
+            height: 36px;
+            left: -3px;
+            position: absolute;
+            top: -2px;
+            width: 36px;
+            font-size: 34px;
+            line-height: 36px;
+
+            @include mq($until: tablet) {
+                height: 24px;
+                left: -2px;
+                margin-bottom: 0;
+                top: 2px;
+                width: 24px;
+                font-size: 22px;
+                line-height: 24px;
+            }
+        }
+
+        &:focus {
+            &:before {
+                color: $nhsuk-focus-text-color;
+            }
+        }
+
+        &:hover {
+            color: $nhsuk-link-hover-color
+        }
+
+        &:visited {
+            color: $nhsuk-link-visited-color;
+        }
+
+        span {
+            @extend .nhsuk-action-link__text;
+        }
+    }
+}
+
+.requisition-view-buttons {
+    .action.primary {
+        @extend %nhs-button;
+    }
+    .action.secondary {
+        @extend %nhs-button-secondary;
+    }
+    .action.disabled {
+        @extend %nhs-buttin-disabled;
+    }
+}
+
+.requisition-view-links .action {
+    @extend %nhs-button;
+
+    .disabled {
+        @extend %nhs-buttin-disabled;
+    }
+}
+
+.modal-footer {
+    .action.primary {
+        @extend %nhs-button;
+    }
+    .action.secondary {
+        @extend %nhs-button-secondary;
+    }
+}
+
+.confirm-requisition-popup .modal-footer .secondary.disabled,
+.confirm-requisition-popup .modal-footer .secondary[disabled],
+fieldset[disabled] .confirm-requisition-popup .modal-footer .secondary {
+    @extend %nhs-buttin-disabled;
+}
+
+.title-actions-links .action.add {
+    @extend %nhs-button;
+}
+
+/* amasty form buttons */
+.amcform-submit {
+    @extend %nhs-button;
+ }
+
+.action.tocompare {
+  @include ms-icon('list');
+  text-decoration: none;
+
+  span {
+    text-decoration: underline;
+  }
+
+  &:before {
+    position: relative;
+    top: 2px;
+    text-decoration: none;
+    padding-right: spacers(3);
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+
+#filter-show-btn {
+  margin-left: spacers(2);
+}
+
+html [type=button] {
+  -webkit-appearance: none;
+}
+
+/* skip to link styles:focus */
+body .action.skip:focus {
+  > span {
+    @include nhsuk-focused-text();
+    padding: nhsuk-spacing(2);
+  }
+}
+
+/* header-links:focus */
+body .customer-welcome .customer-name:focus {
+  @include nhsuk-focused-text();
+  border-bottom: $nhsuk-focus-width solid $nhsuk-focus-text-color;
+}
+
+/* minicart focus */
+#btn-minicart-close {
+  box-sizing: content-box;
+}
+#btn-minicart-close:focus {
+  @include nhsuk-focused-button();
+}
+
+/* cat listing pages including search listing pages */
+body .requisition-list-action>.action.toggle:focus,
+body .requisition-list-action .items li.item:focus,
+body .filter-options-title:focus,
+.modal-popup .action-close:focus,
+body .filter-title:focus {
+  @include nhsuk-focused-button();
+}
+
+/* product page details tab focus on keyboard tab */
+body.am-tabs-view .product.data.items>.item.title:focus > .data.switch {
+  @include respond-to-up($tweakpoint-nav-toggle) {
+    @include nhsuk-focused-text();
+  }
+}
+
+/* account page buttons focus */
+body .block-requisition-management .requisition-toolbar-actions .remove-selected:focus {
+  @include nhsuk-focused-button();
+}
+
+.block-minicart .minicart-items .update-cart-item:focus,
+.action.nav-toggle:focus {
+  @include nhsuk-focused-button();
+}
+
+body {
+  .fotorama__fullscreen-icon:focus:after,
+  .fotorama__zoom-out:focus:after,
+  .fotorama__zoom-in:focus:after,
+  .fotorama__arr:focus:after,
+  .fotorama__stage__shaft:focus:after,
+  .fotorama__nav__frame--thumb:focus .fotorama__thumb:after,
+  .fotorama__nav__frame--dot:focus .fotorama__dot:after {
+    @include nhsuk-focused-input();
+  }
+}
+
+.requisition-list-action .item > button {
+  display: block;
+  text-align: left;
+  width: 100%;
+
+  &:focus {
+    @include nhsuk-focused-button();
+  }
+}
+
+.shipping-address-item[role=radio],
+.opc-estimated-wrapper .minicart-wrapper .showcart.action,
+.checkout-container .custom-slide .action-close,
+.requisition_list-requisition-view .requisition-grid .actions-toolbar >.action-delete,
+.filter-title strong {
+  &:focus {
+    @include nhsuk-focused-button();
+  }
+}
+.opc-progress-bar-item > button strong {
+  font-weight: normal;
+}
+
+.checkout-container .custom-slide .action-close {
+  box-sizing: content-box;
+}
+
+.opc-estimated-wrapper .minicart-wrapper .showcart.action:focus {
+  width: 43px;
+  height: 50px;
+}
+
+.opc-progress-bar-item > button:focus strong {
+  @include nhsuk-focused-text();
+}
+
+.opc-sidebar:focus {
+  @include nhsuk-focused-input();
+}
+
+
+.header.panel > .header.links a[href$="/customer/account/"],
+.customer-welcome > .customer-name {
+  font-size: 1rem;
+}
+.header.panel > .header.links a[href$="/customer/account/"] {
+  padding-left: 30px;
+
+  &:before {
+    font-size: 26px;
+    line-height: 29px;
+  }
+}
+
+.customer-welcome > .customer-name {
+  padding-left: 36px;
+
+  &:before {
+    content: map-get($ms-icons, 'user');
+    font-size: 23px;
+    top: -6px;
+    height: 100%;
+  }
+
+  &:not([aria-expanded]) {
+    &:before,
+    &:after {
+      opacity: 0;
+    }
+  }
+}
+
+.nav-sections a[href$="/customer/account/"] {
+  @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+    border-bottom: 1px solid $nhsuk-border-color;
+  }
+}

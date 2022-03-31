@@ -1,0 +1,107 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**  @var $block \Magento\Checkout\Block\Cart\Grid */
+?>
+<?php $mergedCells = ($this->helper('Magento\Tax\Helper\Data')->displayCartBothPrices() ? 2 : 1); ?>
+<?= $block->getChildHtml('form_before') ?>
+<form action="<?= /* @escapeNotVerified */ $block->getUrl('checkout/cart/updatePost') ?>"
+      method="post"
+      id="form-validate"
+      data-mage-init='{"validation":{}}'
+      class="form form-cart">
+    <?= $block->getBlockHtml('formkey') ?>
+    <div class="cart table-wrapper<?= $mergedCells == 2 ? ' detailed' : '' ?>">
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="cart-products-toolbar cart-products-toolbar-top toolbar" data-attribute="cart-products-toolbar-top"><?= $block->getPagerHtml() ?></div>
+        <?php endif ?>
+        <div class="totals-sticky">
+            <div class="totals-sticky-item">
+                <div class="totals-sticky-item__total">
+                    <div class="total-sticky-item-title">
+                        <?= /* @escapeNotVerified */ __('Order Total') ?>
+                    </div>
+                    <div class="total-sticky-item-value" data-sticky-total>
+
+                    </div>
+                </div>
+                <div class="totals-sticky-item__action">
+                    <button type="button" data-role="proceed-to-checkout" data-sticky-checkout title="Proceed to Checkout" class="action primary checkout">
+                        <span><?= /* @escapeNotVerified */ __('Proceed to Checkout') ?></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <table id="shopping-cart-table"
+               class="cart items data table"
+               data-mage-init='{"shoppingCart":{"emptyCartButton": "action.clear",
+               "updateCartActionContainer": "#update_cart_action_container"}}'>
+            <caption role="heading" aria-level="2" class="table-caption">
+                <?= /* @escapeNotVerified */ __('Shopping Cart Items') ?>
+            </caption>
+            <thead>
+            <tr>
+                <th class="col item" scope="col"><span><?= /* @escapeNotVerified */ __('Item') ?></span></th>
+                <th class="col price" scope="col"><span><?= /* @escapeNotVerified */ __('Price') ?></span></th>
+                <th class="col qty" scope="col"><span><?= /* @escapeNotVerified */ __('Qty') ?></span></th>
+                <th class="col subtotal" scope="col"><span><?= /* @escapeNotVerified */ __('Subtotal') ?></span></th>
+                <th class="col actions" scope="col"><span><?= /* @escapeNotVerified */ __('Actions') ?></span></th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($block->getItems() as $_item): ?>
+                    <?= $block->getItemHtml($_item) ?>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="cart-products-toolbar cart-products-toolbar-bottom toolbar" data-attribute="cart-products-toolbar-bottom"><?= $block->getPagerHtml() ?></div>
+        <?php endif ?>
+    </div>
+    <div class="cart main actions">
+        <?php if ($block->getContinueShoppingUrl()): ?>
+            <a class="action continue"
+               href="<?= $block->escapeUrl($block->getContinueShoppingUrl()) ?>"
+               title="<?= $block->escapeHtml(__('Continue Shopping')) ?>">
+                <span><?= /* @escapeNotVerified */ __('Continue Shopping') ?></span>
+            </a>
+        <?php endif; ?>
+        <button type="button"
+                name="update_cart_action"
+                data-cart-empty=""
+                value="empty_cart"
+                title="<?= $block->escapeHtml(__('Clear Shopping Cart')) ?>"
+                class="action clear" id="empty_cart_button">
+            <span><?= /* @escapeNotVerified */ __('Clear Shopping Cart') ?></span>
+        </button>
+        <button type="submit"
+                name="update_cart_action"
+                data-cart-item-update=""
+                value="update_qty"
+                title="<?= $block->escapeHtml(__('Update Shopping Cart')) ?>"
+                class="action update">
+            <span><?= /* @escapeNotVerified */ __('Update Shopping Cart') ?></span>
+        </button>
+        <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>
+    </div>
+</form>
+<?= $block->getChildHtml('checkout.cart.order.actions') ?>
+<?= $block->getChildHtml('shopping.cart.table.after') ?>
+
+<script type="text/x-magento-init">
+    {
+        "#shopping-cart-table": {
+            "basketItemAjaxUpdate": {
+                "qtySelector": ".cart.item input.qty",
+                "updatePanelSelector": "[data-basket-item-update]",
+                "updatePanelActionSelector": "[data-basket-item-update-action]",
+                "updatePanelCancelSelector": "[data-basket-item-update-cancel]"
+            }
+        }
+    }
+</script>

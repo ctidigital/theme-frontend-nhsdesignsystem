@@ -1,0 +1,68 @@
+@import "../vendor/nhsuk-frontend/packages/components/radios/radios";
+.field.radio,
+.amform-form .radio-group {
+  @extend .nhsuk-radios__item;
+}
+
+// Add margin bottom to last element as we dont have specific wrapper class
+// like nhs-design systems `nhsuk-radios`
+.fieldset > .field.radio:last-child {
+  @include nhsuk-responsive-margin(4, 'bottom');
+}
+
+.filter-options input[type="radio"],
+.radio input[type="radio"],
+input[type="radio"].radio,
+.amform-form .radio-group input[type="radio"]:not(.amform-rating) {
+  @extend .nhsuk-radios__input;
+
+  & + label {
+    @extend .nhsuk-radios__label;
+  }
+    //@include size($radio-size);
+    //position: relative;
+    //border-radius: 1000px;
+    //margin-right: $radio-spacing-x;
+    //border: 2px solid $input-border-color;
+    //background: $input-bg;
+    //padding: 0;
+    //text-align: center;
+    //line-height: normal;
+    //vertical-align: middle;
+    //-webkit-appearance: none;
+    //-moz-appearance: none;
+    //
+    //@include hover-focus {
+    //  border-color: $input-border-focus-color;
+    //}
+    //
+    //&[disabled] {
+    //  pointer-events: none;
+    //
+    //  & + label {
+    //    pointer-events: none;
+    //    color: $radio-not-active-color;
+    //  }
+    //}
+    //
+    //
+    //
+    //&:after {
+    //  @extend %u-transform-fade-transition;
+    //  @include absolute(50%, auto, auto, 50%);
+    //  @include size($radio-size * .6);
+    //  content: '';
+    //  background-color: $radio-active-color;
+    //  border-radius: 1000px;
+    //  opacity: 0;
+    //  transform: translateX(-50%) translateY(-50%);
+    //}
+    //
+    //&:checked {
+    //  padding: 0;
+    //
+    //  &:after {
+    //    opacity: 1;
+    //  }
+    //}
+}

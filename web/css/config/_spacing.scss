@@ -1,0 +1,30 @@
+// Spacing
+//
+// Control the default styling of most elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer: 1rem !default;
+$spacers: (
+        0: 0,
+        1: ($spacer * .25),
+        2: ($spacer * .5),
+        3: $spacer,
+        4: ($spacer * 1.5),
+        5: ($spacer * 3)
+) !default;
+
+$sizes: (
+        25: 25%,
+        50: 50%,
+        75: 75%,
+        100: 100%
+) !default;
+
+$section-spacing-unit:      map_get($spacers, 2) * 0.5 !default; // 1 unit = 4px
+$section-spacing-unit-lg:   map_get($spacers, 2) !default; // 1 unit = 8px
+$section-spacing-breakpoint: 'lg' !default;
+$section-spacing:           $section-spacing-unit * 12 !default; // 12 units
+$section-spacing-lg:        $section-spacing-unit-lg * 12 !default; // 12 units
+$section-title-spacing:     $section-spacing-unit * 6 !default; // 6 units
+$section-title-spacing-lg:  $section-spacing-unit-lg * 6 !default; // 6 units

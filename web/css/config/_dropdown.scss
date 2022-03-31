@@ -1,0 +1,24 @@
+$dropdown-direction: 'bottom' !default; // bottom (default), top, left, right
+$dropdown-split-color: $black !default;
+
+$dropdown-list-background: $white !default;
+$dropdown-list-border-color: $nhsuk-border-color !default;
+$dropdown-toggle-active-bg: $color_nhsuk-grey-4 !default;
+$dropdown-list-border: 1px solid $dropdown-list-border-color !default;
+$dropdown-list-padding: 0 !default;
+$dropdown-list-shadow: 0 3px 3px rgba($black, .15) !default;
+$dropdown-list-z: z('popover') !default;
+$dropdown-list-width: 100% !default;
+
+$dropdown-list-item-padding: .5em !default;
+$dropdown-list-item-hover-background: $color_nhsuk-grey-5 !default;
+
+$dropdown-arrow: 'chevron-down' !default;
+$dropdown-arrow-font: 'ms-icons' !default;
+$dropdown-arrow-size: 20px !default;
+$dropdown-arrow-font-size: 10px !default;
+$dropdown-arrow-padding: spacers(2) !default;
+
+$dropdown-toggle-selector: '.action.toggle' !default;
+$dropdown-split-selector: '.action.split' !default;
+$dropdown-options-selector: 'ul.dropdown' !default;

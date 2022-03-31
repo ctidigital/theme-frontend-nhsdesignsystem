@@ -1,0 +1,35 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+/**
+ * Product additional attributes template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Attributes
+ */
+?>
+<?php
+    $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+    $_product = $block->getProduct();
+?>
+<?php if ($_additional = $block->getAdditionalData()) :?>
+    <div class="additional-attributes-wrapper table-wrapper">
+        <h3 class="nhsuk-u-visually-hidden"><?= $block->escapeHtml(__('More Information')) ?></h3>
+        <dl class="nhsuk-summary-list">
+            <?php foreach ($_additional as $_data) :?>
+            <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                    <?= $block->escapeHtml($_data['label']) ?>
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                    <?= /* @noEscape */ $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?>
+                </dd>
+            </div>
+            <?php endforeach; ?>
+        </dl>
+    </div>
+<?php endif;?>

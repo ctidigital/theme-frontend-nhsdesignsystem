@@ -1,0 +1,16 @@
+
+// Icon Sizes
+
+
+// Icon alignment
+%ms-icon-align-right {
+  position: relative;
+
+  &:before {
+    @include absolute(0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}

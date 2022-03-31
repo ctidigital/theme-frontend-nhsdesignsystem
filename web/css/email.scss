@@ -1,0 +1,358 @@
+//  email.css
+//  The contents of this file will be included in a <style> tag in emails. Non-inline styles should be used for styles that can't be applied
+//  as inline CSS, such as media queries.
+//
+
+@import "vendor/nhsuk-frontend/packages/core/settings/all";
+@import "vendor/nhsuk-frontend/packages/core/tools/all";
+@import "vendor/nhsuk-frontend/packages/core/generic/box-sizing";
+@import "config/colors";
+@import "config/spacing";
+
+// Donot remove below border width as it is required by typography import
+$border-width: 1px;
+@import "config/typography";
+// typography import
+
+$button-shadow-size: 4px;
+
+@import url("email-fonts.css");
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-size-adjust: 100%;
+}
+body {
+    color: $black;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    font-size: 19px;
+}
+p {
+    line-height: 25px;
+    font-size: 19px;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+abbr[title] {
+    cursor: help;
+    border-bottom: 1px dotted $nhsuk-border-color;
+}
+b,
+strong {
+    font-weight: 700;
+}
+em,
+i {
+    font-style: italic;
+}
+mark {
+    background: $color_nhsuk-grey-5;
+    color: $black;
+}
+small,
+.small {
+    font-size: $font-size-sm;
+}
+hr {
+    border: 0;
+    border-top: 1px solid $nhsuk-border-color;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+sub,
+sup {
+    font-size: 71.42857143000001%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -.5em;
+}
+sub {
+    bottom: -.25em;
+}
+dfn {
+    font-style: italic;
+}
+h1 {
+    font-size: 32px;
+    font-size: 2rem;
+    line-height: 1.25;
+    display: block;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+h2 {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.33333;
+    display: block;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+h3 {
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    display: block;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+h4 {
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.55556;
+    display: block;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+h5 {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: block;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+h6 {
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: block;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small {
+    color: $black;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+}
+a,
+.alink {
+    color: $nhsuk-link-color;
+    text-decoration: underline;
+}
+a:visited,
+.alink:visited {
+    color: $nhsuk-link-visited-color;
+}
+a:hover,
+.alink:hover {
+    color: $nhsuk-link-hover-color;
+}
+a:active,
+.alink:active {
+    color: $nhsuk-link-active-color;
+}
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+ul > li,
+ol > li {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+ul > li:last-child,
+ol > li:last-child {
+    margin-bottom: 0;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+    margin-bottom: 0;
+}
+dl {
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+dt {
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+dd {
+    margin-bottom: 10px;
+    margin-top: 0;
+    margin-left: 0;
+}
+code,
+kbd,
+pre,
+samp {
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+code {
+    background: $color_nhsuk-grey-5;
+    color: $black;
+    padding: 2px 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+kbd {
+    background: $color_nhsuk-grey-5;
+    color: $black;
+    padding: 2px 4px;
+    font-size: 12px;
+}
+pre {
+    background: $color_nhsuk-grey-5;
+    border: 1px solid $nhsuk-border-color;
+    color: $black;
+    line-height: 1.42857143;
+    margin: 0 0 10px;
+    padding: 10px;
+    font-size: 12px;
+    display: block;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+    font-size: inherit;
+    padding: 0;
+    white-space: pre-wrap;
+}
+blockquote {
+    border-left: 0 solid $nhsuk-border-color;
+    margin: 0 0 20px 40px;
+    padding: 0;
+    color: $black;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.42857143;
+    font-size: 14px;
+}
+blockquote p:last-child,
+blockquote ul:last-child,
+blockquote ol:last-child {
+    margin-bottom: 0;
+}
+blockquote footer,
+blockquote small,
+blockquote .small {
+    color: $black;
+    line-height: 1.42857143;
+    font-size: 10px;
+    display: block;
+}
+blockquote footer:before,
+blockquote small:before,
+blockquote .small:before {
+    content: '\2014 \00A0';
+}
+blockquote cite {
+    font-style: normal;
+}
+blockquote:before,
+blockquote:after {
+    content: '';
+}
+q {
+    quotes: none;
+}
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+cite {
+    font-style: normal;
+}
+@media only screen and (max-width: 479px) {
+    .button .inner-wrapper {
+        width: 100% !important;
+    }
+    .button .inner-wrapper td a {
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 639px) {
+    html,
+    body {
+        background-color: $color_nhsuk-white;
+        width: 100% !important;
+    }
+    .main {
+        max-width: 100% !important;
+        min-width: 240px;
+        width: auto !important;
+    }
+}
+body,
+table,
+td,
+a {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+img {
+    -ms-interpolation-mode: bicubic;
+}
+table,
+td {
+    mso-table-lspace: 0pt;
+    mso-table-rspace: 0pt;
+}
+a:visited {
+    color: $nhsuk-link-visited-color !important;
+    text-decoration: underline !important;
+}
+a:hover {
+    color: $nhsuk-link-hover-color !important;
+    text-decoration: underline !important;
+}
+a:active {
+    color: $nhsuk-link-active-color !important;
+    text-decoration: underline !important;
+}
+.no-link a {
+    color: $black !important;
+    cursor: default !important;
+    text-decoration: none !important;
+}
+.button .inner-wrapper td:hover {
+    background-color: $nhsuk-button-color !important;
+}
+.button .inner-wrapper a:active,
+.button .inner-wrapper td:active {
+    background-color: $nhsuk-button-active-color !important;
+}
+.button a:active,
+.button a:hover,
+.button a:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    border: 1px solid $nhsuk-button-shadow-color;
+}

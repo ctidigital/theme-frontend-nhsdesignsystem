@@ -1,0 +1,9 @@
+/* Disabled it due to NHS style
+.catalog-category-view,
+.catalogsearch-result-index {
+  .page-title {
+    @extend %u-heading-style;
+    color: black;
+    margin-bottom: spacers(4) * 1.2;
+  }
+}*/

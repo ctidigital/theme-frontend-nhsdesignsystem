@@ -1,0 +1,13 @@
+.page-product-bundle {
+  .product-reviews-summary .action.add {
+    @include respond-to-down(lg) {
+      max-width: none;
+    }
+  }
+
+  .product-options-wrapper {
+    @include respond-to-down(lg) {
+      margin-bottom: 0;
+    }
+  }
+}

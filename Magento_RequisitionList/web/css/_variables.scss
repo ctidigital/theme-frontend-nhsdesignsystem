@@ -1,0 +1,51 @@
+//
+//  Variables
+//  _____________________________________________
+
+$color-gray40: #666;
+$primary__color__darker: darken((map-get($theme-colors, 'primary')), 13.5%);
+$color-blue1: #1979c3;
+$color-gray20: #333;
+$color-gray80: #ccc;
+$color-gray56: #8f8f8f;
+$color-gray-middle1: #e4e4e4;
+$color-gray91: #e8e8e8;
+$color-gray46: #757575;
+
+//  Colors
+$requisition-link__color: inherit;
+$requisition-label__color: inherit;
+$requisition-order__color: inherit;
+$requisition-print__color: inherit;
+$requisition-print__border-color: $border-color;
+$requisition-icons__color: inherit;
+$requisition-table__border-color: $border-color;
+
+$link__hover__color: inherit;
+
+$dropdown-list-item__hover: inherit;
+$color-sky-blue1: #68a8e0;
+
+//  Icons
+$icon-dropdown-list: '\e901';
+$icon-configure: '\e601';
+$icon-expand: '\e61c';
+
+//  Fonts
+$requisition-print__font-size-m: 1.4rem;
+
+//  Line heights
+$line-height__computed: floor($font-size-base * $line-height-base);
+
+// Focus
+$focus__box-shadow: 0 0 3px 1px $color-sky-blue1;
+
+//
+//  Indents
+//  ---------------------------------------------
+$indent__base: $line-height__computed; // 20px
+$indent__xl: $indent__base * 2; // 40px
+$indent__l: $indent__base * 1.5; // 30px
+$indent__m: $indent__base * 1.25; // 25px
+$indent__s: $indent__base / 2; // 10px
+$indent__xs: $indent__base / 4; // 5px

@@ -1,0 +1,32 @@
+$zindex: () !default;
+$zindex: map-merge((
+        'below': 1,
+        'above': 2,
+        'nav': 99,
+        'sticky': 1020,
+        'fixed-backdrop': 1025,
+        'fixed': 1030,
+        'modal-backdrop': 1040,
+        'modal': 1050,
+        'popover': 1060,
+        'tooltip': 1070,
+        'heavenly': 1090,
+        'underworld': -1
+), $zindex);
+
+/// Helper to manage `z-index`.
+/// Tries to fetch the z-index mapped to `$layer` in `$z-indexes` map.
+/// If found, returns it, else returns `null`.
+/// @requires {variable} z-indexes
+/// @param {String} $layer - Layer
+/// @throws No z-index found for `$layer`.
+/// @return {Number | Null}
+/// @example scss - Z function
+/// z('default') // 1
+@function z($layer) {
+  @if not map-has-key($zindex, $layer) {
+    @warn 'No z-index found for `#{$layer}`.';
+  }
+
+  @return map-get($zindex, $layer);
+}

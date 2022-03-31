@@ -1,0 +1,45 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Actions $block */
+?>
+<?php
+$children = $block->getChildNames();
+$item = $block->getItem();
+$wishlistItemId = $item->getWishlistItemId();
+$product = $item->getProduct();
+?>
+<?php if ($children): ?>
+    <div data-block="wishlist-<?= $block->escapeHtml($wishlistItemId) ?>" class="item-edit-panel">
+
+        <button tabindex="0" data-role="title" data-block-trigger="wishlist-<?= $block->escapeHtml($wishlistItemId) ?>" class="button-base button-shout item-edit-panel__toggle"><?= $block->escapeHtml(__('Edit')) ?></button>
+
+        <div style="display: none;"
+             class="item-edit-panel__content"
+             data-role="dropdownDialog"
+             data-mage-init='{"dropdownDialog":{
+                "appendTo":"[data-block=wishlist-<?= $block->escapeHtml($wishlistItemId) ?>]",
+                "triggerTarget":"[data-block-trigger=wishlist-<?= $block->escapeHtml($wishlistItemId) ?>]",
+                "timeout": "2000",
+                "closeOnMouseLeave": false,
+                "closeOnEscape": true,
+                "triggerClass":"active",
+                "parentClass":"active"}}'>
+            <div class="<?= $block->escapeHtmlAttr($block->getCssClass()) ?>">
+                <strong class="product-item-name">
+                    <span class="product-item-link">
+                        <?= $block->escapeHtml($product->getName()) ?>
+                    </span>
+                </strong>
+                <?php foreach ($children as $childName):?>
+                    <?= /* @noEscape */ $block->getLayout()->renderElement($childName, false) ?>
+                <?php endforeach;?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,140 @@
+/// Responsive Typographical size map.
+/// @prop {Map} base ['small':('font-size': 16px, 'line-height': 26px)] - Font size for small screens
+/// @see {function} text-breakpoints-for
+/// @type Map
+// (xs: 0, sm: 320px, md: 768px, lg: 992px, xl: 1200px, xxl: 1440px)
+$fixed-type-sizing: () !default;
+$fixed-type-sizing: map-merge((
+        'hero-title': (
+                'sm': (
+                        'font-size': 49px,
+                        'line-height': 48px
+                ),
+                'lg': (
+                        'font-size': 61px,
+                        'line-height': 64px
+                ),
+                'xxl': (
+                        'font-size': 76px,
+                        'line-height': 72px
+                )
+        ),
+        'h1': (
+                'sm': (
+                        'font-size': 25px,
+                        'line-height': 32px
+                ),
+                'md': (
+                        'font-size': 31px,
+                        'line-height': 32px
+                ),
+                'xl': (
+                        'font-size': 39px,
+                        'line-height': 40px
+                ),
+                'xxl': (
+                        'font-size': 49px,
+                        'line-height': 44px
+                )
+        ),
+        'h2': (
+                'sm': (
+                        'font-size': 20px,
+                        'line-height': 24px
+                ),
+                'md': (
+                        'font-size': 25px,
+                        'line-height': 32px
+                ),
+                'xl': (
+                        'font-size': 31px,
+                        'line-height': 32px
+                ),
+                'xxl': (
+                        'font-size': 39px,
+                        'line-height': 40px
+                )
+        ),
+        'h3': (
+                'sm': (
+                        'font-size': 16px,
+                        'line-height': 16px
+                ),
+                'md': (
+                        'font-size': 20px,
+                        'line-height': 24px
+                ),
+                'xl': (
+                        'font-size': 25px,
+                        'line-height': 32px
+                ),
+                'xxl': (
+                        'font-size': 31px,
+                        'line-height': 32px
+                )
+        ),
+        'h4': (
+                'sm': (
+                        'font-size': 13px,
+                        'line-height': 16px
+                ),
+                'md': (
+                        'font-size': 16px,
+                        'line-height': 16px
+                ),
+                'xl': (
+                        'font-size': 20px,
+                        'line-height': 24px
+                ),
+                'xxl': (
+                        'font-size': 25px,
+                        'line-height': 32px
+                )
+        ),
+        'h5': (
+                'sm': (
+                        'font-size': 10px,
+                        'line-height': 16px
+                ),
+                'md': (
+                        'font-size': 13px,
+                        'line-height': 16px
+                ),
+                'xl': (
+                        'font-size': 16px,
+                        'line-height': 16px
+                ),
+                'xxl': (
+                        'font-size': 20px,
+                        'line-height': 24px
+                )
+        ),
+        'h6': (
+                'sm': (
+                        'font-size': 10px,
+                        'line-height': 16px
+                ),
+                'xl': (
+                        'font-size': 13px,
+                        'line-height': 16px
+                ),
+                'xxl': (
+                        'font-size': 16px,
+                        'line-height': 16px
+                )
+        ),
+        'body-copy': (
+                'sm': (
+                        'font-size': 16px,
+                        'line-height': 20px
+                ),
+                'xl': (
+                        'font-size': 20px,
+                        'line-height': 28px
+                ),
+                'xxl': (
+                        'font-size': 24px,
+                        'line-height': 32px
+                )
+        ),
+), $fixed-type-sizing);

@@ -1,0 +1,29 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Default appearance styles
+//  _____________________________________________
+
+
+.pagebuilder-column {
+    box-sizing: border-box;
+
+    @include respond-to-up(md) {
+        padding: 0 spacers(3);
+    }
+}
+
+//
+//  Mobile (style-m.css)
+//  _____________________________________________
+
+@include respond-to-down(md, $breakpoints, true) {
+    .pagebuilder-column {
+        background-attachment: scroll !important;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}

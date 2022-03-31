@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="toolbar-amount-aria" destination="footer-container"/>
+        <move element="page.sidebar.container" destination="columns" before="main"/>
+        <referenceBlock name="category.image" remove="true"/>
+
+        <referenceContainer name="toolbar-amount-aria">
+            <block class="Magento\Framework\View\Element\Template" name="toolbar.amount.aria" template="Magento_Catalog::toolbar-amount-aria.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="columns.top">
+            <block class="Magento\Catalog\Block\Category\View" name="help.contact.cat.landing" template="Magento_Catalog::category/help-block-landing.phtml">
+                <block class="Magento\Cms\Block\Block" name="help.contact.block.cat.landing" before="-" >
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">account-and-customer-service-help-block</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="main">
+            <block class="Magento\Cms\Block\Block" name="help.contact.block.cat.listing" before="-" >
+                <arguments>
+                    <argument name="block_id" xsi:type="string">account-and-customer-service-help-block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove banner -->
+        <referenceBlock name="banner.data" remove="true"/>
+
+        <!-- Remove breadcrumbs -->
+        <referenceBlock name="breadcrumbs" remove="true"/>
+
+        <!-- Remove Auth popup -->
+        <referenceBlock name="authentication-popup" remove="true"/>
+
+        <!-- Remove footer newsletter -->
+        <referenceBlock name="form.subscribe" remove="true"/>
+
+        <!-- Remove Header panel -->
+        <referenceContainer name="header.panel" remove="true"/>
+
+        <!-- Remove header search -->
+        <referenceContainer name="top.search" remove="true"/>
+
+        <!-- Remove Navigations -->
+        <referenceBlock name="navigation.sections" remove="true"/>
+
+        <!-- Remove Minicart -->
+        <referenceBlock name="minicart" remove="true"/>
+
+        <!-- Remove Footer -->
+        <referenceBlock name="footer_links_block" remove="true"/>
+        <referenceBlock name="footer_accepted_payements_and_confidences_block" remove="true"/>
+
+        <move element="skip_to_content" destination="header.container" before="-"/>
+    </body>
+</page>

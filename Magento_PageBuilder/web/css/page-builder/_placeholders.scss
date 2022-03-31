@@ -1,0 +1,25 @@
+%pagebuilder-icon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: '#{$icons-pagebuilder__font-name}' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: none;
+    text-rendering: auto;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+
+    /* Better Font Rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^='pagebuilder-icon-'],
+[class*=' pagebuilder-icon-'] {
+    &:before {
+        @extend %pagebuilder-icon;
+    }
+}

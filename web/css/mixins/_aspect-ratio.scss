@@ -1,0 +1,25 @@
+/// Aspect Ratio Mixin
+/// To Maintain Aspect ratio to fit content
+///
+/// Usage: @include aspect-ratio(16,9);
+/// ...or by simple ratio
+/// @include aspect-ratio(1.777777778);
+///
+/// Limitation: If the element with the aspect ratio applied has display:flex;, it won’t work in FF.
+/// Fix: Use flex in new div rather than on the aspect ratio mixin itself.
+///
+@mixin aspect-ratio($ratio-or-width, $height: null) {
+  $padding: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
+
+  &:before {
+    content:'';
+    float: left;
+    padding-bottom: $padding;
+  }
+
+  &:after  {
+    content:'';
+    display: table;
+    clear: both;
+  }
+}

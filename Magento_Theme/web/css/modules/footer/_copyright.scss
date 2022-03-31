@@ -1,0 +1,13 @@
+.copyright {
+  display: block;
+  color: $footer-links-color;
+
+  @include respond-to-up($footer-accordion-breakpoint) {
+    padding-bottom: $copyright-padding;
+  }
+
+  > span {
+    display: inline-block;
+    padding: spacers(2);
+  }
+}

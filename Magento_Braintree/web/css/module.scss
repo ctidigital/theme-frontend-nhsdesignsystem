@@ -1,0 +1,50 @@
+//------------------------------------//
+//  Theme Settings                   //
+//-----------------------------------//
+// Do not remove this.
+@import "../../../web/css/settings";
+//-----------------------------------//
+
+$braintree-label-font-size: 16px !default;
+$braintree-label-font-weight: 800 !default;
+$braintree-label-line-height: 1 !default;
+$braintree-label-color: rgba(0,0,0,.9) !default;
+$braintree-label-text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff !default;
+
+$braintree-input-bg: $input-bg !default;
+$braintree-input-bg-active: $input-bg-active !default;
+$braintree-input-color: $input-color !default;
+$braintree-input-color-focus: $input-color-focus !default;
+$braintree-input-line-height: 1.5 !default;
+$braintree-input-padding: 12px 24px !default;
+$braintree-input-font-size: 16px !default;
+$braintree-input-border: $input-border-width solid $input-border-color !default;
+$braintree-input-border-radius: $input-border-radius !default;
+$braintree-input-focus-border-color: $input-border-focus-highlight !default;
+$braintree-input-focus-border-width: $input-border-focus-highlight-width !default;
+$braintree-input-height: 50px !default;
+$braintree-input-negative-color: theme-color('negative') !default;
+$braintree-input-positive-color: theme-color('positive') !default;
+$braintree-input-negative-font-size: 12px !default;
+
+$braintree-credit-card-active-icon: 'check' !default;
+$braintree-credit-card-active-color: $white !default;
+$braintree-credit-card-active-bg: theme-color('positive') !default;
+$braintree-credit-card-type-spacing-x: spacers(2) !default;
+$braintree-card-information-block-bg: $white !default;
+$braintree-card-information-block-padding: spacers(1) spacers(2) !default;
+
+$braintree-date-fields-width: 100px !default;
+$braintree-date-fields-spacing-x: spacers(2) !default;
+
+$braintree-cvv-field-width: 100px !default;
+
+@import "modules/hosted-control";
+@import "modules/credit-card-types";
+@import "modules/payment-legend";
+@import "modules/hosted-date-wrap";
+@import "modules/hosted-error";
+@import "modules/field-label";
+@import "modules/field-tooltip";
+@import "modules/cvv";
+@import "modules/paypal";

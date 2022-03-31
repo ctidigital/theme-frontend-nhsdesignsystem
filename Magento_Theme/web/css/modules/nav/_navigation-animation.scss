@@ -1,0 +1,25 @@
+@if $default-magento-nav {
+  // Mega-menu Dropdown animations
+  .navigation .submenu.level0 {
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      top: $navigation-mega-menu-item-height !important;
+      animation: navigation-animation 0.45s $transition-timing-ease-in-out-quad;
+      animation-fill-mode: both;
+      transform-origin: 0% 0%;
+      backface-visibility: hidden;
+      will-change: transform;
+    }
+  }
+
+  @keyframes navigation-animation {
+    0%, 20% {
+      opacity: 0;
+      transform: scaleY(0.95);
+    }
+
+    75%, 100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+}

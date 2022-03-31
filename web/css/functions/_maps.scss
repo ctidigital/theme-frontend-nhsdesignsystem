@@ -1,0 +1,24 @@
+// Retrieve color Sass maps
+@function color($key: 'blue') {
+  @return map-get($colors, $key);
+}
+
+@function theme-color($key: 'primary') {
+  @return map-get($theme-colors, $key);
+}
+
+@function gray($key: '1') {
+  @return map-get($grays, $key);
+}
+
+@function icon-size($key: 's') {
+  @return if(map-has-key($icon-sizes, $key), map-get($icon-sizes, $key), $key);
+}
+
+@function spacers($key: 1) {
+  @return map-get($spacers, $key);
+}
+
+@function sizes($key: 100) {
+  @return map-get($sizes, $key);
+}

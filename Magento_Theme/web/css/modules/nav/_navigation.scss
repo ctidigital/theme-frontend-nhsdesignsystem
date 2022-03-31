@@ -1,0 +1,365 @@
+@if $default-magento-nav {
+  /**
+   * Site navigation
+   */
+  // Menu Tab items
+  %nav-item {
+    border-bottom: $navigation-item-border-mobile;
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      border-bottom: 0 none;
+    }
+
+    a {
+      @extend %u-bg-color-transition;
+      display: flex;
+      width: 100%;
+      padding: $navigation-item-spacing-mobile;
+      text-decoration: none;
+      color: $navigation-item-color;
+      background: $navigation-item-bg;
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        background: $navigation-item-bg-desktop;
+        color: $navigation-item-color-desktop;
+        padding: $navigation-item-spacing-desktop;
+      }
+    }
+
+    > a {
+      position: relative;
+
+      &:active,
+      &:focus {
+        background-color: $nhsuk-focus-color;
+        border-bottom: $nhsuk-focus-width solid $nhsuk-focus-text-color;
+        box-shadow: none;
+        color: $nhsuk-focus-text-color;
+        outline: $nhsuk-focus-width solid transparent;
+        outline-offset: $nhsuk-focus-width;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $nhsuk-focus-color;
+          color: $nhsuk-focus-text-color;
+        }
+
+        &:visited {
+          background-color: $nhsuk-focus-color;
+          color: $nhsuk-focus-text-color;
+        }
+      }
+
+      &:hover {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          background-color: $navigation-mega-menu-hover-bg;
+          color: $navigation-mega-menu-hover-color;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &.level0 {
+      > a {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          height: $navigation-mega-menu-item-height;
+        }
+      }
+    }
+
+    &.level1 {
+      a {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          padding: $navigation-mega-menu-heading-padding;
+        }
+      }
+    }
+
+    &.level2 {
+      a {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          padding: $navigation-mega-menu-item-padding;
+        }
+      }
+    }
+  }
+
+  .navigation {
+    width: 100%;
+    overflow: hidden;
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      overflow: visible;
+    }
+
+    ul {
+      @extend %u-list-unstyled;
+    }
+
+    li[class^="level"],
+    li[class*=" level"] {
+      @extend %nav-item;
+
+      .submenu a {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          background: $navigation-mega-menu-bg;
+          color: $navigation-mega-menu-color;
+        }
+      }
+    }
+
+    .submenu {
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        display: none;
+      }
+
+      &.level1,
+      &.level0 {
+        // Override JS Styles set by jQuery UI widget
+        position: absolute !important;
+
+        @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+          // Override JS Styles set by jQuery UI widget
+          top: 0 !important;
+          left: 100% !important;
+          width: 100%;
+          flex-direction: column;
+        }
+      }
+
+      &.level0 {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          left: 0 !important;
+          width: 100%;
+          background: $navigation-mega-menu-bg;
+          color: $navigation-mega-menu-color;
+          box-shadow: $shadow-tooltip;
+          padding: $navigation-mega-menu-padding;
+        }
+
+        > li.parent {
+          @include respond-to-up($tweakpoint-nav-toggle) {
+            min-width: $navigation-mega-menu-col-width;
+          }
+        }
+      }
+
+      &.level1 {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          display: block !important;
+          position: relative !important;
+          left: 0 !important;
+          top: 0 !important;
+        }
+      }
+    }
+
+    a.ui-state-active + .submenu.level0 { // a.ui-state-focus + .submenu.level0
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        display: flex !important;
+      }
+
+      .all-category {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          transform: translateY(0%);
+          opacity: 1;
+        }
+      }
+    }
+
+    .ui-menu-icon.ui-icon {
+      @include ms-icon($navigation-item-icon-forwards);
+      @include absolute(0, $navigation-item-spacing-mobile);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        display: none;
+      }
+    }
+
+    // All category link
+    .all-category > a {
+      @include ms-icon($navigation-item-icon-forwards);
+
+      &:before {
+        order: 2;
+        margin-left: spacers(3);
+      }
+    }
+
+    .category-back-link a,
+    .all-category a {
+      font-family: $font-family-heading;
+      font-weight: bold;
+    }
+
+    .all-category {
+      @extend %u-transform-fade-transition;
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        align-self: flex-end;
+        margin-left: auto;
+        transition-delay: 0.23s;
+        transform: translateY(20%);
+        opacity: 0;
+      }
+
+      a {
+        @include respond-to-up($tweakpoint-nav-toggle) {
+          @include size($navigation-mega-menu-shop-all-size);
+          margin-bottom: 0;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          border: 1px solid $white;
+        }
+
+        &:hover,
+        &:focus {
+          background-color: $navigation-mega-menu-color !important;
+          color: $navigation-mega-menu-bg !important;
+        }
+      }
+    }
+
+    // Category Back Link
+    .category-back-link {
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        display: none;
+      }
+
+      > a {
+        @include ms-icon($navigation-item-icon-backwards);
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        color: $navigation-item-selected-color !important;
+        background: $navigation-item-selected-bg !important;
+
+        &:before {
+          @extend %u-flex-row-xcenter-ycenter;
+          @include absolute(0);
+          left: $navigation-item-spacing-mobile;
+          height: 100%;
+        }
+      }
+    }
+
+    // Drilldown states/animation
+    > ul {
+      @extend %u-transform-transition;
+      margin-bottom: 0;
+      transition-delay: 0.15s;
+      transform: translateX(0);
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        background: $navigation-item-bg-desktop;
+      }
+    }
+
+    &.show-submenu-1 > .ui-menu {
+      transform: translateX(-100%);
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        transform: translateX(0%);
+      }
+
+      .submenu .category-back-link > a:before {
+        overflow: hidden;
+        animation: icon-swap-slide-x-r $transition-duration $transition-timing-ease-in-out-quad 0.4s;
+        animation-fill-mode: both;
+      }
+
+      .submenu .ui-menu-icon {
+        overflow: hidden;
+        animation: icon-swap-slide-x $transition-duration $transition-timing-ease-in-out-quad 0.4s;
+        animation-fill-mode: both;
+      }
+    }
+
+    &.show-submenu-2 > .ui-menu {
+      transform: translateX(-200%);
+    }
+
+    &.show-submenu-3 > .ui-menu {
+      transform: translateX(-300%);
+    }
+
+    li.level-top {
+       a {
+        &.ui-state-active {
+          color: $navigation-item-selected-color !important;
+          background: $navigation-item-selected-bg;
+        }
+
+        &.ui-state-active,
+        &.ui-state-focus {
+          background-color: $nhsuk-focus-color;
+          border-bottom: $nhsuk-focus-width solid $nhsuk-focus-text-color;
+          box-shadow: none;
+          color: $nhsuk-focus-text-color !important;
+          outline: $nhsuk-focus-width solid transparent;
+          outline-offset: $nhsuk-focus-width;
+          text-decoration: none;
+        }
+      }
+    }
+
+    li.level1.parent > a {
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        font-family: $font-family-heading;
+        font-weight: bold;
+        letter-spacing: 0.2em;
+        font-size: $navigation-mega-menu-font-size;
+      }
+    }
+  }
+
+
+  // Account Tab Links
+  .nav-sections-item-content .header.links {
+    display: block;
+
+    > li {
+      border-bottom: $navigation-item-border-mobile;
+      &:hover {
+        background: transparent;
+      }
+
+      &:first-child {
+        border-bottom: 0 none;
+      }
+    }
+
+    a {
+      display: block;
+      padding: $navigation-item-spacing-mobile;
+      color: $navigation-item-color;
+      text-decoration: none;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .nav-sections-item-content > .header.links:first-of-type:not(:last-child) {
+    li > a {
+      padding: 1.5rem 2rem;
+    }
+  }
+  .navigation > .ui-menu {
+    &:focus,
+    &:active {
+      outline: 0 none;
+    }
+  }
+}
+
+

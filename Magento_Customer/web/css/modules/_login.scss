@@ -1,0 +1,229 @@
+/**
+ * Customer login page/form styles
+ */
+@if $hide-login-page-title {
+  .customer-account-login .page-title {
+    @extend %u-sr-only;
+  }
+}
+
+.block-authentication,
+.login-container {
+  @extend %customer-account-layout;
+
+  .block-title {
+    @extend %nhs-h4;
+  }
+  .customer-account-login-block h2 {
+    @extend %nhs-h3;
+  }
+  .block-customer-login {
+    @extend %customer-account-layout-col1;
+  }
+
+  .block-new-customer {
+    @extend %customer-account-layout-col2;
+  }
+
+  .block-new-customer,
+  .block-customer-login {
+    .block-content,
+    .block-title {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .block-customer-login {
+    .block-content,
+    .block-title {
+      width: $login-form-width;
+    }
+  }
+
+  .block-new-customer {
+    .block-content {
+      max-width: $new-customers-width;
+
+      > p {
+        @include fluid-type('h5');
+        color: $text-muted;
+        margin-top: spacers(2);
+        margin-bottom: spacers(4);
+      }
+    }
+
+    .block-title {
+      position: relative;
+      margin-bottom: spacers(3);
+
+      @if $new-customers-brand-logo {
+        &:before {
+          display: block;
+          position: relative;
+          height: 0;
+          width: 50%;
+          padding-top: 13.65%;
+          content: '';
+          background: url(#{$new-customers-brand-logo}) no-repeat center center;
+          background-size: contain;
+          margin: 0 auto $headings-margin-bottom auto;
+        }
+      }
+    }
+  }
+}
+
+.block-authentication {
+  flex-direction: column-reverse;
+
+  @include respond-to-up(lg) {
+    flex-direction: row-reverse;
+  }
+
+  .block-title {
+    margin-bottom: spacers(3) * 1.5;
+  }
+
+  .block-content {
+    > ul {
+      padding: 0;
+      margin: spacers(3);
+
+      > li {
+        @include ms-icon('check', 12px, after);
+
+        &:after {
+          display: inline-block;
+          position: relative;
+          top: 1px;
+          padding-left: spacers(2);
+        }
+      }
+
+      > li:not(:last-child) {
+        margin-bottom: spacers(2);
+      }
+    }
+  }
+
+  .action.action-login {
+    @include respond-to-down(md, $breakpoints, true) {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.form-create-account,
+.form-login {
+  > .login > .note {
+    @include fluid-type('h5');
+    color: $text-muted;
+  }
+
+  .actions-toolbar {
+    @include respond-to-up(md) {
+      justify-content: flex-start;
+    }
+
+    .secondary {
+      @include respond-to-up(md) {
+        flex: none;
+        text-align: left;
+      }
+    }
+  }
+
+  .remind {
+    display: inline-block;
+    font-size: 80%;
+
+    @include respond-to-up(md) {
+      margin-left: 30px;
+      font-size: 100%;
+    }
+  }
+
+  .block-authentication & {
+    .secondary > .action {
+      @include respond-to-down(md, $breakpoints, true) {
+        display: inline-block;
+        box-sizing: border-box;
+        font-size: 80%;
+      }
+    }
+  }
+
+  .secondary:not(.action-login) {
+    width: auto;
+
+    .action {
+      @include respond-to-down(md, $breakpoints, true) {
+        margin: 0 0 0 auto;
+      }
+    }
+  }
+}
+
+.form.reset {
+  width: 100%;
+  max-width: $login-form-width;
+}
+
+.customer-account-createpassword {
+  .page-title {
+    margin-bottom: spacers(3);
+  }
+}
+
+
+.login-container,
+.customer-account-layout {
+  justify-content: center;
+
+  .block-customer-login,
+  .customer-account-layout-col1 {
+    width: 100%;
+
+  }
+
+  .customer-account-layout-col1 {
+    .page-title-wrapper,
+    .form.password {
+      max-width: 470px;
+    }
+  }
+}
+
+.customer-account-login,
+.customer-account-forgotpassword,
+.customer-account-createpassword {
+ .page-wrapper .page-header>.header.content,
+ .page-wrapper .page-header>.panel.wrapper>.panel.header,
+ .page-wrapper .page-main {
+   max-width: $nhsuk-page-width;
+ }
+
+  .action.nav-toggle {
+    display: none;
+  }
+ .form-login .actions-toolbar {
+     align-items: center;
+
+     @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+         flex-wrap: nowrap;
+         flex-direction: row;
+         justify-content: space-between;
+     }
+
+     > .primary {
+         width: auto;
+         margin-bottom: 0;
+     }
+ }
+
+  .action.remind {
+    margin-bottom: 28px !important;
+  }
+}

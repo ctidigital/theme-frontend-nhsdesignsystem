@@ -1,0 +1,105 @@
+// Empty Pages
+// and Min-height pages
+%container-min-height {
+  min-height: calc(100vh - #{($header-content-min-height-sm + $nav-section-height + $footer-height-sm)});
+
+  @include respond-to-up($tweakpoint-nav-toggle) {
+    min-height: calc(100vh - #{($header-content-min-height-md + $nav-section-height + $footer-height-md)});
+  }
+}
+.cart-empty,
+.page-main {
+  @extend %container-min-height;
+}
+
+
+.cart-empty {
+  @extend %u-flex-col-xcenter-ycenter;
+  padding: $container-padding;
+  height: 100%;
+
+  &.std {
+    text-align: center;
+
+    @include respond-to-up(lg) {
+      text-align: left;
+    }
+
+    p {
+      font-size: $font-size-base * 1.2;
+    }
+
+    a {
+      font-weight: $font-weight-bold;
+      text-decoration: underline;
+    }
+  }
+
+  .icon-cart-big {
+    @include ms-icon('shopping-cart', 64px);
+    animation: u-animation-shake $transition-duration $transition-timing-ease-in;
+    animation-fill-mode: both;
+    animation-delay: 1.5s;
+    color: $text-muted;
+    margin-bottom: $paragraph-margin-bottom;
+
+    @include respond-to-up(lg) {
+      @include ms-icon('shopping-cart', 128px);
+    }
+  }
+}
+.customer-account-logoutsuccess,
+.cms-no-route {
+  .sidebar-container {
+    display: none !important;
+  }
+
+  .page-title-wrapper {
+    text-align: center;
+  }
+
+  .page-main {
+    @extend %u-flex-col-xcenter-ycenter;
+    // padding: $container-padding;
+    height: 100%;
+    min-height: 60vh;
+
+
+    > * {
+      max-width: 645px;
+      width: 100%;
+    }
+  }
+}
+
+.customer-account-logoutsuccess {
+  .column.main > p {
+    text-align: center;
+
+    &:after {
+      @include loader-svg;
+      content: '';
+      display: block;
+      width: $loader-size * 0.4;
+      height: $loader-size * 0.4;
+      background-position: center center;
+      margin: spacers(3) auto spacers(3) auto;
+      background-size: 100%;
+      background-repeat: no-repeat;
+
+      @include respond-to-up(xl) {
+        width: $loader-size * 0.6;
+        height: $loader-size * 0.6;
+        margin-top: 40px;
+      }
+    }
+  }
+
+}
+
+.cms-no-route {
+  h3 {
+    text-align: center;
+    margin-bottom: spacers(4);
+  }
+}

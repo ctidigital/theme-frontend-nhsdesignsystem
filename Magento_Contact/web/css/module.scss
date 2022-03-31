@@ -1,0 +1,31 @@
+//------------------------------------//
+//  Theme Settings                   //
+//-----------------------------------//
+// Do not remove this.
+@import "../../../web/css/settings";
+//-----------------------------------//
+
+.contact-index-index {
+
+  .page-title {
+    text-align: center;
+    margin-top: spacers(4);
+  }
+
+  .form.contact {
+    @include align-center();
+    max-width: $form-container-max-width;
+    margin-bottom: spacers(4);
+  }
+
+  .legend {
+    @extend %u-sr-only;
+  }
+}
+
+// Fix to override the /vendor/magento/module-theme-sample-data/fixtures/styles.css
+// of sample data which gets copied over to /pub/media/styles.css
+.column:not(.sidebar-main) .form.contact, .column:not(.sidebar-additional) .form.contact {
+  width: 100% !important;
+  float: none !important;
+}

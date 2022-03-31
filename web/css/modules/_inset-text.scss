@@ -1,0 +1,30 @@
+@import "../vendor/nhsuk-frontend/packages/components/inset-text/inset-text";
+
+.supply-chain-message {
+    @extend .nhsuk-inset-text;
+}
+
+
+.nhsuk-inset-text--small {
+    @include nhsuk-responsive-margin(3, 'bottom');
+    @include nhsuk-responsive-margin(3, 'top');
+    @include nhsuk-responsive-padding(2);
+
+    border-left-width: $nhsuk-border-width-inset-text * 0.5;
+    background-color: $white;
+
+    p {
+        font-size: $font-size-sm;
+    }
+}
+
+.toolbar-products ~ dl.block {
+    @extend .nhsuk-inset-text;
+
+    dt,
+    dd {
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 0;
+    }
+}

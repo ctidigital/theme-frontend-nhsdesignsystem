@@ -1,0 +1,25 @@
+.product-add-form .product-options-wrapper {
+  border: 1px solid rgba($border-color, 0.5);
+  padding: $product-view-info-row-spacing-y * 0.5 spacers(3);
+
+  .swatch-attribute-options,
+  .swatch-opt {
+    margin: 0;
+  }
+
+  .swatch-attribute {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    margin-bottom: $product-view-info-row-spacing-y * 0.5;
+  }
+
+  .swatch-opt > .swatch-attribute:last-child {
+    margin-bottom: 0;
+  }
+
+  .swatch-option {
+    margin-bottom: 0;
+    height: 30px;
+  }
+}

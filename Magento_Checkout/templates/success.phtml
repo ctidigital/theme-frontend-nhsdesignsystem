@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+$messageHelper = $this->helper(\CtiDigital\OrderLocking\Helper\Data::class);
+$lockSuccessMessage = $messageHelper->getOrderConfirmationMessage();
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<div class="checkout-success">
+    <?php if ($block->getOrderId()):?>
+        <p>
+            <?= /* @escapeNotVerified */ __('We\'ll email you shortly with your order confirmation details and all your personal tracking info. Your order reference number is:') ?><br/>
+            <?php if ($block->getCanViewOrder()) :?>
+                <a href="<?php echo $block->escapeHtml($block->getViewOrderUrl()); ?>" class="order-number">
+                    <?php echo $block->escapeHtml($block->getOrderId()); ?>
+                    <span class="nhsuk-u-visually-hidden"><?= /* @escapeNotVerified */ __('View order details') ?></span>
+                </a>
+            <?php else :?>
+                <span class="order-number">
+                    <?php echo $block->escapeHtml($block->getOrderId()); ?>
+                </span>
+            <?php endif;?>
+        </p>
+    <?php endif;?>
+
+    <?php if ($lockSuccessMessage) : ?>
+        <div class="nhsuk-warning-callout">
+            <h3 class="nhsuk-warning-callout__label">
+                <?= $block->escapeHtml(__('Important')) ?><span class="nhsuk-u-visually-hidden">:</span>
+            </h3>
+            <p><?= $lockSuccessMessage; ?></p>
+        </div>
+    <?php endif; ?>
+
+    <div class="actions-toolbar">
+        <div class="primary">
+            <a class="action continue" href="<?= /* @escapeNotVerified */ $block->getContinueUrl() ?>"><span><?= /* @escapeNotVerified */ __('Continue Shopping') ?></span></a>
+        </div>
+        <div class="secondary">
+            <?= $block->getChildHtml('checkout.success.print.button') ?>
+        </div>
+    </div>
+    <?= $block->getAdditionalInfoHtml() ?>
+</div>

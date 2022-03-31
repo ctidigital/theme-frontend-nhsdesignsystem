@@ -1,0 +1,104 @@
+@import "page-builder/config";
+@import "page-builder/icons";
+@import "page-builder/placeholders";
+@import "page-builder/mixins";
+
+@import 'page-builder/layout';
+@import 'page-builder/slick/slick';
+@import 'page-builder/content-type/import';
+@import 'page-builder/jarallax/jarallax';
+
+//
+//  Common
+//  _____________________________________________
+
+
+.cms-content-important {
+    background-color: $color-white-smoke;
+    color: $color-gray20;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 0 0 35px -20px;
+    padding: 20px;
+}
+
+.pagebuilder-full-width {
+    float: left;
+    width: 100%;
+}
+
+.pagebuilder-content-type {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+// HR divider
+[data-element='line'] {
+    @include visually-hidden();
+    margin: 0;
+    border: 0;
+    background: none;
+}
+
+[data-content-type='row'][data-appearance='contained'],
+[data-content-type='row'][data-appearance='full-width'] {
+    padding: $container-padding 0;
+}
+
+//
+//  Styles for legacy content types
+//  ---------------------------------------------
+
+.pagebuilder-accordion {
+    @include lib-data-accordion();
+}
+
+//
+//  Mobile (style-m.css)
+//  _____________________________________________
+
+@include respond-to-down(md, $breakpoints, true) {
+    .pagebuilder-mobile-hidden {
+        display: none !important;
+    }
+}
+
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+@include respond-to-up(lg) {
+    .pagebuilder-mobile-only {
+        display: none !important;
+    }
+}
+
+
+[data-element="content"] {
+    h1:only-child,
+    h2:only-child,
+    h3:only-child,
+    h4:only-child,
+    h5:only-child,
+    p:only-child,
+    h6:only-child {
+        margin-bottom: 0;
+    }
+
+    > p:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.pagebuilder-banner-wrapper .pagebuilder-overlay.pagebuilder-poster-overlay {
+    @include respond-to-down(lg, $breakpoints, true) {
+        min-height: 0 !important;
+    }
+}
+
+.pagebuilder-banner-wrapper [data-element=content] {
+    min-height: 30px;
+}

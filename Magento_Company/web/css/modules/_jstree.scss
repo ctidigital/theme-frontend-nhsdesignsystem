@@ -1,0 +1,531 @@
+.jstree {
+  & > ul ul {
+    li {
+      background: none;
+      border-left: 1px dashed theme-color('dark');
+      margin-left: 1.5rem;
+      padding: .5rem 0;
+      position: relative;
+
+      &.jstree-last {
+        background: none;
+        border-left: none;
+        left: .1rem;
+        padding-bottom: 0;
+        position: relative;
+
+        &:after {
+          border-left: 1px dashed theme-color('dark');
+          content: '';
+          height: 2.3rem;
+          left: -.1rem;
+          position: absolute;
+          top: 0;
+        }
+      }
+
+      &.jstree-leaf {
+        > .jstree-icon {
+          &.jstree-ocl {
+            background: none;
+            display: inline;
+            padding-right: 3.7rem;
+            width: 2.5rem;
+
+            &:after {
+              right: 0;
+              top: 1.7rem;
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      > .jstree-icon {
+        &.jstree-ocl {
+          position: relative;
+
+          &:after {
+            border-top: 1px dashed theme-color('dark');
+            content: '';
+            height: .1rem;
+            position: absolute;
+            right: 1.875rem;
+            top: 1.1rem;
+            width: 0.8125rem;
+          }
+        }
+      }
+    }
+  }
+
+  li {
+    & > .jstree-icon {
+      padding-right: 1.5rem;
+    }
+
+    a {
+      height: 2.2rem;
+      line-height: 2.2rem;
+      padding: 0 1rem .4rem .2rem;
+
+      > .jstree-themeicon-custom {
+        margin-left: spacers(2);
+        margin-right: .7rem;
+      }
+
+      > .jstree-icon {
+        &.icon-customer {
+          /* .lib-icon-font-symbol(
+         $_icon-font-content: $icon-person
+         );*/
+
+          &:before {
+            content: $icon-person;
+            font-size: 1.8rem;
+          }
+        }
+
+        &.icon-company {
+          /*.lib-icon-font-symbol(
+        $_icon-font-content: $icon-organization
+        );*/
+
+          &:before {
+            font-size: 1.7rem;
+            content: $icon-organization;
+          }
+        }
+      }
+
+      > .field-tooltip {
+        color: $tree-tooltip__color;
+        left: 100%;
+        margin-left: spacers(1);
+        top: .4rem;
+      }
+
+      .field-tooltip-content {
+        white-space: normal;
+      }
+    }
+
+    &:not(.jstree-leaf) {
+      > .jstree-icon {
+        /* .lib-icon-font(
+       $icon-circle-down,
+       $_icon-font: $icons-magento__font-name,
+       $_icon-font-size: 1.9rem,
+       $_icon-font-line-height: 1.1,
+       $_icon-font-text-hide: true,
+       $_icon-font-color: $tree-icon__color__dark,
+       $_icon-font-vertical-align: middle,
+       $_icon-font-position: before,
+       $_icon-font-display: inline-block
+       );*/
+
+        left: -.1rem;
+        position: relative;
+        display: inline-block;
+        top: .6rem;
+        z-index: 5;
+        text-decoration: none;
+
+        > span {
+          @extend %u-sr-only;
+        }
+
+        &:before {
+          content: $icon-circle-down;
+          font-family: $icons-magento__font-name;
+          font-size: 1.9rem;
+          line-height: 1.1;
+          color: $tree-icon__color__dark;
+          cursor: pointer;
+          text-align: center;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    &.jstree-open {
+      > .jstree-icon {
+        /* .lib-icon-font-symbol(
+       $_icon-font-content: $icon-circle-up
+       );*/
+
+        &:before {
+          color: $tree-icon__color__light;
+          font-size: 1.375rem;
+          left: 1rem;
+          top: 0.25rem;
+          position: relative;
+          content: $icon-circle-up;
+        }
+      }
+    }
+
+    &.jstree-closed {
+      > .jstree-icon {
+        /*.lib-icon-font-symbol(
+      $_icon-font-content: $icon-circle-down
+      );*/
+
+        &:before {
+          color: $tree-icon__color__light;
+          font-size: 1.375rem;
+          left: 1rem;
+          top: 0.25rem;
+          font-feature-settings: normal;
+          position: relative;
+          content: $icon-circle-down;
+        }
+      }
+    }
+  }
+
+  > ul {
+    > li {
+      background: none;
+
+      > a.company-admin {
+        margin-left: -.2rem;
+        padding-bottom: 0;
+        padding-top: 0.4rem;
+        height: 2.75rem;
+
+        &:before {
+          display: none;
+        }
+
+        > .jstree-icon {
+          /* .lib-icon-font-symbol(
+         $_icon-font-content: $icon-customer-lead
+         );*/
+
+          margin-right: spacers(2);
+          position: relative;
+          z-index: 5;
+
+          &:before {
+            font-size: 2rem;
+            content: $icon-customer-lead;
+          }
+        }
+      }
+
+      &:not(.root-collapsible) {
+        > .jstree-icon {
+          &.jstree-ocl {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .jstree-leaf {
+    > .jstree-icon.jstree-ocl {
+      display: none;
+    }
+  }
+
+  a {
+    > .jstree-icon {
+      /* .lib-icon-font(
+     '',
+     $_icon-font: $icons-magento__font-name,
+     $_icon-font-size: 2.8rem,
+     $_icon-font-line-height: 1.1,
+     $_icon-font-text-hide: true,
+     $_icon-font-color: $tree-icon__color__base,
+     $_icon-font-vertical-align: middle,
+     $_icon-font-position: before,
+     $_icon-font-display: inline-block
+     );*/
+      text-decoration: none;
+      display: inline-block;
+
+      > span {
+        @extend %u-sr-only;
+      }
+
+      &:before {
+        content: '';
+        font-family: $icons-magento__font-name;
+        height: 10px * 2.8;
+        line-height: 1.1;
+        color:  $tree-icon__color__base;
+        vertical-align: middle;
+      }
+
+
+      &:hover {
+        &:before {
+          color: $link-hover-color;
+        }
+      }
+
+      &:active {
+        &:before {
+          color: $link-hover-color;
+        }
+      }
+
+      background: none;
+    }
+  }
+
+  &.jstree-draggable {
+    a {
+      /*  .lib-icon-font(
+      $icon-move-vertical,
+      $_icon-font: $icons-magento__font-name,
+      $_icon-font-size: 2.8rem,
+      $_icon-font-line-height: 1.1,
+      $_icon-font-text-hide: true,
+      $_icon-font-color: $tree-icon__color__light,
+      $_icon-font-vertical-align: middle,
+      $_icon-font-position: before,
+      $_icon-font-display: inline-block
+      );*/
+
+      text-decoration: none;
+      display: inline-block;
+
+      > span {
+        @extend %u-sr-only;
+      }
+
+      &:before {
+        content: $icon-move-vertical;
+        font-family: $icons-magento__font-name;
+        font-size: 1.0rem;
+        line-height: 1.1;
+        color: $tree-icon__color__light;
+        vertical-align: middle;
+        height: 1.8rem;
+        margin-left: -.4rem;
+        overflow: hidden;
+        width: 1.9rem;
+      }
+
+      &.jstree-clicked {
+        &:before {
+          color: $tree-leaf-clicked__color;
+        }
+      }
+    }
+  }
+
+  i {
+    font-style: normal;
+  }
+
+  .block-dashboard-company & {
+    .jstree-clicked {
+      background-color: $tree-leaf-clicked__background-color;
+      color: $tree-leaf-clicked__color;
+
+      > .jstree-icon {
+        &:before {
+          color: $tree-leaf-clicked__color;
+        }
+      }
+    }
+  }
+
+  .jstree-anchor {
+
+    &:not(.company-admin) {
+      top: 5px;
+    }
+    .jstree-checkbox {
+      background-color: transparent;
+      background-image: url(../images/icon-tree.png);
+      background-position: top right;
+      background-repeat: no-repeat;
+      height: 1rem;
+      margin: 5px 8px -2px 4px;
+      position: relative;
+      width: 1rem;
+    }
+
+    &.jstree-clicked {
+      > .jstree-checkbox {
+        background-position: top center;
+      }
+    }
+
+    > .jstree-checkbox {
+      &.jstree-undetermined {
+        background-position: top left;
+      }
+    }
+  }
+}
+
+.jstree-checkbox-selection {
+  .jstree-anchor {
+    display: inline-block;
+    text-decoration: none;
+  }
+}
+
+//
+//  Jstree default (!) styles start
+//  ---------------------------------------------
+
+.jstree-node,
+.jstree-children,
+.jstree-container-ul {
+  display: block;
+  list-style-image: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.jstree-node {
+  white-space: nowrap;
+}
+
+.jstree-anchor {
+  color: $color-black;
+  display: inline-block;
+  margin: 0;
+  padding: 0 4px 0 1px;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+[id='jstree-marker'] {
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid;
+  border-right: 0;
+  border-top: 5px solid transparent;
+  font-size: 0;
+  height: 0;
+  left: 0;
+  line-height: 0;
+  margin: -5px 0 0 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+
+[id='jstree-dnd'] {
+  line-height: 1rem;
+  margin: 0;
+  padding: 4px;
+}
+
+[id='jstree-dnd'] .jstree-icon,
+[id='jstree-dnd'] .jstree-copy {
+  display: inline-block;
+  height: 16px;
+  margin: 0 2px 0 0;
+  padding: 0;
+  text-decoration: none;
+  width: 16px;
+}
+
+[id='jstree-dnd'] .jstree-ok {
+  background: $tree-dnd-ok__color;
+}
+
+[id='jstree-dnd'] .jstree-er {
+  background: $tree-dnd-error__color;
+}
+
+[id='jstree-dnd'] .jstree-copy {
+  margin: 0 2px 0 2px;
+}
+
+//
+//  Jstree default styles end
+//  ---------------------------------------------
+
+
+.jstree-display-block {
+  display: block !important;
+}
+
+
+//
+//  Desktop
+//  ---------------------------------------------
+//.media-width($extremum, $break) when ($extremum = 'min') and ($break = $screen__m) {
+.jstree {
+  li {
+    a {
+      position: relative;
+    }
+  }
+}
+
+
+//
+//  Mobile
+//  ---------------------------------------------
+// .media-width($extremum, $break) when ($extremum = 'max') and ($break = $screen__s) {
+
+.popup-tree {
+  .modal-footer {
+    .action {
+      margin-top: spacers(3) !important;
+
+      @include respond-to-up(md) {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    > .action:not(:last-of-type) {
+      margin-right: spacers(2);
+
+      @include respond-to-up(md) {
+        margin-right: spacers(3);
+      }
+    }
+  }
+}
+
+
+
+.jstree {
+  li {
+    a {
+      > .field-tooltip {
+        display: none;
+        float: right;
+        margin-right: -4rem;
+        position: static;
+
+        @include respond-to-up(md) {
+          display: block;
+        }
+
+        .field-tooltip-content {
+          left: 0;
+          max-width: 90%;
+          right: auto;
+          top: 4.5rem;
+          z-index: 20;
+          font-size: $font-size-xs;
+          font-style: oblique;
+
+          &:before,
+          &:after {
+            left: 6.1rem;
+            right: auto;
+          }
+        }
+      }
+    }
+
+    .jstree-clicked .field-tooltip {
+      display: none;
+    }
+  }
+}

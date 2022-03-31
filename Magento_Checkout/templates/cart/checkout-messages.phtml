@@ -1,0 +1,6 @@
+<?php $checkoutValidationMessages = $this->getChildHtml('checkout.cart.validationmessages') ?>
+<?php if ($checkoutValidationMessages): ?>
+    <div class="messages-fixed-wrapper message--show message--checkout-cart">
+        <?php echo $checkoutValidationMessages; ?>
+    </div>
+<?php endif; ?>

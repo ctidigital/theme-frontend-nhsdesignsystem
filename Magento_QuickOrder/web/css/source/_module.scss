@@ -1,0 +1,259 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+$order-dropdown-item__color: $color_nhsuk-grey-4;
+$order-icon__color: $nhsuk-text-color;
+$order-input-border__color: $border-color;
+$order-product-bg__color: $white;
+
+//
+//  Common
+//  _____________________________________________
+
+
+.quickorder-index-index {
+    background-color: $color_nhsuk-grey-5;
+
+    .column {
+        .block-addbysku {
+            .action {
+                &.remove {
+                    @include ms-icon('trash', 24px);
+                    display: inline-block;
+
+                    > span {
+                        @include visually-hidden();
+                    }
+
+                    /* remove after global focus applied to icons buttons */
+                    &:focus {
+                        background-color: $nhsuk-focus-color;
+                        color: $nhsuk-focus-text-color;
+                        outline: 0;
+                        box-shadow: 0 0 0 5px;
+                    }
+                }
+
+                &.add {
+                    display: none;
+                }
+            }
+
+            .fieldset {
+                .fields {
+                    .actions-toolbar {
+                        display: inline-block;
+                        margin: 2.4rem 0 0 0;
+                    }
+
+                    .field {
+                        display: inline-block;
+                        vertical-align: top;
+                        position: relative;
+
+                        &.sku {
+                            width: 80%;
+                        }
+
+                        &.qty {
+                            max-width: 54px;
+                            margin-left: spacers(3);
+                            margin-right: spacers(3);
+                        }
+                    }
+
+                    .field .control>input {
+                        order: unset;
+                    }
+
+                    .field.field-mage-error .control>input {
+                        order: 3;
+                    }
+
+                    .field.field-mage-error {
+                        .product-block:not(:empty) {
+                            border: 0;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+
+            .block-content {
+                .actions-toolbar {
+                    margin-bottom: 0;
+                    margin-top: 0;
+                    justify-content: flex-start;
+                }
+            }
+
+            .box-upload .actions-toolbar .secondary {
+                text-align: left;
+            }
+
+            .deletable-item {
+                display: flex;
+                width: 100%;
+
+                &:last-child {
+                    .remove {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .product-block {
+        @include clearfix();
+      //  background-color: $order-product-bg__color;
+
+        &:not(:empty) {
+       //     border: 1px solid $order-input-border__color;
+            border-top: none;
+        }
+
+        .nhsuk-inset-text {
+            margin-top: 1rem;
+        }
+
+        .product-image {
+            border: 1px solid $order-input-border__color;
+            float: left;
+            margin: 0 0.5rem;
+
+            img {
+                display: block;
+                max-width: 5rem;
+            }
+        }
+
+        .product-name {
+            overflow: hidden;
+            padding: 0 0.5rem;
+
+            .name {
+                display: inline-block;
+                margin-bottom: spacers(2);
+            }
+
+            > p:last-child {
+                margin: 0;
+            }
+        }
+    }
+
+    .ui-front {
+        .ui-helper-hidden-accessible {
+            display: none;
+        }
+
+        > ul {
+            margin: 0;
+            padding: 0;
+            list-style: none none;
+
+            &:not(:empty) {
+                background: $order-product-bg__color;
+                border: 1px solid $border-color;
+                margin-top: 0;
+                z-index: 1;
+            }
+
+            li {
+                border-top: 1px solid $border-color;
+                cursor: pointer;
+                margin: 0;
+                padding: spacers(1) spacers(2);
+                position: relative;
+                text-align: left;
+                white-space: normal;
+
+                &:first-child {
+                    border-top: none;
+                }
+
+                &:hover,
+                &.selected {
+                    background: $order-dropdown-item__color;
+                }
+
+                a {
+                    margin-right: spacers(1);
+                }
+            }
+        }
+    }
+
+    .ui-autocomplete {
+        cursor: default;
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+
+    /* hide the file upload area */
+    .box.box-upload .field.upload.skus {
+        display: none;
+    }
+}
+
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+@include respond-to-down(md, $breakpoints, true) {
+    .quickorder-index-index {
+        .column {
+            .block-addbysku {
+                .fieldset {
+                    .fields {
+                        border-bottom: 1px solid $order-input-border__color;
+                        margin-bottom: 1.5rem;
+                        padding-bottom: .2rem;
+                        position: relative;
+
+                        .field {
+                            display: block;
+                            margin-right: 0;
+                            padding-right: 0;
+
+                            &.sku {
+                                width: 100%;
+                            }
+
+                            &.qty {
+                                display: inline-block;
+                                margin-left: 0;
+                                margin-right: 0;
+
+                                .control {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .deletable-item-title {
+                    display: none;
+                }
+
+                .deletable-item {
+                    display: block;
+
+                    .actions-toolbar {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+}

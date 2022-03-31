@@ -1,0 +1,38 @@
+.payment-method-braintree .payment-method-content {
+  .hosted-control {
+    padding: $braintree-input-padding;
+    width: 100%;
+    height: $braintree-input-height;
+    font-size: $braintree-input-font-size;
+    line-height: $braintree-input-line-height;
+    color: $braintree-input-color;
+    background-color: $braintree-input-bg;
+    border-radius: $braintree-input-border-radius;
+    border: $braintree-input-border;
+    outline: 0;
+    box-sizing: border-box;
+    transition: all $transition-duration-ease-out $transition-timing-sharp;
+
+    &.braintree-hosted-fields-focused {
+      background-color: $braintree-input-bg-active;
+      color: $braintree-input-color-focus;
+      border-color: $input-border-focus-highlight;
+      border-left-width: $input-border-focus-highlight-width;
+    }
+
+    &.braintree-hosted-fields-invalid:not(.braintree-hosted-fields-focused) {
+      border-color: $braintree-input-negative-color;
+    }
+
+    &.braintree-hosted-fields-valid {
+      border-color: $braintree-input-positive-color;
+    }
+
+    &.hosted-cid {
+    }
+
+    &.hosted-date {
+    }
+  }
+}
+

@@ -1,0 +1,9 @@
+.payment-method-braintree .payment-method-content {
+  .field .label {
+    font-size: $braintree-label-font-size;
+    font-weight: $braintree-label-font-weight;
+    line-height: $braintree-label-line-height;
+    color: $braintree-label-color;
+    text-shadow: $braintree-label-text-shadow;
+  }
+}

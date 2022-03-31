@@ -1,0 +1,135 @@
+/**
+ * Header Customer Menu Dropdown Styles
+ */
+
+.customer-welcome + .authorization-link {
+  .header.panel &,
+  .nav-sections-item-content & {
+    display: none;
+  }
+}
+.customer-welcome {
+  @include respond-to-up($tweakpoint-nav-toggle) {
+    @include dropdown('bottom', 'span.customer-name', '.customer-menu');
+    height: 100%;
+    vertical-align: middle;
+    padding-left: spacers(3) * 1.8;
+  }
+}
+.customer-register {
+  @include dropdown('bottom', 'span.links-container-title', '.customer-menu');
+}
+
+.customer-register,
+.customer-welcome {
+  .customer-menu {
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      animation: u-animation-slide-down-small $transition-duration-ease-out $transition-timing-sharp;
+      animation-delay: 0.02s;
+      animation-fill-mode: both;
+      left: auto;
+      right: 0;
+      min-width: $customer-menu-dropdown-width-md;
+
+      &:before,
+      &:after {
+        left: 80%;
+      }
+    }
+  }
+
+  .links-container-title .action.switch span {
+    display: none;
+  }
+
+  .customer-name {
+    display: none;
+
+    @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+      display: none !important;
+    }
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      height: 100%;
+      padding-left: 0;
+      padding-right: 0 !important;
+      line-height: 1;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.active {
+    .customer-menu {
+      display: block;
+      min-width: 230px;
+    }
+  }
+
+  .switch {
+    padding: 0;
+
+    > span {
+      @extend %u-sr-only;
+    }
+  }
+
+  .header.panel & {
+    .header.links {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .customer-menu > ul > li {
+    padding: $dropdown-list-item-padding;
+
+    @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+      border-bottom: $navigation-item-border-mobile !important;
+    }
+
+    @include hover-focus() {
+      background-color: $dropdown-list-item-hover-background;
+      cursor: pointer;
+    }
+
+    &:first-child {
+      margin-bottom: 1px;
+    }
+    
+    a {
+      display: block;
+    }
+
+    a {
+      display: block;
+    }
+
+    &:hover a {
+      text-decoration: none;
+      color: $nhsuk-link-color;
+    }
+
+    a:visited {
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        color: $nhsuk-link-color;
+      }
+    }
+
+    &[data-role="compare-products-link"] {
+      padding: 0;
+
+      .compare:not(.no-display) {
+        display: block;
+        padding: $dropdown-list-item-padding;
+      }
+
+      .nav-sections-item-content & {
+        padding: 1.35rem;
+      }
+    }
+  }
+}

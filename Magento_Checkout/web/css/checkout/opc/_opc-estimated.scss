@@ -1,0 +1,65 @@
+/// opc-estimated-wrapper
+/// minicart-wrapper
+
+.opc-estimated-wrapper {
+  @include clearfix;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: 0;
+  display: table;
+  padding: $opc-estimated-wrapper-padding;
+  background: $opc-estimated-wrapper-bg;
+  color: $opc-estimated-wrapper-color;
+  margin-bottom: $opc-estimated-wrapper-margin-bottom;
+  z-index: z('sticky');
+  border-bottom: 1px solid darken($opc-estimated-wrapper-bg, 5%);
+  border-top: 1px solid darken($opc-estimated-wrapper-bg, 5%);
+
+  @include respond-to-up(lg) {
+    display: none;
+  }
+
+  .estimated-block,
+  .minicart-wrapper {
+    display: table-cell;
+    width: 50%;
+    vertical-align: middle;
+  }
+  .minicart-wrapper {
+    text-align: right;
+
+    @include respond-to-up(lg) {
+      display: none;
+    }
+
+    .showcart.action {
+      color: $opc-estimated-wrapper-color;
+      height: 32px;
+      border: 0 none;
+
+      &:before {
+        font-size: 28px;
+        height: 28px;
+      }
+
+      .counter {
+        top: 0px;
+        left: 21px;
+        background: $opc-estimated-wrapper-color;
+        color: $white;
+      }
+    }
+  }
+  .estimated-label {
+    &:after {
+      content: ': ';
+      margin-right: 4px;
+    }
+  }
+  .estimated-price {
+    font-weight: $font-weight-bold;
+    color: $opc-estimated-wrapper-price-color;
+  }
+}

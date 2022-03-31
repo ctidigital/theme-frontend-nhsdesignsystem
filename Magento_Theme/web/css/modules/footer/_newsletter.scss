@@ -1,0 +1,95 @@
+// Newsletter block styles
+.newsletter.block {
+  .footer & {
+    @extend %u-flex-col-xcenter-ycenter;
+    @extend %u-section-spacing-y;
+    .lazybg & {
+      background: url('../images/footer-bg-sm.jpg') top left no-repeat
+        $footer-newsletter-block-bg;
+      @include respond-to-up(sm) {
+        background: url('../images/footer-bg-md.jpg') top left no-repeat
+          $footer-newsletter-block-bg;
+      }
+      @include respond-to-up(lg) {
+        background: url('../images/footer-bg-lg.jpg') top left no-repeat
+          $footer-newsletter-block-bg;
+      }
+    }
+    color: $footer-newsletter-block-color;
+    background-size: cover;
+    padding-left: $footer-newsletter-block-padding-x;
+    padding-right: $footer-newsletter-block-padding-x;
+
+    .title {
+      // @extend %u-no-display;
+      @extend %nhs-h4;
+      font-weight: $nhsuk-font-bold;
+      @extend %u-section-title-spacing-bottom;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    .form {
+      position: relative;
+
+      @include respond-to-up(md) {
+        min-width: 460px;
+      }
+
+      button,
+      input {
+        height: $footer-newsletter-field-height;
+      }
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .field {
+      z-index: z('below');
+
+      @include respond-to-up(md) {
+        margin-bottom: 0;
+      }
+
+      input {
+        position: relative;
+        z-index: 1;
+        @include respond-to-up(md) {
+          padding-right: $footer-newsletter-button-width;
+        }
+      }
+
+      & + .actions {
+        width: $footer-newsletter-button-width;
+        margin: 0 auto;
+
+        @include respond-to-up(md) {
+          @include absolute(0, 0, 0);
+          z-index: z('above');
+        }
+      }
+    }
+    div.mage-error {
+      position: relative;
+      background-color: rgba($input-error-color, 0.9);
+      color: white;
+      padding: 0.5em;
+      z-index: 0;
+    }
+  }
+
+  .action.subscribe {
+    /*@extend %button-promo;*/
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 spacers(2);
+  }
+
+  .control > label {
+    display: none;
+  }
+}

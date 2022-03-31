@@ -1,0 +1,8 @@
+@font-face {
+  font-family: $icons-magento__font-name;
+  src: url('#{$icons-magento__font-path}.woff2') format('woff2'),
+  url('#{$icons-magento__font-path}.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}

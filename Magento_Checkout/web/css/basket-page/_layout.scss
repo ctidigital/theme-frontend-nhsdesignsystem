@@ -1,0 +1,118 @@
+// Basket page Layout styles
+
+.cart-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  margin-bottom: $basket-page-spacing-y;
+
+  @include respond-to-up(md) {
+    margin-bottom: $basket-page-spacing-y * 2;
+  }
+
+  @include respond-to-up(lg) {
+    margin-bottom: $basket-page-spacing-y * 3;
+  }
+
+  @include respond-to-up(xl) {
+    margin-bottom: $basket-page-spacing-y * 4;
+  }
+
+  .cart-container-main {
+    width: 100%;
+    background: $basket-main-bg;
+    padding: $container-padding;
+    max-width: $basket-main-width;
+    font-feature-settings: normal;
+
+    @include respond-to-up($basket-sidebar-breakpoint) {
+      padding: $basket-main-padding;
+      width: calc(100% - #{($basket-sidebar-width + $basket-sidebar-spacing-x)});
+    }
+
+    @include respond-to-down(smm) {
+      padding-top: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+   .main.actions {
+     display: none;
+   }
+  }
+
+  .cart-container-sidebar {
+    width: 100%;
+    max-width: $basket-main-width;
+
+    @include respond-to-up($basket-sidebar-breakpoint) {
+      width: $basket-sidebar-width;
+      margin-left: $basket-sidebar-spacing-x;
+      padding-top: 70px;
+    }
+
+    .table-wrapper {
+      margin-top: 0;
+      border-top: 0 none;
+    }
+
+    .block.discount,
+    .block.giftcard,
+    .gift-item-block {
+      margin-top: 0;
+    }
+
+    .cart-summary {
+      position: relative;
+      padding: $basket-sidebar-padding;
+      background: $basket-sidebar-bg;
+
+      @include respond-to-up($page-layout-breakpoint) {
+        position: -moz-sticky;
+        position: -o-sticky;
+        position: -ms-sticky;
+        position: sticky;
+        top: $basket-page-spacing-y;
+        z-index: 1;
+      }
+
+      // Hide Shipping and Tax Estimate Block
+      .block.shipping {
+        display: none;
+      }
+    }
+  }
+}
+
+.checkout-cart-index {
+  background: gray('5');
+
+  .page-title-wrapper {
+    // @extend %u-sr-only;
+      padding-right: 0;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: flex-end;
+      text-align: right;
+
+      .page-title {
+          @extend %u-sr-only;
+      }
+  }
+
+  table caption {
+    @extend %nhs-h4;
+    width: 100%;
+    caption-side: top;
+  }
+
+  .page-main {
+    padding-top: $basket-page-spacing-y;
+  }
+}
+
+.checkout-cart-index .messages.page .messages-fixed-wrapper {
+  max-width: $basket-main-width + $basket-sidebar-width + $basket-sidebar-spacing-x;
+}

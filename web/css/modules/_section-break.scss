@@ -1,0 +1,21 @@
+@import "../vendor/nhsuk-frontend/packages/core/styles/section-break";
+
+// HR divider
+hr {
+    margin: 0;
+    border: 0;
+    background: $color_nhsuk-grey-4;
+    height: 1px;
+}
+
+.nhsuk-section-break > hr {
+    @include visually-hidden();
+    border: 0;
+    height: 0;
+    background: none;
+}
+
+/* remove random HR's from checkout - seen on payment method section in checkout payment page DHSC-108 */
+.checkout-index-index hr {
+    display: none;
+}

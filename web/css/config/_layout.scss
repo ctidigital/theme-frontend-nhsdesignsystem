@@ -1,0 +1,28 @@
+// Containers
+//
+// Define the maximum width of page containers for different screen sizes.
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1440px
+) !default;
+
+@include _assert-ascending($container-max-widths, '$container-max-widths');
+
+$container-padding: spacers(3) !default;
+
+// To be used to contain the whole site incl footer and header
+$page-wrapper-contained: false !default;
+
+// To be used to contain content within the page excl header/footer
+$main-content-contained: true !default;
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:                12 !default;
+$grid-gutter-width:           30px !default;

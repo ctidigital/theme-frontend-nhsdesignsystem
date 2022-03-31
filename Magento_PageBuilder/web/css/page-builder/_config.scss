@@ -1,0 +1,37 @@
+$icons-pagebuilder__font-name: 'ms-icons';
+
+$color-white-smoke: #f5f5f5;
+$color-gray20: '#ccc';
+$gray-15: #cdcccc;
+$gray-2: #ecebeb;
+
+$tab-header-bg: #ced6d8;
+$tab-header-border: 1px solid $color-gray20;
+
+$icons-pagebuilder__font-name: 'ms-icons';
+$icons-pagebuilder__font-path: '../../fonts/icons/icons';
+
+$color-gray-middle2: #c6c6c6;
+
+// slick variables
+$b3: #b3b3b3;
+$color-pagebuilder-darkest-gray: #1c1918;
+$color-gray-darken4: #494949;
+$color-gray-darken3: #555;
+$color-gray80: #ccc;
+$icons-pagebuilder__font-name: 'ms-icons';
+
+// button-items variables
+$button__padding__l: 14px 17px;
+$font-weight__semibold: 600;
+$button__border-radius: $button-border-radius;
+
+// row variables
+$layout__max-width: 1440px;
+
+// tabs variables
+$color-gray-light0: #f6f6f6;
+$color-gray80: #ccc;
+
+$icon-pagebuilder__minus : map-get($ms-icons, 'minus');
+$icon-pagebuilder__plus : map-get($ms-icons, 'plus');

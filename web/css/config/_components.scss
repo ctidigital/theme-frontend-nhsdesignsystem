@@ -1,0 +1,23 @@
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg:              1.5 !default;
+$line-height-sm:              1.5 !default;
+
+$border-width:                1px !default;
+$border-color:                $nhsuk-border-color !default;
+
+$border-radius:               .25rem !default;
+$border-radius-lg:            .3rem !default;
+$border-radius-sm:            .2rem !default;
+
+$component-active-color:      $white !default;
+$component-active-bg:         theme-color('primary') !default;
+
+$u-close-size:                16px !default;
+$u-close-padding:             1rem !default;
+
+$u-triangle-size:             8px !default;
+
+$u-fixed-backdrop-bg:         theme-color('backdrop') !default;

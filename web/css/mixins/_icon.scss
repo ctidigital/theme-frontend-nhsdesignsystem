@@ -1,0 +1,30 @@
+@mixin ms-icon-size($_icon_font-size: 16px) {
+  &:before {
+    font-size: $_icon_font-size;
+  }
+}
+
+
+@mixin ms-icon($icon: false, $size: inherit, $position: before, $styles: true) {
+  @if $position == both {
+    $position: "before, &:after";
+  }
+  // Either a :before or :after pseudo-element, or both, defaulting to :before
+  &:#{$position} {
+    @if $icon {
+      // A particular icon has been specified
+      content: "#{map-get($ms-icons, $icon)}";
+    }
+    @if $styles {
+      // Supportive icon styles required
+      line-height: 1;
+      speak: none;
+      font-size: icon-size($size);
+      font-style: normal;
+      font-weight: normal;
+      font-family: $icon-font-family;
+    }
+    // Include any extra rules supplied for the pseudo-element
+    @content;
+  }
+}

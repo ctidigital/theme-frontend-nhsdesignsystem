@@ -1,0 +1,17 @@
+.mosaic__color {
+  &--light > .mosaic-content {
+    color: map_get($theme-colors, 'light');
+  }
+  &--dark > .mosaic-content {
+    color: map_get($theme-colors, 'dark');
+  }
+  &--primary > .mosaic-content {
+    color: map_get($theme-colors, 'primary');
+  }
+  &--secondary > .mosaic-content {
+    color: map_get($theme-colors, 'secondary');
+  }
+  &--tertiary > .mosaic-content {
+    color: map_get($theme-colors, 'tertiary');
+  }
+}

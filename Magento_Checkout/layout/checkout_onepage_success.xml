@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Success Page</title>
+    </head>
+    <body>
+        <move element="page.main.title" destination="checkout-success-block-1" before="-"/>
+        <move element="checkout.success" destination="checkout-success-block-1" after="page.main.title"/>
+        <move element="checkout.success.print.button" destination="checkout.success" before="order.success.additional.info"/>
+        <move element="checkout.registration" destination="checkout-success-block-2" before="-"/>
+
+        <referenceContainer name="content">
+            <container name="checkout-success-block-1" htmlTag="div" htmlClass="checkout-success-block" before="-"/>
+            <container name="checkout-success-block-2" htmlTag="div" htmlClass="checkout-success-block" after="-"/>
+        </referenceContainer>
+    </body>
+</page>

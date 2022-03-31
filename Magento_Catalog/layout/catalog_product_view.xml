@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */ Remove content.aside, Mix: product.info.main, product.info.media, product.info.details
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+
+        <!-- Move -->
+        <move element="product.info.media" destination="product.info.wrapper" before="-"/>
+        <move element="product.info.main" destination="product.info.wrapper" after="-"/>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <move element="product.info.stock.sku" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.review" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.price" destination="product.info.options.wrapper.bottom" after="-"/>
+        <move element="product.info.additional" destination="product.info.details" after="-"/>
+        <move element="catalog.product.related" destination="content" after="product.info.details"/>
+        <move element="product.info.upsell" destination="content" after="product.info.details"/>
+        <move element="product.info.overview" destination="product.info.main" after="product.info.stock.sku"/>
+        <move element="product.info.overview.readmore" destination="product.info.main" after="product.info.overview"/>
+
+        <!-- Remove -->
+        <referenceBlock name="content.aside" remove="true"/>
+        <referenceBlock name="skip_gallery_after" remove="true"/>
+        <referenceBlock name="skip_gallery_before" remove="true"/>
+
+
+        <referenceContainer name="content">
+            <container name="product.info.wrapper" htmlTag="div" htmlClass="product-info-wrapper" before="-"/>
+            <block class="Magento\Cms\Block\Block" name="help.contact.block.cat.landing" after="product.info.wrapper" >
+                <arguments>
+                    <argument name="block_id" xsi:type="string">account-and-customer-service-help-block</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <block class="Magento\Framework\View\Element\Template" name="product.info.overview.readmore" after="product.info.overview" template="Magento_Catalog::product/view/overview-readmore.phtml" />
+    </body>
+</page>

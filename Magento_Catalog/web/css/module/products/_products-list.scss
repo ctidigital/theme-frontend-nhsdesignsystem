@@ -1,0 +1,141 @@
+.products-list {
+  .product-item {
+    width: 100%;
+    margin-bottom: $product-items-spacing-y;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    [class^='swatch-opt-'] {
+      position: relative;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .product-item-inner {
+      visibility: visible;
+      opacity: 1;
+      align-items: flex-start;
+
+      @include respond-to-down(xl) {
+        position: relative;
+        align-items: center;
+      }
+    }
+  }
+
+  .product-item-info {
+    @extend %u-flex-row-xcenter-ycenter;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid $nhsuk-border-color;
+    padding: spacers(3);
+
+    @include respond-to-down(smm) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-item-details {
+      flex: 1 1 auto;
+      padding-left: spacers(3);
+
+      @include respond-to-up(md) {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        max-width: 100%;
+      }
+
+      @include respond-to-down(smm) {
+        padding: 0;
+        width: 100%;
+      }
+    }
+
+    .product-item-inner {
+      @extend %u-flex-col-xcenter-ycenter;
+      padding-top: $product-item-photo-spacing-y;
+      padding-left: 0;
+      padding-right: 0;
+      margin-top: auto;
+    }
+  }
+
+  .product-item-photo {
+    width: 100%;
+    @include respond-to-up(smm) {
+      width: 200px;
+      min-width: 200px;
+    }
+    @include respond-to-up(md) {
+      width: 270px;
+      min-width: 270px;
+    }
+  }
+
+  .product-item-description {
+    order: 1;
+
+    @include respond-to-down(xl) {
+      width: 100%;
+    }
+  }
+
+
+  .price-box.price-final_price,
+  .product.product-item-name,
+  .product-item-inner {
+    width: calc(100% - 262px);
+
+    @include respond-to-down(xl) {
+      width: 100%;
+    }
+  }
+
+  .product-item-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 262px;
+    height: 100%;
+    margin-right: auto;
+    order: 2;
+    margin-top: 0 !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: spacers(3);
+
+    @include respond-to-down(smm) {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    @include respond-to-down(xl) {
+      width: 240px;
+      margin-top: spacers(3) * 2.5 !important;
+      position: relative;
+      right: auto;
+      padding: 0;
+    }
+
+    .action.tocart {
+      margin-bottom: spacers(3);
+
+      @include respond-to-down(smm) {
+        max-width: none;
+      }
+    }
+
+    .action.tocompare {
+      width: 100%;
+      margin: 0.5rem 0.5rem 0.7rem 0.5rem;
+    }
+  }
+
+  .price-box {
+    margin-bottom: $product-item-photo-spacing-y;
+  }
+}

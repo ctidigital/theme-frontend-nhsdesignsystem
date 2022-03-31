@@ -1,0 +1,23 @@
+// Visual Effects
+//
+// Define the property values to be used for visual effects, animation and transitions.
+
+$shadow-panel: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !default;
+$shadow-panel-up: 0 -3px 6px rgba(0,0,0,0.16), 0 -3px 6px rgba(0,0,0,0.23) !default;
+$shadow-tooltip:  0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !default;
+$shadow-tooltip-up:  0 -1px 3px rgba(0,0,0,0.12), 0 -1px 2px rgba(0,0,0,0.24) !default;
+$shadow-alert: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24) !default;
+
+$transition-duration:          0.375s !default;
+$transition-duration-ease-in:  0.225s !default;
+$transition-duration-ease-out: 0.195s !default;
+$transition-timing:            cubic-bezier(0.4, 0.0, 0.2, 1) !default;
+$transition-timing-ease-in:    cubic-bezier(0.0, 0.0, 0.2, 1) !default;
+$transition-timing-ease-out:   cubic-bezier(0.4, 0.0, 1, 1) !default;
+$transition-timing-sharp:      cubic-bezier(0.4, 0.0, 0.6, 1) !default;
+$transition-timing-ease-in-out-circ: cubic-bezier(0.785,  0.105, 0.150, 0.760) !default;
+$transition-timing-ease-in-out-back: cubic-bezier(0.680, -0.550, 0.265, 1.550) !default;
+$transition-timing-ease-in-out-quad: cubic-bezier(0.455,  0.030, 0.515, 0.955) !default;
+$transition-base:              all $transition-duration ease-in-out !default;
+$transition-fade:              opacity $transition-duration-ease-out linear !default;
+$transition-collapse:          height $transition-duration $transition-timing !default;

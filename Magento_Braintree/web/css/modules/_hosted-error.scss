@@ -1,0 +1,17 @@
+.payment-method-braintree .payment-method-content {
+  .hosted-error {
+    margin-top: spacers(1);
+    font-size: $braintree-input-negative-font-size;
+    color: $braintree-input-negative-color;
+    opacity: 0;
+    height: 0;
+    clear: both;
+  }
+
+  .hosted-control.braintree-hosted-fields-invalid:not(.braintree-hosted-fields-focused) {
+    & ~ .hosted-error {
+      height: auto;
+      opacity: 1;
+    }
+  }
+}

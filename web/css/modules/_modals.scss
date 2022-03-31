@@ -1,0 +1,289 @@
+// Modals Theme styles
+//
+
+.modal-slide:not(.modal-popup) {
+  @include modal-slide();
+}
+
+.modal-popup {
+  @include modal-responsive();
+
+  &.popup-authentication {
+    .modal-header,
+    .modal-content {
+      padding: 0;
+    }
+
+    .action-close {
+      z-index: z('above');
+    }
+  }
+
+  &:not(.popup-authentication):not(.confirm):not(.session-expiry-warning-modal):not(.session-expired-modal) {
+    .modal-content {
+      height: calc(100vh - 220px);
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+.modal-custom,
+.modal-popup,
+.modal-slide {
+  .action-close {
+    @include ms-icon('x', 24px);
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    > span {
+      @extend %u-sr-only;
+    }
+
+    @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+      @include ms-icon('x', 18px);
+      padding: 0.4rem;
+    }
+  }
+
+  .modal-footer {
+    @include clearfix;
+
+    @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+      text-align: center;
+    }
+
+    .action-save-address {
+      float: left;
+
+      @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+        float: none;
+        clear: both;
+        width: 200px;
+        margin: 0 auto spacers(2) auto;
+      }
+    }
+
+    .action-hide-popup {
+      float: right;
+
+      @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+        float: none;
+        clear: both;
+        width: 200px;
+        box-sizing: border-box;
+        margin: 0 auto spacers(2) auto;
+      }
+    }
+  }
+}
+
+.modal-custom {
+  .action-close {
+    @extend %u-close;
+    margin: 1em;
+  }
+}
+
+.modal-popup {
+  .modal-title {
+    @include fluid-type($modal-title-fluid-size);
+    padding-bottom: spacers(1);
+    margin-bottom: 0;
+    min-height: 1em;
+    border-bottom: $modal-title-border;
+    word-wrap: break-word;
+  }
+
+  .action-close {
+    padding: 1em;
+    cursor: pointer;
+  }
+}
+
+.modal-slide {
+  .action-close {
+    padding: $modal-close-padding;
+  }
+
+  .page-main-actions {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+.modals-overlay {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: $modal-overlay-background-color;
+}
+
+.custom-slide {
+  @include respond-to-down('lg') {
+    @include modal-slide();
+  }
+
+  &._show {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .modal-inner-wrap {
+    background-color: $modal-slide-mobile-background-color;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100%;
+  }
+}
+
+.modal-custom,
+.modal-popup {
+  &.confirm {
+    &:focus {
+      outline: none;
+    }
+
+    .modal-inner-wrap {
+      max-width: 470px;
+    }
+
+    .modal-header,
+    .modal-content {
+      text-align: center;
+      margin-bottom: spacers(3);
+
+      @include respond-to-up(md) {
+        margin-bottom: 0;
+      }
+    }
+
+    .modal-footer {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+
+      .action-secondary,
+      .action-primary {
+        width: 40%;
+        max-width: 122px;
+        cursor: pointer;
+
+        @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+          padding-left: 0.2rem;
+          padding-right: 0.2rem;
+        }
+      }
+
+      .action-secondary + .action-primary {
+        margin-right: spacers(3);
+      }
+    }
+  }
+}
+
+html._has-modal {
+  overflow-y: hidden;
+}
+
+body._has-modal {
+  overflow: hidden;
+}
+
+body {
+  &._has-modal-custom {
+    @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .modal-custom-overlay {
+      height: 100vh;
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      z-index: $modal-z-index;
+
+      @include respond-to-down(lg) {
+        background-color: $modal-overlay-background-color;
+      }
+    }
+  }
+}
+
+.modal-popup {
+  &.modal-slide {
+    .modal-inner-wrap[class] {
+      @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+        background-color: $modal-slide-mobile-background-color;
+      }
+    }
+
+    &._inner-scroll {
+      &._show {
+        @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+          -webkit-overflow-scrolling: touch;
+          overflow-y: hidden;
+          height: 100vh;
+        }
+      }
+      .modal-inner-wrap {
+        @media screen and (max-width: (map_get($breakpoints, #{$modal-responsive-breakpoint}) - 1px)) {
+          height: auto;
+          min-height: 100%;
+        }
+      }
+    }
+
+    .modal-footer {
+      @include respond-to-up('md') {
+        border-top: $modal-title-border;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.session-expiry-warning-modal,
+.session-expired-modal {
+  // Hide the close button to make modal non-dismissable
+  .action-close {
+    display: none;
+  }
+
+  .modal-header {
+    padding-top: 2.7rem;
+  }
+
+  .modal-title {
+    @include respond-to-up('md') {
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .modal-inner-wrap {
+    max-width: 640px;
+  }
+
+  .modal-footer .action {
+    margin-bottom: 0;
+
+    & + .action {
+      margin-left: spacers(2);
+    }
+  }
+
+  .modal-content div > p:last-child {
+    @include respond-to-up('lg'){
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+.toolbar-products {
+  width: 100%;
+
+  @include respond-to-up(lg) {
+    position: relative;
+    z-index: z('above');
+  }
+
+  .filter-active & {
+    width: 100%;
+
+    @include respond-to-up(lg) {
+      margin-top: -15px;
+      margin-left: 0;
+      border-left: 0 none;
+    }
+  }
+
+  &__control,
+  &__pager {
+    @extend %u-flex-row-xcenter-ycenter;
+    padding: $toolbar-padding-y $toolbar-padding-x;
+    min-height: $toolbar-min-height;
+    color: $toolbar-color;
+    background: $toolbar-bg;
+    margin-bottom: $toolbar-spacing-y;
+    font-size: $toolbar-font-size;
+    border: 1px solid $nhsuk-border-color;
+
+    @include respond-to-down(smm) {
+      flex-direction: column;
+      padding: $toolbar-padding-y;
+      min-height: 0;
+      margin-bottom: $toolbar-spacing-y * 0.5;
+    }
+  }
+
+  &__pager {
+    justify-content: space-between;
+    display: none;
+
+    > .pages {
+      width: 50%;
+    }
+  }
+
+  .sorter-label,
+  .toolbar-amount {
+    display: block;
+    margin-bottom: 0;
+
+    @include respond-to-down(smm) {
+      display: none;
+      font-size: $font-size-sm;
+    }
+  }
+
+  .toolbar-sorter {
+    @extend %u-flex-row-xcenter-ycenter;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+
+    @include respond-to-down(smm) {
+      font-size: $font-size-xs;
+    }
+  }
+
+  .sorter-label {
+    font-weight: 700;
+    margin-right: spacers(3);
+  }
+
+  select {
+    height: $toolbar-select-height;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    @include respond-to-down(md) {
+      height: 32px;
+      padding-left: 10px;
+      padding-right: 25px;
+      background-position-x: calc(100% + 10px);
+      background-position-y: 45%;
+    }
+  }
+
+  & ~ .toolbar-products {
+    @include sticky();
+    bottom: -1px;
+    top: auto;
+    z-index: z('above') + 1;
+    width: 100%;
+    margin: 0;
+
+    .toolbar-products__control {
+      display: none;
+    }
+
+    .toolbar-products__pager {
+      display: flex;
+    }
+  }
+}
+
+.message + .toolbar-products {
+  margin-top: $toolbar-spacing-y;
+
+  @include respond-to-down(smm) {
+    width: 100%;
+    margin-left: 0;
+    margin-top: $toolbar-spacing-y * 0.5;
+  }
+
+  .sorter-label {
+    @include respond-to-down(smm) {
+      display: block;
+    }
+  }
+}

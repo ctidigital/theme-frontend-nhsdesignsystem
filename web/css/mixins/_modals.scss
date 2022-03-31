@@ -1,0 +1,261 @@
+// Lib Modal base utility to be used internally with Popup and Slide modals
+//
+@mixin modal() {
+  @include fixed(0, 0, 0, 0);
+  min-width: 0;
+  visibility: hidden;
+
+  // scss-lint:disable SelectorFormat
+  &._show {
+    visibility: visible;
+
+    .modal-inner-wrap {
+      transform: translate(0, 0);
+    }
+  }
+
+  .modal-inner-wrap {
+    background-color: $modal-background;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: $modal-box-shadow;
+  }
+
+  // Actions, Close button
+  .action-close {
+    position: absolute;
+    top: $modal-close-padding;
+    right: $modal-close-padding;
+  }
+}
+
+//
+// Modal popups
+//
+// To set Modal Popup styles use the **modal-popup()** mixin.
+//
+// `@include modal-popup($_modal-width: $modal-width, $_modal-z-index: $modal-z-index);`
+//
+// markup:
+// <div class="modals-wrapper">
+//    <aside
+//        class="modal-popup _show"
+//        data-role="modal"
+//        data-type="popup">
+//        <div class="modal-inner-wrap">
+//             <header class="modal-header">
+//                 <h1 class="modal-title" data-role="title">Modal Popup</h1>
+//                 <button
+//                     class="action-close"
+//                     data-role="closeBtn"
+//                     type="button">
+//                     <span>Close</span>
+//                 </button>
+//             </header>
+//             <div class="modal-content" data-role="content">
+//                 Modal Content
+//             </div>
+//             <footer class="modal-footer">
+//                 Modal Footer
+//             </footer>
+//        </div>
+//    </aside>
+//    <div class="modals-overlay"></div>
+// </div>
+//
+// Styleguide 2.6.2
+//
+
+@mixin modal-popup($_modal-width: $modal-width, $_modal-z-index: $modal-z-index) {
+  @include modal();
+  left: 0;
+  overflow-y: auto;
+  z-index: $_modal-z-index;
+
+  // scss-lint:disable SelectorFormat
+  &._show {
+    .modal-inner-wrap {
+      transform: translateY(0);
+    }
+  }
+
+  .modal-inner-wrap {
+    @include absolute(auto, 0, auto, 0);
+    @include size($_modal-width, auto);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: $modal-popup-indent-vertical auto;
+    transform: translateY(-200%);
+    transition-duration: $transition-duration;
+    transition-property: transform, visibility;
+    transition-timing-function: ease;
+  }
+
+  &._inner-scroll {
+    overflow-y: visible;
+
+    .ie10 &,
+    .ie9 & {
+      overflow-y: auto;
+    }
+
+    .modal-inner-wrap {
+      max-height: 90%;
+
+      .ie10 &,
+      .ie9 & {
+        max-height: none;
+      }
+    }
+
+    .modal-content {
+      overflow-y: auto;
+    }
+  }
+
+  .modal-header,
+  .modal-content,
+  .modal-footer {
+    padding-right: $modal-padding;
+    padding-left: $modal-padding;
+  }
+
+  .modal-header,
+  .modal-footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  .modal-header {
+    padding-top: $modal-padding;
+    padding-bottom: $modal-padding / 2.5;
+  }
+
+  .modal-footer {
+    margin-top: auto;
+    padding-top: $modal-padding;
+    padding-bottom: $modal-padding;
+  }
+
+  .modal-footer-actions {
+    text-align: right;
+  }
+}
+
+//
+// Modal slide panels
+//
+// To set Modal Slide styles use the **modal-slide()** mixin.
+//
+// `@include modal-slide($_modal-slide-left-indent: $modal-slide-left-indent, $_modal-z-index: $modal-z-index);`
+//
+// markup:
+// <div class="modals-wrapper">
+//    <aside
+//        class="modal-slide _show"
+//        data-role="modal"
+//        data-type="slide">
+//        <div class="modal-inner-wrap">
+//             <header class="modal-header">
+//                 <h1 class="modal-title" data-role="title">Modal Slide</h1>
+//                 <button
+//                     class="action-close"
+//                     data-role="closeBtn"
+//                     type="button">
+//                     <span>Close</span>
+//                 </button>
+//             </header>
+//             <div class="modal-content" data-role="content">
+//                 Modal Content
+//             </div>
+//             <footer class="modal-footer">
+//                 Modal Footer
+//             </footer>
+//        </div>
+//    </aside>
+//    <div class="modals-overlay"></div>
+// </div>
+//
+// Styleguide 2.6.3
+//
+
+@mixin modal-slide($_modal-slide-left-indent: $modal-slide-left-indent, $_modal-z-index: $modal-z-index) {
+  @include modal();
+  width: calc(100% - #{$_modal-slide-left-indent});
+  left: $_modal-slide-left-indent;
+  z-index: $_modal-z-index;
+
+  // scss-lint:disable SelectorFormat
+  &._show {
+    .modal-inner-wrap {
+      transform: translateX(0);
+    }
+  }
+
+  .modal-inner-wrap {
+    @include size(auto, 100%);
+    position: static;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition-duration: $transition-duration;
+    transition-property: transform, visibility;
+    transition-timing-function: ease-in-out;
+    box-shadow: $modal-slide-box-shadow;
+  }
+
+  &._inner-scroll {
+    .modal-inner-wrap {
+      display: flex;
+      flex-direction: column;
+      overflow-y: visible;
+    }
+
+    .modal-header,
+    .modal-footer {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+
+    .modal-content {
+      overflow-y: auto;
+    }
+
+    .modal-footer {
+      margin-top: auto;
+    }
+  }
+
+  .modal-header,
+  .modal-content,
+  .modal-footer {
+    padding: 0 $modal-slide-padding;
+  }
+
+  .modal-header {
+    padding-top: $modal-slide-header-padding-vertical;
+    padding-bottom: $modal-slide-header-padding-vertical;
+  }
+}
+
+
+@mixin modal-responsive($_modal-responsive-breakpoint: $modal-responsive-breakpoint) {
+
+  // Modal Slide
+  @include modal-slide();
+
+  @include respond-to-up($_modal-responsive-breakpoint) {
+    // Modal popup
+    @include modal-popup();
+  }
+
+  .modal-inner-wrap {
+    max-height: none;
+    margin: 0;
+
+    @include respond-to-up($_modal-responsive-breakpoint) {
+      max-height: 90%;
+      margin: $modal-popup-indent-vertical auto;
+    }
+  }
+}

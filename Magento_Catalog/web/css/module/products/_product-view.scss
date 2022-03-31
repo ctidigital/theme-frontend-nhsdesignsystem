@@ -1,0 +1,8 @@
+.catalog-product-view {
+  .page-title {
+    @include fluid-type(h2);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: $font-weight-semi-bold;
+  }
+}

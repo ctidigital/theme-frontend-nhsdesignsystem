@@ -1,0 +1,31 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="shipping-address-item" css="'selected-item': isSelected(), 'not-selected-item': !isSelected()">
+    <text args="address().prefix"/> <text args="address().firstname"/> <text args="address().middlename"/>
+    <text args="address().lastname"/> <text args="address().suffix"/><br/>
+    <text args="_.values(address().street).join(', ')"/><br/>
+    <text args="address().city "/>, <span text="address().region"></span> <text args="address().postcode"/><br/>
+    <text args="getCountryName(address().countryId)"/><br/>
+    <text if="address().telephone" args="address().telephone"></text><br/>
+
+    <each args="data: address().customAttributes, as: 'element'">
+        <text args="$parent.getCustomAttributeLabel(element)"/>
+        <br/>
+    </each>
+    <!-- ko if: (address().isEditable()) -->
+    <button visible="address().isEditable()" type="button"
+            class="action edit-address-link"
+            click="editAddress">
+        <span translate="'Edit'"></span>
+    </button>
+    <!-- /ko -->
+    <!-- ko if: (!isSelected()) -->
+    <button type="button" data-bind="click: selectAddress, visible: !isQuoteAddressLocked" class="action action-select-shipping-item" tabindex="-1">
+        <span data-bind="i18n: 'Ship Here'"></span>
+    </button>
+    <!-- /ko -->
+</div>

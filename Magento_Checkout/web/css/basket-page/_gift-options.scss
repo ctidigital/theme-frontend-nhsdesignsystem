@@ -1,0 +1,62 @@
+.gift-options-cart-item {
+  width: 100%;
+
+  .gift-options-title {
+    @extend %nhs-h6;
+    color: $text-muted;
+  }
+
+  .action-gift {
+    @include ms-icon('plus', s, after);
+    box-sizing: border-box;
+    font-size: $font-size-sm;
+
+    &:after {
+      transform-origin: 50% 50%;
+      margin-left: $messages-icon-spacing-x;
+    }
+
+    &._active {
+      &:after {
+        content: map-get($ms-icons, 'minus');
+      }
+    }
+  }
+
+  .gift-content {
+    @extend %u-max-height-transition;
+    display: block;
+    visibility: hidden;
+    overflow: hidden;
+    max-height: 0;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-in-out;
+
+    &._active {
+      visibility: visible;
+      max-height: 650px;
+    }
+  }
+
+  .gift-options {
+    padding: $basket-item-padding;
+    background: $white;
+  }
+
+  .actions-toolbar > .secondary {
+    @extend %u-flex-row-xcenter-ycenter;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .secondary {
+      flex: 0 0 auto;
+      width: auto;
+    }
+
+    .action {
+      @include respond-to-down(smm) {
+        margin-top: spacers(3);
+      }
+    }
+  }
+}

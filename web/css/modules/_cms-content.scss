@@ -1,0 +1,58 @@
+/**
+ * CMS content wysiwig editor styles
+ */
+
+.std {
+  p {
+    @include fixed-type('body-copy');
+  }
+}
+
+.hero-banner,
+.recently-viewed-block {
+  @include full-width;
+  background-color: $color_nhsuk-grey-5;
+
+  > div {
+    max-width: map_get($container-max-widths, xxl);
+    margin: 0 auto;
+
+    @include respond-to-down(md) {
+      padding: 0 $container-padding;
+    }
+  }
+}
+
+.hero-banner {
+  .pagebuilder-overlay,
+  .pagebuilder-collage-content,
+  .pagebuilder-banner-wrapper {
+    display: flex;
+  }
+
+  .pagebuilder-collage-content {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+.cms-index-index .column.main > [data-content-type="row"] {
+  padding: 0;
+}
+
+.recently-viewed-block {
+  [data-content-type="text"] p,
+  &[data-content-type="text"] p {
+    margin-bottom: 0;
+  }
+
+  .block-title {
+    @include nhsuk-typography-responsive(32);
+
+    display: block;
+    font-weight: $nhsuk-font-bold;
+
+    @include nhsuk-responsive-margin(4, 'bottom');
+    margin-top: spacers(5) !important;
+  }
+}

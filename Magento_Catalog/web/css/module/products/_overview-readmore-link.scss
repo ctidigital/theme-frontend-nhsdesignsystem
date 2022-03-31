@@ -1,0 +1,7 @@
+.overview-readmore-link {
+  margin-left: spacers(2);
+
+  &:before {
+    content: '- ';
+  }
+}

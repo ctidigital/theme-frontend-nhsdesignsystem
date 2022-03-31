@@ -1,0 +1,34 @@
+//------------------------------------//
+//  Theme Settings                   //
+//-----------------------------------//
+// Do not remove this.
+@import "../../../web/css/settings";
+//-----------------------------------//
+
+@import "module/page-title";
+@import "module/layout";
+@import "module/toolbar";
+@import "module/modes";
+@import "module/sorter";
+@import "module/pages";
+@import "module/compare-products";
+@import "module/filter/filter-block";
+@import "module/filter/price-slider";
+@import "module/products/products-grid";
+@import "module/products/products-list";
+@import "module/products/product-items";
+@import "module/products/product-item";
+@import "module/products/product-item-inner";
+@import "module/products/product-reviews-summary";
+@import "module/products/swatch-option";
+@import "module/products/product-view";
+@import "module/products/product-stock-sku";
+@import "module/products/product-sku";
+@import "module/products/product-stock";
+@import "module/products/product-options-wrapper";
+@import "module/fotorama";
+@import "module/products/tabs";
+@import "module/products/product-review";
+@import "module/products/related-upsell-widgets";
+@import "module/products/product-short-description";
+@import "module/products/overview-readmore-link";

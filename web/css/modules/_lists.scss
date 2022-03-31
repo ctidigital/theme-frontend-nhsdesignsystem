@@ -1,0 +1,37 @@
+// Import NHS FE Styles for Lists
+// @import "../vendor/nhsuk-frontend/packages/core/styles/lists";
+
+/* remove list style from view basket proceed to checkout button area */
+//ul.checkout-methods-items {
+//    list-style-type: none;
+//}
+
+%nhsuk-list-styles {
+  @include nhsuk-typography-responsive(19);
+  @include nhsuk-responsive-margin(4, 'bottom');
+
+  list-style-type: none;
+  margin-top: 0;
+  padding-left: 0;
+
+  > li {
+    @include nhsuk-responsive-margin(2, 'bottom');
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.search-autocomplete {
+  > ul[role="listbox"] {
+    @extend %nhsuk-list-styles;
+  }
+
+  [role="option"] {
+    &.selected {
+      @include nhsuk-focused-text();
+      font-feature-settings: normal;
+    }
+  }
+}

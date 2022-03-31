@@ -1,0 +1,85 @@
+@import "../vendor/nhsuk-frontend/packages/components/breadcrumb/breadcrumb";
+
+.breadcrumbs {
+  @extend .nhsuk-breadcrumb;
+
+  .items {
+    @extend .nhsuk-breadcrumb__list;
+    padding-left: spacers(3);
+    padding-right: spacers(3);
+    margin: 0 auto;
+    max-width: map_get($container-max-widths, xxl);
+  }
+
+  .item {
+    @extend .nhsuk-breadcrumb__item;
+  }
+
+  .item a {
+    @extend .nhsuk-breadcrumb__link;
+  }
+
+  .nhsuk-breadcrumb__back {
+    margin-left: spacers(3);
+    margin-right: spacers(3);
+  }
+
+
+
+
+  //.page-wrapper & {
+  //  margin-top: $breadcrumbs-spacing-y;
+  //  margin-bottom: $breadcrumbs-spacing-y;
+  //  padding: 0 $container-padding;
+  //}
+  //
+  //.items {
+  //  list-style: none;
+  //  margin: 0;
+  //  padding: 0;
+  //
+  //  > .item {
+  //    padding-right: $breadcrumbs-spacing-x;
+  //
+  //    &:after {
+  //      content: $breadcrumbs-separator;
+  //      color: $breadcrumbs-separator-color;
+  //      display: inline-block;
+  //      vertical-align: middle;
+  //      font-family: 'ms-icons';
+  //      margin-left: $breadcrumbs-spacing-x;
+  //      margin-top: 2px;
+  //    }
+  //
+  //    &:last-child {
+  //      padding-right: 0;
+  //
+  //      &:after {
+  //        display: none;
+  //      }
+  //    }
+  //  }
+  //}
+  //
+  //.item {
+  //  display: inline;
+  //
+  //  a,
+  //  strong {
+  //    display: inline-block;
+  //    white-space: nowrap;
+  //    text-overflow: ellipsis;
+  //    max-width: 280px;
+  //    overflow: hidden;
+  //    vertical-align: middle;
+  //  }
+  //
+  //  a {
+  //    color: $breadcrumbs-color;
+  //  }
+  //
+  //  strong {
+  //    color: $breadcrumbs-active-color;
+  //  }
+  //}
+}

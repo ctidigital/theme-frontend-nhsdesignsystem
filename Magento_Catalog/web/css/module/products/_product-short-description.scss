@@ -1,0 +1,11 @@
+.product.attribute.overview {
+    .value {
+        > div {
+            display: inline;
+        }
+
+        a {
+            white-space: nowrap;
+        }
+    }
+}

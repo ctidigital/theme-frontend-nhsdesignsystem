@@ -1,0 +1,35 @@
+//
+// IE 11+ only
+// Usage: @include fluid-type('alpha');
+//
+
+@mixin fluid-type($fluid-type-size: 'alpha') {
+
+  $_fluid-type-size: map_get($fluid-type-sizing, $fluid-type-size);
+
+
+
+  @if $_fluid-type-size {
+    $min-vw: map_get($_fluid-type-size, 'breakpoint-min');
+    $max-vw: map_get($_fluid-type-size, 'breakpoint-max');
+    $min-font-size: map_get($_fluid-type-size, 'size-min');
+    $max-font-size: map_get($_fluid-type-size, 'size-max');
+
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        font-size: $min-font-size;
+        @media screen and (min-width: $min-vw) {
+          font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+          font-size: $max-font-size;
+        }
+      }
+    }
+  }
+}

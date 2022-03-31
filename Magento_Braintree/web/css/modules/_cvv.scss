@@ -1,0 +1,11 @@
+.payment-method-braintree .payment-method-content {
+  .cvv {
+    &.field {
+      margin-bottom: 0;
+    }
+
+    .control {
+      width: $braintree-cvv-field-width + 100px;
+    }
+  }
+}

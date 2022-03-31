@@ -1,0 +1,275 @@
+.opc-summary-wrapper {
+  .action-close {
+    @include respond-to-up(lg) {
+      display: none !important;
+    }
+  }
+
+  .product-image-wrapper img {
+    object-fit: contain;
+  }
+}
+
+.opc-block-summary {
+  display: flex;
+  flex-direction: column;
+  padding: $opc-summary-padding 0;
+  background: $white;
+
+  @include respond-to-up(lg) {
+    border: 1px solid $nhsuk-border-color;
+  }
+
+  .title {
+    @extend %nhsuk-heading-h3;
+  }
+
+  > * {
+    width: 100%;
+
+    @include respond-to-up(lg) {
+      padding: 0 $opc-summary-padding;
+      background: $opc-sidebar-bg;
+    }
+  }
+
+  .table-totals {
+    order: 2;
+    margin-top: spacers(3);
+    border-bottom: 1px solid darken($opc-estimated-wrapper-bg, 5%);
+
+    @include respond-to-up(lg) {
+      margin-top: 0;
+      border-left: $opc-summary-padding solid $opc-sidebar-bg;
+      border-right: $opc-summary-padding solid $opc-sidebar-bg;
+      border-bottom: 0 none;
+    }
+
+    td,
+    th {
+      padding-bottom: $opc-summary-padding;
+    }
+
+    th {
+      font-size: $opc-summary-totals-label-font-size-2;
+    }
+
+    td {
+      text-align: right;
+    }
+
+    .totals.sub td,
+    .totals.sub th {
+      font-size: $opc-summary-totals-label-font-size * 0.8;
+      font-weight: $font-weight-bold;
+
+      @include respond-to-up(md) {
+        font-size: $opc-summary-totals-label-font-size;
+      }
+
+      .price {
+        font-size: $opc-summary-totals-price-font-size * 0.8;
+
+        @include respond-to-up(md) {
+          font-size: $opc-summary-totals-price-font-size;
+        }
+      }
+    }
+
+    .grand.totals {
+      border-top: $opc-summary-totals-border;
+
+      td,
+      th {
+        position: relative;
+        font-size: $opc-summary-totals-label-font-size * 0.8;
+        padding-top: $opc-summary-padding;
+
+        @include respond-to-up(md) {
+          font-size: $opc-summary-totals-label-font-size;
+        }
+
+        .price {
+          font-size: $opc-summary-totals-price-font-size * 0.96;
+
+          @include respond-to-up(md) {
+            font-size: $opc-summary-totals-price-font-size * 1.2;
+          }
+        }
+      }
+    }
+  }
+
+  .block.items-in-cart {
+    order: 1;
+
+    .title {
+      @include ms-icon('plus');
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      padding: $opc-summary-padding 0;
+      font-size: 1rem;
+      color: $body-color;
+      border-bottom: 1px solid rgba($opc-summary-highlight-color, 0.4);
+      margin-bottom: 0;
+
+      &:before {
+        transition: transform $transition-duration-ease-out
+          $transition-timing-sharp;
+        will-change: transform;
+        backface-visibility: hidden;
+        font-size: 28px;
+      }
+
+      &:focus {
+          @include nhsuk-focused-button();
+      }
+    }
+
+    .product-image-container {
+      display: none;
+    }
+
+    &.active {
+      .title:before {
+        transform-origin: 50% 50%;
+        content: map-get($ms-icons, 'minus');
+      }
+
+      > .minicart-items {
+        background: rgba($opc-summary-highlight-color, 0.05);
+        padding: $opc-summary-padding;
+        border-bottom: 1px solid rgba($opc-summary-highlight-color, 0.4);
+        animation: u-animation-scale-down $transition-duration
+          $transition-timing-ease-in;
+        animation-fill-mode: both;
+
+        > .minicart-items-wrapper {
+          animation: u-animation-fade $transition-duration
+            $transition-timing-sharp;
+          animation-delay: $transition-duration;
+          animation-fill-mode: both;
+        }
+      }
+    }
+  }
+
+  caption {
+    display: none;
+  }
+
+  .minicart-items {
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      > .product-item {
+        margin-bottom: $opc-summary-padding * 0.5;
+        padding-bottom: $opc-summary-padding * 0.5;
+        border-bottom: 1px solid darken(theme-color(light), 5%);
+
+        &:last-child {
+          margin-bottom: 0;
+          border-bottom: 0 none;
+          padding-bottom: 0;
+        }
+      }
+
+      .options {
+        .toggle {
+          @include ms-icon('plus', inherit, after);
+          color: $text-muted;
+
+          &:after {
+            position: relative;
+            top: 3px;
+            margin-left: 6px;
+          }
+
+          &[aria-expanded='true'] {
+            &:after {
+              content: map-get($ms-icons, 'minus');
+            }
+          }
+        }
+
+        .toggle,
+        .content {
+          font-size: $font-size-sm;
+          background: $white;
+          padding: 4px 10px;
+        }
+
+        .content {
+          padding-top: 10px;
+
+          .subtitle {
+            @extend %u-sr-only;
+          }
+        }
+
+        dl {
+          margin-bottom: spacers(2);
+        }
+      }
+
+      .product:not(.options) {
+        display: flex;
+        align-items: flex-start;
+        max-width: 100%;
+
+        .product-image-container {
+          margin-right: spacers(2);
+        }
+
+        .product-item-details {
+          flex: 1 1 auto;
+          max-width: 100%;
+        }
+
+        .product-item-inner {
+          display: flex;
+          align-items: flex-start;
+          flex-wrap: wrap;
+
+          .product-item-name-block {
+            padding-right: spacers(3);
+            margin-bottom: spacers(2);
+            width: 60%;
+          }
+
+          .subtotl {
+            width: 40%;
+            text-align: right;
+          }
+        }
+
+        .product-item-name {
+          display: block;
+          line-height: 1.3;
+          margin-bottom: spacers(3);
+          font-weight: normal;
+        }
+
+        .price {
+          font-weight: $font-weight-bold;
+          font-size: $font-size-base * 1.2;
+        }
+
+        .label {
+          display: inline-block;
+          color: $text-muted;
+          margin-right: spacers(1);
+          font-size: $font-size-base;
+        }
+      }
+    }
+
+    .product-image-photo {
+      object-fit: contain;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remove -->
+        <!-- <referenceBlock name="checkout.cart.crosssell" remove="true"/> -->
+
+        <!-- remove discount -->
+        <referenceContainer name="checkout.cart.coupon" remove="true"/>
+
+        <!-- remove gift card-->
+        <referenceContainer name="cart.summary">
+            <referenceBlock name="checkout.cart.giftcardaccount" remove="true"/>
+        </referenceContainer>
+
+       <!-- Move -->
+        <move element="checkout.cart.form.before" destination="checkout.cart.container.main" before="-"/>
+        <move element="checkout.cart.form" destination="checkout.cart.container.main" after="checkout.cart.form.before"/>
+        <move element="cart.summary" destination="checkout.cart.container.sidebar" before="-"/>
+        <move element="checkout.cart.validationmessages" destination="checkout.cart.messages" before="-"/>
+
+        <referenceContainer name="checkout.cart.container">
+            <container name="checkout.cart.container.main" as="checkout.cart.container.main" label="Cart Main Container" htmlTag="div" htmlClass="cart-container-main" before="-"/>
+            <container name="checkout.cart.container.sidebar" as="checkout.cart.container.sidebar" label="Cart Sidebar Container" htmlTag="div" htmlClass="cart-container-sidebar" after="-"/>
+        </referenceContainer>
+        <referenceContainer name="page.messages">
+            <block class="Magento\Framework\View\Element\Template" name="checkout.cart.messages" template="Magento_Checkout::cart/checkout-messages.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="cart.summary">
+            <container name="cart.summary.accepted.payments" as="cart.accepted.payments" label="Cart Summary Accepted Payments" htmlTag="div" htmlClass="cart-summary-accepted-payments" after="-">
+                <block class="Magento\Cms\Block\Block" name="cart.summary.payments">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">cart_summary_accepted_payments</argument>
+                    </arguments>
+                </block>
+            </container>
+            <container name="cart.summary.additional.wrapper" as="cart.summary.additional.wrapper" label="Cart Summary Additional Blocks" htmlTag="div" htmlClass="cart-summary-additional-blocks" after="-">
+                <block class="Magento\Cms\Block\Block" name="cart.summary.additional">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">cart_summary_additional_block</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <referenceBlock name="checkout.cart.shipping">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-summary" xsi:type="array">
+
+                            <!-- My custom part: -->
+                            <item name="config" xsi:type="array">
+                                <item name="componentDisabled" xsi:type="boolean">true</item>
+                            </item>
+
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="checkout.cart.empty">
+            <block class="Magento\Cms\Block\Block" name="checkout.cart.empty.content">
+
+                <arguments>
+                    <argument name="block_id" xsi:type="string">checkout_cart_empty_content</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+    </body>
+</page>

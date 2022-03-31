@@ -1,0 +1,121 @@
+.block.giftcard,
+.gift-item-block,
+.block.discount {
+  margin-top: $basket-item-spacing-y;
+  width: 100%;
+
+  .title {
+    @extend %nhs-h6;
+    color: $text-muted;
+    margin-bottom: 0;
+  }
+
+  .title {
+    > span,
+    > strong {
+      @extend %u-flex-row-xcenter-ycenter;
+      @include ms-icon('plus', s, after);
+      position: relative;
+      padding: spacers(3);
+      padding-right: 38px;
+      justify-content: flex-start;
+      font-size: $font-size-sm;
+      background: $white;
+      width: auto;
+
+      &:after {
+        position: absolute;
+        right: 0;
+        transform-origin: 50% 50%;
+        margin-left: $messages-icon-spacing-x;
+        margin-right: $messages-icon-spacing-x;
+      }
+    }
+
+    &[aria-expanded=true] {
+      > strong:after {
+        content: map-get($ms-icons, 'minus');
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .content {
+    @extend %u-max-height-transition;
+    display: block !important;
+    visibility: hidden;
+    overflow: hidden;
+    max-height: 0;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-in-out;
+    background: $white;
+
+    > form {
+      padding: spacers(3);
+    }
+
+    &[aria-hidden="false"] {
+      visibility: visible;
+      max-height: 450px;
+    }
+  }
+
+  &._active {
+    .content {
+      visibility: visible;
+      max-height: 450px;
+    }
+    .title > span:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .actions-toolbar {
+    .action.check,
+    .action.primary,
+    .action.apply {
+      font-size: $font-size-xs;
+      box-sizing: border-box;
+    }
+
+    .action.primary {
+      padding: 0.5rem 0.7rem;
+    }
+
+    .action.apply {
+      padding-top: 0;
+    }
+  }
+}
+
+.gift-item-block {
+  .title > span,
+  .content {
+    background: $basket-item-bg;
+  }
+
+  .content {
+    padding: 0 spacers(3);
+  }
+
+  .actions-toolbar {
+    .secondary {
+      @extend %u-flex-col-xcenter-ycenter;
+      margin-top: spacers(2);
+
+      @include respond-to-up(smm) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .action.secondary {
+        flex: 0 0 auto;
+        width: auto;
+        margin-bottom: spacers(2);
+      }
+    }
+  }
+}

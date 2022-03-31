@@ -1,0 +1,57 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Default appearance styles
+//  _____________________________________________
+
+/* spacing to the right of buttons in the case of more than one inline buttons */
+%button-standard {
+    width: auto;
+
+    @include respond-to-up(md) {
+        margin-right: spacers(3);
+    }
+}
+
+a,
+button,
+div {
+    &.pagebuilder-button-link {
+        @extend %button-standard;
+    }
+
+    &.pagebuilder-button-primary {
+        @extend %button-standard;
+    }
+
+    &.pagebuilder-button-secondary {
+        @extend %button-standard;
+    }
+}
+
+/* pagebuilder defaults */
+[data-content-type='button-item'],
+[data-content-type='buttons'] {
+    width: 100%;
+    cursor: pointer;
+
+    @include respond-to-up(md) {
+        width: auto;
+    }
+
+    &.disable-fullwidth {
+        width: 100%;
+
+        @include respond-to-up(smm) {
+            width: auto;
+        }
+    }
+}
+
+[data-content-type=button-item] [data-element=empty_link] {
+    cursor: pointer;
+}
+/* end of pagebuilder defaults */

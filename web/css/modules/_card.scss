@@ -1,0 +1,50 @@
+@import "../vendor/nhsuk-frontend/packages/components/card/card";
+
+.nhsuk-card {
+  .nhsuk-button {
+    margin-bottom: 0;
+  }
+}
+
+.pagebuilder-banner--narrow [data-element="content"] {
+  max-width: 80%;
+
+  @include respond-to-up(md) {
+    max-width: 100%;
+  }
+}
+
+.pagebuilder-banner--narrow [data-element="content"] p {
+  background: rgba(239, 244, 245, 85%);
+}
+
+.pagebuilder-banner--narrow,
+.hero-banner {
+  .pagebuilder-banner-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  a[data-link-type="default"] {
+    display: block;
+
+    &:focus {
+      [data-element="content"] {
+        @include nhsuk-focused-text();
+      }
+    }
+  }
+}
+
+.nhsuk-card-group--left {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  @include respond-to-down(md, $breakpoints, true) {
+    max-width: calc(100% + 32px);
+  }
+}
+
+[data-content-type="row"] .nhsuk-card-group {
+  max-width: calc(100% + 32px);
+}

@@ -1,0 +1,296 @@
+// Catalog Category View
+//
+.catalog-category-view:not(.page-layout-1column-cat-lander),
+.catalogsearch-result-index {
+  background: $category-layout-bg;
+
+  .page-main {
+    .sidebar {
+      margin-bottom: $category-layout-sidebar-spacing-y;
+    }
+  }
+
+  &.page-layout-3columns,
+  &.page-layout-2columns-right,
+  &.page-layout-2columns-left {
+    .columns {
+      @include respond-to-up($category-layout-breakpoint) {
+        align-items: flex-start;
+      }
+    }
+
+    .main {
+      @include respond-to-up($category-layout-breakpoint) {
+        width: calc(100% - #{($category-layout-sidebar-width-lg + (strip-unit($category-layout-sidebar-spacing-x) * 16px))});
+      }
+
+      @include respond-to-up(xxl) {
+        width: calc(100% - #{($category-layout-sidebar-width + (strip-unit($category-layout-sidebar-spacing-x) * 16px))});
+      }
+    }
+
+    .sidebar-container {
+      @include respond-to-up($category-layout-breakpoint) {
+        @include sticky();
+        z-index: z('below');
+        width: $category-layout-sidebar-width-lg;
+        margin-right: $category-layout-sidebar-spacing-x;
+      }
+
+      @include respond-to-up(xxl) {
+        width: $category-layout-sidebar-width;
+      }
+    }
+  }
+}
+
+// Catalog Product View
+//
+.product-options-wrapper,
+.product-options-bottom,
+.attribute.overview,
+.attribute.overview,
+.product.alert {
+  margin-bottom: $product-view-info-row-spacing-y;
+}
+
+.price-tier_price > div:not(:empty),
+.product-info-stock-sku {
+  margin-bottom: $product-view-info-row-spacing-y * 0.5;
+}
+
+.catalog-product-view {
+  background: $product-view-bg;
+
+  .column.main {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .product-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+    max-width: $product-view-info-wrapper-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: spacers(4);
+    z-index: 3;
+
+    @include respond-to-up($category-layout-breakpoint) {
+      flex-direction: row;
+    }
+  }
+
+  .product-info-main {
+    width: 100%;
+    order: 2;
+
+    @include respond-to-up($category-layout-breakpoint) {
+      @include sticky(0, 1);
+      padding-left: $product-view-media-spacing-x;
+      width: $product-view-info-main-width;
+    }
+  }
+
+  .product.media {
+    width: 100%;
+    background: $product-view-media-bg;
+    order: 1;
+    margin-bottom: $product-view-info-row-spacing-y * 0.25;
+
+    @include respond-to-up($category-layout-breakpoint) {
+      width: $product-view-media-width;
+      margin-bottom: 0;
+    }
+  }
+
+  .product.info {
+    width: 100%;
+    order: 2;
+  }
+
+  .nhsuk-card--help-and-support {
+    max-width: $product-view-info-wrapper-max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .block.related {
+    order: 4;
+    width: 100%;
+  }
+
+  .block.upsell {
+    order: 5;
+    width: 100%;
+  }
+
+  &:not(.page-product-configurable) .product-add-form > form,
+  .product-options-bottom {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: $product-view-info-row-spacing-y 0 $product-view-info-row-spacing-y * 0.25;
+
+    .product-info-price,
+    .box-tocart {
+      width: 50%;
+    }
+  }
+
+  .product-info-price {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: right;
+    margin-bottom: 100px;
+    margin-top: 27px;
+
+    .price-box {
+      text-align: right;
+      align-items: flex-end;
+    }
+
+    .old-price .price-label,
+    .old-price .price {
+      font-size: $font-size-base;
+    }
+
+    [data-price-type="finalPrice"] .price {
+      @include fluid-type(h2);
+      font-weight: $headings-font-weight;
+      line-height: 1.1;
+    }
+  }
+
+  .box-tocart {
+    margin-bottom: 80px;
+
+    .field.qty {
+      max-width: 120px;
+    }
+
+    .actions {
+      @include absolute(auto, auto, 0, 0);
+      width: 100%;
+    }
+
+    .action.primary.tocart {
+      width: 100%;
+   /*   @extend %button-promo;
+      @include fluid-type(h5);
+      width: 100%;
+      box-sizing: border-box;
+      justify-content: center;
+      padding-top: spacers(4);
+      padding-bottom: spacers(4);
+      max-width: none;
+
+      span {
+        width: auto;
+      }*/
+    }
+  }
+
+  .product-social-links {
+    text-align: center;
+
+    .product-addto-links {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .action.towishlist,
+    .action.mailto {
+    /*  display: inline-block;
+      vertical-align: middle;
+      box-sizing: border-box;
+      padding: 0 spacers(1);*/
+     // color: $text-muted;
+      // font-size: $font-size-sm;
+
+
+      &:before {
+        margin-right: spacers(2);
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        top: 4px;
+      }
+    }
+
+    .action.towishlist,
+    .action.mailto {
+      &:after {
+        margin-left: spacers(2);
+        margin-right: 3px;
+        content: '|';
+      }
+    }
+
+    .action.towishlist {
+      @include ms-icon(heart);
+    }
+
+    /*.action.tocompare {
+      // @include ms-icon(compare);
+    }*/
+
+    .action.mailto {
+      @include ms-icon(mail, 16px);
+
+      > span {
+        position: relative;
+        top: 2px;
+      }
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .product.info.detailed,
+  .product-info-wrapper {
+    margin-bottom: $product-view-info-row-spacing-y;
+  }
+
+  .product.info.detailed {
+    @extend %u-full-width;
+    background: $product-view-bg-alt;
+    padding: $product-view-info-row-spacing-y $container-padding;
+
+    > .product.data {
+      max-width: $product-view-info-wrapper-max-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.page-layout-1column-cat-lander {
+  .page-title-wrapper {
+    display: none;
+  }
+
+  .category-description {
+    @extend %u-sr-only;
+  }
+
+  .page-main {
+    padding-top: 0;
+  }
+
+  .column.main .nhsuk-card--help-and-support {
+    display: none !important;
+  }
+}

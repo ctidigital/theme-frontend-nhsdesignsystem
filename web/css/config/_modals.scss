@@ -1,0 +1,18 @@
+$modal-background: $white !default;
+$modal-overlay-background-color: $u-fixed-backdrop-bg !default;
+$modal-slide-mobile-background-color: $modal-background !default;
+$modal-padding: 3rem !default;
+$modal-width: 75% !default;
+$modal-box-shadow: 0 0 25px 0 rgba($black, .25) !default;
+$modal-z-index: z('modal') !default;
+$modal-popup-indent-vertical: 5rem !default;
+
+$modal-slide-box-shadow: -4px 4px 18px rgba($black, .1) !default;
+$modal-slide-left-indent: 3rem !default;
+$modal-slide-padding: 1rem !default;
+$modal-slide-header-padding-vertical: 1rem !default;
+
+$modal-responsive-breakpoint: 'md' !default;
+$modal-close-padding: 1rem !default;
+$modal-title-border: 1px solid $nhsuk-border-color !default;
+$modal-title-fluid-size:       h4 !default;

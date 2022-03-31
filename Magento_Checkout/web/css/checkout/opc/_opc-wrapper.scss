@@ -1,0 +1,100 @@
+// opc-wrapper
+.opc-wrapper {
+  @include clearfix;
+  float: none;
+  clear: both;
+
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .opc {
+    list-style: none;
+
+    > li {
+      padding: $container-padding;
+      background: $white;
+      margin-bottom: spacers(4);
+      border: 1px solid $nhsuk-border-color;
+
+      @include respond-to-up(lg) {
+        padding: $container-padding * 2;
+      }
+
+      /*&.checkout-payment-method {
+        padding: 0;
+      }*/
+    }
+  }
+
+  .step-title {
+    @extend %nhsuk-heading-h3;
+    padding: $opc-step-title-padding;
+    background: $opc-step-title-bg;
+  }
+
+  legend {
+    @include fluid-type(h5);
+    font-weight: bold;
+  }
+
+  .step-content {
+    .actions-toolbar {
+      @include respond-to-up(md) {
+        justify-content: space-between;
+      }
+    }
+
+    .primary {
+      &.disableField {
+        opacity: 0.3;
+        pointer-events: none;
+      }
+    }
+
+    .message.notice {
+      margin-bottom: spacers(3);
+    }
+  }
+
+  #checkout-step-login {
+    position: relative;
+
+    .form-login {
+      .actions-toolbar {
+        margin-top: spacers(4);
+      }
+      .secondary {
+        align-items: flex-start;
+        text-align: left;
+      }
+    }
+    .actions-toolbar {
+      @include respond-to-up(md) {
+        margin: 0;
+        justify-content: flex-start;
+      }
+    }
+    .passwordShown {
+      @include respond-to-up(md) {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+
+  .note {
+    color: $text-muted;
+  }
+
+  #tooltip-label {
+    display: none;
+  }
+}
+
+[data-role='checkout-messages'] .message {
+  margin-bottom: spacers(3);
+}

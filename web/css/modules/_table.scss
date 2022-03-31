@@ -1,0 +1,61 @@
+// @import "../vendor/nhsuk-frontend/packages/core/elements/table";
+@import "../vendor/nhsuk-frontend/packages/components/tables/tables";
+
+.company-users-index .data-grid-wrap.table-wrapper,
+.company-role-index .data-grid-wrap.table-wrapper,
+.nhsuk-table-responsive {
+  table {
+    @include nhsuk-responsive-margin(7, 'bottom');
+
+    border-spacing: 0;
+    vertical-align: top;
+    width: 100%; /* [1] */
+
+    @include mq($media-type: print) {
+      page-break-inside: avoid;
+    }
+
+  }
+
+  thead {
+    th {
+      border-bottom: $nhsuk-border-table-header-width solid $nhsuk-border-color;
+    }
+  }
+
+  th,
+  td {
+    @include nhsuk-typography-responsive(19);
+    @include nhsuk-responsive-padding(3, 'bottom');
+    @include nhsuk-responsive-padding(4, 'right');
+    @include nhsuk-responsive-padding(3, 'top');
+
+    border-bottom: $nhsuk-border-table-cell-width solid $nhsuk-border-color;
+    text-align: left;
+    vertical-align: top;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  th {
+    font-weight: $nhsuk-font-bold;
+  }
+
+  caption {
+    @include nhsuk-font($size: 22, $weight: bold);
+    text-align: left;
+  }
+
+  .action.view + .action.order {
+    margin-left: spacers(2);
+  }
+}
+.nhsuk-table-responsive:not(.table-additional-addresses) .nhsuk-table__body .nhsuk-table__row td,
+.requisition_list-requisition-index .nhsuk-table__body .nhsuk-table__row td,
+.requisition_list-requisition-view .nhsuk-table__body .nhsuk-table__row td {
+  @media screen and (max-width: 48.0525em) {
+    text-align: left !important;
+  }
+}

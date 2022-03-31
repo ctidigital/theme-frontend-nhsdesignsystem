@@ -1,0 +1,99 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Wishlist\Block\Share\Wishlist $block */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+
+<?php if ($block->hasWishlistItems()): ?>
+    <form class="form shared wishlist form-wishlist-items" action="<?= $block->escapeUrl($block->getUrl('wishlist/index/update')) ?>" method="post">
+        <div class="products-grid wishlist">
+            <ol class="product-items">
+                <?php foreach ($block->getWishlistItems() as $item): ?>
+                        <?php
+                        $product = $item->getProduct();
+                        $isVisibleProduct = $product->isVisibleInSiteVisibility();
+                        ?>
+                    <li class="product-item">
+                        <div class="product-item-info" data-container="product-grid">
+                            <a class="product-item-photo" href="<?= $block->escapeUrl($block->getProductUrl($item)) ?>" title="<?= $block->escapeHtmlAttr($product->getName()) ?>">
+                                <?= $block->getImage($product, 'wishlist_thumbnail')->toHtml() ?>
+                            </a>
+                            <strong class="product-item-name">
+                                <a href="<?= $block->escapeUrl($block->getProductUrl($item)) ?>">
+                                    <?= $block->escapeHtml($product->getName()) ?>
+                                </a>
+                            </strong>
+                            <?php
+                            echo $block->getProductPriceHtml(
+                                $product,
+                                'wishlist_configured_price',
+                                \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST,
+                                ['item' => $item]
+                            );
+                            ?>
+                            <?= $block->getDetailsHtml($item) ?>
+
+                            <div class="product-item-inner">
+                                <?php $_commentDescription = trim($block->getEscapedDescription($item)); ?>
+                                <?php if (strlen($_commentDescription) > 0 && $_commentDescription !== '&nbsp;'): ?>
+                                <div class="wishlist-comment">
+                                    <?= $block->escapeHtmlAttr(__('Comment')) ?>: <?= /* @noEscape */ $block->getEscapedDescription($item) ?></div>
+                                <?php endif; ?>
+                                <?php if ($product->isSaleable()): ?>
+                                <?php if ($isVisibleProduct): ?>
+                                    <div class="box-tocart">
+                                        <button type="button"
+                                            title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"
+                                            data-post='<?= /* @noEscape */ $block->getSharedItemAddToCartUrl($item) ?>'
+                                            class="action tocart">
+                                            <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+                                        </button>
+                                    </div>
+                                <?php endif ?>
+                            <?php endif; ?>
+                                <div class="product-item-actions">
+                                    <a href="#" data-post='<?= /* @noEscape */ $block->getAddToWishlistParams($item) ?>'
+                                       id="wishlist-shared-item-<?= /* @noEscape */ $item->getId() ?>"
+                                       class="action towishlist" data-action="add-to-wishlist">
+                                        <span><?= $block->escapeHtml(__('Add to Wish List')) ?></span>
+                                    </a>
+                                    <?= /* @noEscape */ $secureRenderer->renderEventListenerAsTag(
+                                        'onclick',
+                                        "location.assign(this.href); event.preventDefault();",
+                                        'a#wishlist-shared-item-' . $item->getId()
+                                    ) ?>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                <?php endforeach; ?>
+            </ol>
+        </div>
+        <div class="actions-toolbar">
+            <?php if ($block->isSaleable()):?>
+                <div class="primary">
+                    <button type="button"
+                            title="<?= $block->escapeHtmlAttr(__('Add All to Cart')) ?>"
+                            data-post='<?= $block->escapeUrl($block->getSharedAddAllToCartUrl()) ?>'
+                            class="action tocart">
+                        <span><?= $block->escapeHtml(__('Add All to Cart')) ?></span>
+                    </button>
+                </div>
+            <?php endif;?>
+            <div class="secondary">
+                <a href="<?= $block->escapeUrl($block->getBackUrl()) ?>" class="action back">
+                    <span><?= $block->escapeHtml(__('Back')) ?></span>
+                </a>
+            </div>
+        </div>
+    </form>
+<?php else: ?>
+    <div class="message info empty"><div><?= $block->escapeHtml(__('Wish List is empty now.')) ?></div></div>
+<?php endif ?>

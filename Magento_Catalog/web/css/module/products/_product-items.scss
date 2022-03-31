@@ -1,0 +1,16 @@
+.products-grid,
+.block-wishlist,
+.products-list {
+  .product-items {
+    margin: 0 0 $product-items-spacing-y 0;
+    padding: 0;
+    list-style: none;
+
+    &:not(.slick-slider) {
+      @extend %u-flex-row-xcenter-ycenter;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+  }
+}

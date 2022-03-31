@@ -1,0 +1,19 @@
+{
+  "name": "ctidigital/theme-frontend-nhsdesignsystem",
+  "description": "Magento 2 front-end theme built on the NHS Design System",
+  "license": "UNLICENSED",
+  "type": "magento2-theme",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ]
+  },
+  "extra": {
+    "map": [
+      [
+        "config/fontools",
+        "dev/tools/frontools/config"
+      ]
+    ]
+  }
+}

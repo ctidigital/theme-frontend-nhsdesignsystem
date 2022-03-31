@@ -1,0 +1,24 @@
+@import "../vendor/nhsuk-frontend/packages/components/checkboxes/checkboxes";
+
+.field.choice,
+.amform-form .fb-checkbox .control {
+  @extend .nhsuk-checkboxes__item;
+}
+
+// Add margin bottom to last element as we dont have specific wrapper class
+// like nhs-design systems `nhsuk-checkboxes`
+.fieldset > .field.choice:last-child {
+  @include nhsuk-responsive-margin(4, 'bottom');
+}
+
+
+.choice,
+.amform-form .checkbox-group {
+  input[type="checkbox"] {
+    @extend .nhsuk-checkboxes__input;
+
+    & + label {
+      @extend .nhsuk-checkboxes__label;
+    }
+  }
+}

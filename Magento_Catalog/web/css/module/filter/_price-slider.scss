@@ -1,0 +1,82 @@
+
+.smile-es-range-slider {
+  @extend %u-flex-row-xcenter-ycenter;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  [data-role="from-label"],
+  [data-role="message-box"],
+  [data-role="to-label"] {
+    color: $text-muted;
+    font-size: $font-size-sm;
+    margin-bottom: spacers(1);
+  }
+
+  .ui-slider {
+    width: 100%;
+  }
+
+  .actions-toolbar {
+    width: 100%;
+    margin: 0;
+  }
+
+  [data-role="message-box"] {
+    text-align: left;
+    color: $body-color;
+  }
+
+  .actions-toolbar {
+    justify-content: space-between;
+  }
+
+  .action.small {
+/*    @extend %button-whisper;*/
+    font-size: $font-size-sm;
+    padding-right: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+    @include respond-to-up($category-layout-breakpoint) {
+      padding-bottom: 14px;
+    }
+
+    &:after {
+      position: relative;
+      top: 2px;
+      font-size: 100%;
+      margin-left: 0;
+    }
+  }
+}
+
+.ui-slider-horizontal {
+  margin: $filter-block-padding * 0.5 0;
+  background: $input-border-color;
+
+  .filter-content & {
+    margin: $filter-block-padding * 0.5 $filter-block-padding;
+  }
+}
+
+.ui-slider-handle {
+  @include size(30px);
+  top: 50%;
+  margin-top: -15px;
+  border-radius: 1000px;
+  background: $input-bg;
+  border: ($input-border-width * 3) solid $input-border-color;
+
+  &:focus {
+    outline: 0 none;
+  }
+
+  &.ui-state-focus,
+  &.ui-state-hover {
+    border-color: $input-border-focus-highlight;
+  }
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+  margin-left: -15px;
+}

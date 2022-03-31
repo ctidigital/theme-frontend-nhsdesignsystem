@@ -1,0 +1,314 @@
+// My Account pages content BG
+body.account:not(.page-print) {
+  background: $color_nhsuk-grey-5;
+}
+
+.account:not(.page-print) {
+  .column.main {
+    @include nhsuk-responsive-padding(7, 'top');
+    @include nhsuk-responsive-padding(7, 'bottom');
+    @include top-and-bottom();
+    /*
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+    */
+
+    @include respond-to-up($page-layout-breakpoint) {
+      padding-left: $page-layout-sidebar-spacing-x;
+      padding-right: $page-layout-sidebar-spacing-x;
+      width: calc(100% - 400px);
+    }
+  }
+
+  .sidebar-container {
+    @include respond-to-up($page-layout-breakpoint) {
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      margin-top: $page-layout-sidebar-spacing-x;
+      margin-right: 0 !important;
+      width: $customer-account-sidebar !important;
+      max-width: 300px;
+    }
+  }
+
+  .page-title {
+    @extend %nhs-h1;
+    margin-right: spacers(4);
+
+    @include respond-to-up(md) {
+      text-align: left;
+    }
+  }
+
+  .page-title-wrapper {
+    .order-status,
+    .page-title {
+      display: inline-block;
+    }
+  }
+}
+
+%account-block-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: 53px;
+  color: $dashboard-block-color;
+
+  > strong {
+    @extend %nhs-h2;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.account .page-main .main .block {
+  border-bottom: 1px solid $nhsuk-border-color;
+}
+
+.block-dashboard-info .action.change-password {
+  display: none;
+}
+
+.account .page-main .main .block-title {
+  @extend %account-block-title;
+}
+
+.account .page-main .main .order-title {
+  @extend %nhs-h5;
+}
+
+.account .item-edit-panel {
+  width: 100%;
+
+  @include respond-to-up(md) {
+    width: auto;
+  }
+
+  > span {
+    display: flex;
+    text-transform: none;
+  }
+}
+
+.account .page-main .actions-toolbar {
+  margin-bottom: $dashboard-block-spacing-y;
+}
+
+// My Account Page Blocks
+.block-addresses-default,
+.block-addresses-list,
+.block-order-details-view,
+[class^='block-dashboard-'],
+[class*=' block-dashboard-'] {
+  color: $dashboard-block-color;
+  @include nhsuk-responsive-margin(4, 'bottom');
+  @include nhsuk-responsive-padding(4, 'bottom');
+
+  .block-content {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    line-height: normal;
+
+    .table-wrapper {
+      width: 100%;
+    }
+
+    > .box {
+      width: 100%;
+
+      @include respond-to-up(md) {
+        width: 50%;
+      }
+
+      @include respond-to-down($page-layout-breakpoint) {
+        margin-bottom: spacers(4);
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .box-title {
+      @extend %nhs-h5;
+      display: block;
+    }
+
+    .box-content {
+      address,
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.block-dashboard-addresses {
+  > .block-title {
+    strong {
+      padding-right: spacers(3);
+    }
+  }
+}
+
+.box-actions {
+  .action + .action {
+    margin-left: spacers(3);
+  }
+}
+
+.form-address-edit,
+.form-address-new {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  flex-direction: column;
+
+  @include respond-to-up(lg) {
+    flex-direction: row;
+  }
+
+  > .fieldset {
+    @include respond-to-up(lg) {
+      width: 50%;
+    }
+
+    &:nth-child(1) {
+      @include respond-to-up(lg) {
+        padding-right: $page-layout-sidebar-spacing-x * 0.5;
+      }
+    }
+
+    &:nth-child(2) {
+      @include respond-to-up(lg) {
+        padding-left: $page-layout-sidebar-spacing-x * 0.5;
+      }
+    }
+  }
+
+  .actions-toolbar {
+    width: 100%;
+  }
+
+  .message.info {
+    @include ms-icon('check', xs);
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    padding: spacers(2) spacers(4);
+    background: theme-color('positive-subtle');
+    border: 1px solid theme-color('positive');
+    color: theme-color('positive');
+    margin-bottom: $input-margin-y;
+
+    &:before {
+      color: theme-color('positive');
+      padding-right: spacers(3);
+    }
+  }
+}
+
+.items.addresses {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  > .item {
+    width: 50%;
+    min-width: 280px;
+    margin-bottom: spacers(4);
+
+    address {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+/*    .action {
+      display: inline-block;
+      width: auto;
+      box-sizing: border-box;
+      font-size: 70%;
+      padding: 0;
+
+      @include respond-to-down(lg) {
+        margin-bottom: spacers(2);
+      }
+
+      @include respond-to-up($page-layout-breakpoint) {
+        font-size: 70%;
+      }
+
+      & + .action {
+        margin-left: spacers(4);
+      }
+    }*/
+  }
+}
+
+.account .block.table-wrapper {
+  &.additional-addresses {
+    thead th,
+    tbody td:not(.actions) {
+      font-size: 70%;
+      padding: spacers(2);
+    }
+  }
+}
+
+.account .block.block-addresses-list .table-additional-addresses-items {
+  table-layout: fixed;
+
+  thead th,
+  tbody td {
+    padding: spacers(2);
+    font-size: 80%;
+
+    .actions > .action {
+      padding: spacers(2);
+    }
+
+    &.col.state {
+      display: none; /* making extra room as very limited space */
+    }
+  }
+  thead th.actions {
+    width: auto;
+  }
+}
+
+.customer-addresses-toolbar {
+  width: 100%;
+}
+
+.box-address-billing .action.edit,
+.box-address-shipping .action.edit {
+  margin-top: spacers(3);
+}
+
+.additional-addresses {
+  .action.delete {
+    margin-left: spacers(2);
+
+    @include respond-to-up(md) {
+      margin-left: 0;
+      margin-top: spacers(2);
+      display: inline-block;
+    }
+  }
+}
+
+.block-dashboard-orders tbody > tr:last-child {
+  td {
+    border-bottom: 0 none;
+  }
+}

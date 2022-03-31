@@ -1,0 +1,11 @@
+@mixin fixed-backdrop($bg: $u-fixed-backdrop-bg) {
+  @include fixed(0, 0, 0, 0);
+  @include size(100vw, 100vh);
+  content: '';
+  background: $u-fixed-backdrop-bg;
+  opacity: 1;
+  pointer-events: auto;
+  transition: $transition-fade;
+  transition-timing-function: $transition-timing-sharp;
+  z-index: z(fixed-backdrop);
+}

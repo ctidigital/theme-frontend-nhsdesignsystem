@@ -1,0 +1,46 @@
+/// Responsive Typographical size map.
+$fluid-type-sizing: () !default;
+$fluid-type-sizing: map-merge((
+        'hero': (
+                'breakpoint-min': map_get($breakpoints, xs),
+                'breakpoint-max': map_get($breakpoints, xxl),
+                'size-min': 24px,
+                'size-max': 76px
+        ),
+        'h1': (
+                'breakpoint-min': map_get($breakpoints, xs),
+                'breakpoint-max': map_get($breakpoints, xxl),
+                'size-min': 25px,
+                'size-max': 49px
+        ),
+        'h2': (
+                'breakpoint-min': map_get($breakpoints, xs),
+                'breakpoint-max': map_get($breakpoints, xxl),
+                'size-min': 20px,
+                'size-max': 39px
+        ),
+        'h3': (
+                'breakpoint-min': map_get($breakpoints, xs),
+                'breakpoint-max': map_get($breakpoints, xxl),
+                'size-min': 16px,
+                'size-max': 31px
+        ),
+        'h4': (
+                'breakpoint-min': map_get($breakpoints, xs),
+                'breakpoint-max': map_get($breakpoints, xxl),
+                'size-min': 13px,
+                'size-max': 25px
+        ),
+        'h5': (
+                'breakpoint-min': map_get($breakpoints, xs),
+                'breakpoint-max': map_get($breakpoints, xxl),
+                'size-min': 10px,
+                'size-max': 20px
+        ),
+        'h6': (
+                'breakpoint-min': map_get($breakpoints, xs),
+                'breakpoint-max': map_get($breakpoints, xxl),
+                'size-min': 10px,
+                'size-max': 16px
+        )
+), $fluid-type-sizing);

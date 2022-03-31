@@ -1,0 +1,57 @@
+/**
+ * Site logo
+ */
+//.logo {
+//  .header & {
+//    @include size($site-logo-mobile-width, $site-logo-mobile-height);
+//
+//    @include respond-to-up($tweakpoint-nav-toggle) {
+//      height: auto;
+//    }
+//  }
+//
+//  > img {
+//    .header & {
+//      width: auto;
+//      height: 100%;
+//
+//      @include respond-to-up($tweakpoint-nav-toggle) {
+//        width: auto;
+//        height: auto;
+//      }
+//    }
+//  }
+//}
+
+.nhsuk-header__logo svg {
+ @include respond-to-down(lg, $breakpoints, true) {
+    width: 132px;
+ }
+}
+.nhsuk-header__link--service:focus {
+  .nhsuk-logo__text-supply {
+    fill: $color_nhsuk-black;
+  }
+
+  .nhsuk-logo__text {
+    fill: $color_nhsuk-blue;
+  }
+}
+
+.nhsuk-header__link--service {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+
+.nhsuk-header__service-name {
+  @include respond-to-up(lg) {
+    font-size: 28px;
+    padding: 2px 0 0 0;
+    letter-spacing: 0.02em;
+    /* opacity: 0; */
+    position: relative;
+    z-index: 3;
+    -webkit-font-smoothing: auto;
+  }
+}

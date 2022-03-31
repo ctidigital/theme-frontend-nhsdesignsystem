@@ -1,0 +1,46 @@
+.checkout-onepage-success .column.main {
+  margin-top: spacers(4);
+}
+
+.checkout-onepage-success {
+  background: gray('5');
+  font-feature-settings: normal;
+}
+
+.checkout-success-block {
+  background: $white;
+  padding: $checkout-success-padding-sm;
+  max-width: $checkout-success-max-width;
+  width: 100%;
+  margin: 0 auto $checkout-success-spacing-y auto;
+
+  @include respond-to-up(md) {
+    padding: $checkout-success-padding-md;
+  }
+
+  .actions-toolbar > .secondary,
+  #mailchimp-groups .primary {
+    margin-bottom: 0;
+  }
+
+  .action.continue {
+    margin-bottom: 0 !important;
+  }
+
+  .action {
+    @include respond-to-down(smm) {
+      width: 100%;
+      max-width: none;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    @include respond-to-down(md) {
+      max-width: 500px;
+    }
+  }
+
+  .order-email {
+    font-weight: $font-weight-bold;
+  }
+}

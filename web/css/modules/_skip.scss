@@ -1,0 +1,16 @@
+/*
+ * Screen Reader Text, only shows on focus
+ *
+ */
+.action.skip {
+  @extend %u-sr-only-focusable;
+
+  &:focus {
+    @include absolute(0, 0, auto, 0);
+    @include size(100%, auto);
+    z-index: 15;
+    text-align: center;
+    background-color: theme-color('screen-reader-bg');
+    padding: spacers(3);
+  }
+}

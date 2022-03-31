@@ -1,0 +1,49 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="split button requisition-list-action">
+    <button class="action requisition-list-button toggle change"
+            type="button"
+            data-bind="
+                mageInit: {'dropdown':{}},
+                attr: {
+                    title: getTitle(),
+                    'data-mobile-label': getMobileLabel(),
+                }"
+            >
+        <span data-bind="i18n: getTitle()"></span>
+    </button>
+    <div class="items" data-target="dropdown">
+        <ul class="list-items">
+            <!-- ko foreach: {data: requisition().items, as: 'item'} -->
+            <!-- ko if: $parent.isListVisible(item) -->
+            <li class="item">
+                <button  data-bind="click: $parent.performListAction.bind($parent, item)" tabindex="0">
+                    <span class="item-name" data-action="add-to-requisition-list"
+                          data-bind="
+                          attr: {
+                            title: item.name,
+                          },
+                          text: item.name">
+                    </span>
+                </button>
+            </li>
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: isCanCreateList() -->
+            <li class="item">
+                <button data-bind="click: function(data, event){ window._reqlistmodalelaria = jQuery(event.currentTarget).closest('.requisition-list-action').find('.requisition-list-button'); performNewListAction() }" tabindex="0">
+                    <span class="action new"
+                          data-action="add-to-requisition-list"
+                          data-bind="attr: { title: $t('Create New Requisition List')}">
+                        <span data-bind="i18n: 'Create New Requisition List'"></span>
+                    </span>
+                </button>
+            </li>
+            <!-- /ko -->
+        </ul>
+    </div>
+</div>

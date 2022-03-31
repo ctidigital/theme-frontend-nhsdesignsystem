@@ -1,0 +1,7 @@
+.greet.welcome {
+  white-space: nowrap;
+
+  &:empty {
+    @extend %u-no-display;
+  }
+}

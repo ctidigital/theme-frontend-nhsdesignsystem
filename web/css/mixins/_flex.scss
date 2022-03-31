@@ -1,0 +1,9 @@
+// Flex utils
+@mixin flex($direction: row, $valign: center, $halign: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $halign;
+  justify-content: $valign;
+  max-width: 100%;
+  max-height: 100%;
+}

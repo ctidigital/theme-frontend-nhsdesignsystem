@@ -1,0 +1,212 @@
+// call table styles in order to apply for requisition list tables
+@import "../../../web/css/modules/_table.scss";
+
+.requisition-list-action {
+    button.action.split,
+    .quote-details-items .actions-toolbar > .action.action.split {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+    button + .action.toggle,
+    .quote-details-items .actions-toolbar > .action + .action.toggle {
+        border-bottom-left-radius: 0;
+        border-left: 0;
+        border-top-left-radius: 0;
+    }
+
+    &.active {
+        overflow: visible;
+    }
+    &.active .items {
+        display: block;
+    }
+}
+
+.cart.table-wrapper .requisition-list-action {
+    vertical-align: baseline;
+
+    > .action.toggle:after {
+        color: inherit;
+        vertical-align: middle;
+    }
+}
+
+.checkout-cart-index {
+    .block-requisition-list {
+        margin: 0;
+    }
+    .requisition-list-action > .action.toggle:after {
+        color: inherit;
+        vertical-align: middle;
+    }
+}
+
+@media (max-width: 800px) {
+    .checkout-cart-index .page-title-wrapper {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .checkout-cart-index .page-title-wrapper .block-requisition-list {
+        margin-bottom: 15px;
+    }
+}
+@media print {
+    .requisition-list-requisition-print .table-wrapper table {
+        table-layout: auto;
+    }
+}
+
+@include respond-to-down(md, $breakpoints) {
+    .table-wrapper {
+        border-top: 1px solid $border-color;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+    }
+    .table-wrapper .table:not(.totals):not(.cart):not(.table-comparison) {
+        border: none;
+        display: block;
+
+        > thead > tr > th {
+            display: none;
+        }
+
+        > tbody {
+            display: block;
+
+            > tr {
+                display: block;
+
+                td,
+                th {
+                    border-bottom: none;
+                    display: block;
+                    padding: 5px 10px;
+                    width: 100%;
+                }
+
+                td[data-th]:before,
+                th[data-th]:before {
+                    padding-right: 10px;
+                    content: attr(data-th) ': ';
+                    display: inline-block;
+                    color: #111111;
+                    font-weight: 700;
+                }
+
+                > th {
+                    background-color: #f6f6f6;
+                }
+
+                > td:first-child {
+                    padding-top: 15px;
+                }
+
+                > td:last-child {
+                    border-bottom: 1px solid $border-color;
+                    padding-bottom: 34px;
+                }
+
+                > td.col.qty {
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    .table-wrapper .table:not(.totals):not(.cart):not(.table-comparison).additional-attributes tbody td:last-child {
+        border: none;
+        padding: 0 0 5px;
+    }
+    .table-wrapper .table:not(.totals):not(.table-comparison) tfoot {
+        display: block;
+    }
+    .table-wrapper .table:not(.totals):not(.table-comparison) tfoot tr {
+        display: block;
+    }
+    .table-wrapper .table:not(.totals):not(.table-comparison) tfoot tr:first-child th,
+    .table-wrapper .table:not(.totals):not(.table-comparison) tfoot tr:first-child td {
+        padding-top: 20px;
+    }
+    .table-wrapper .table:not(.totals):not(.table-comparison) tfoot .mark {
+        box-sizing: border-box;
+        float: left;
+        text-align: left;
+        width: 70%;
+    }
+    .table-wrapper .table:not(.totals):not(.table-comparison) tfoot .amount {
+        box-sizing: border-box;
+        float: left;
+        text-align: right;
+        width: 30%;
+    }
+    .table-wrapper .table:not(.totals):not(.table-comparison) tfoot .grand.totals {
+        font-size: 1.6rem;
+    }
+    .table-wrapper .table:not(.totals):not(.table-comparison) tfoot .grand.totals .amount {
+        padding-bottom: 10px;
+    }
+    .data-table-definition-list thead {
+        display: none;
+    }
+    .data-table-definition-list tbody th {
+        padding-bottom: 0;
+    }
+    .data-table-definition-list tbody th,
+    .data-table-definition-list tbody td {
+        display: block;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* apply NHS table styles to requisition list tables */
+.requisition_list-requisition-index,
+.requisition_list-requisition-view {
+    @extend .nhsuk-table-responsive;
+}
+
+/* apply button spacing on requisition view page */
+.requisition_list-requisition-view {
+    .requisition-view-buttons {
+        .action {
+            margin-right: spacers(3);
+
+            @include respond-to-up($tweakpoint-nav-toggle) {
+                margin-right: spacers(2);
+            }
+
+            @include respond-to-up(xl) {
+                margin-right: spacers(3);
+            }
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+/* align images and names as per DHSC-366 */
+.requisition-grid {
+    .col.product {
+        .product-item-image {
+            @include respond-to-up($tweakpoint-nav-toggle) {
+                width: 70px;
+
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+        .product-item-description {
+            @include respond-to-up($tweakpoint-nav-toggle) {
+                width: calc(100% - 70px - 12px);
+            }
+        }
+    }
+}

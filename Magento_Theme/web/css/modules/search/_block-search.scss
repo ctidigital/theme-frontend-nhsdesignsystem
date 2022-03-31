@@ -1,0 +1,11 @@
+/**
+ * Block Search styles
+ */
+.block-search {
+
+
+  // Hide the title
+  .block-title {
+    @extend %u-no-display;
+  }
+}

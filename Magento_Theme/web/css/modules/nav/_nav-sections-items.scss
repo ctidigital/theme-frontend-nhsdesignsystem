@@ -1,0 +1,178 @@
+/**
+ * Mobile Navigation sections/tabs
+ */
+@if $default-magento-nav {
+  .nav-sections {
+    @include fixed($header-content-min-height-sm - 2px, 0);
+    width: 100%;
+    height: calc(100vh - #{$header-content-min-height-sm - 2px});
+    background: $nav-section-bg;
+
+    @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+      z-index: z('fixed');
+    }
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      @include relative(0, 0);
+      z-index: z('above') + 3;
+      height: auto;
+      background: $navigation-item-bg-desktop;
+    }
+  }
+
+  .nav-sections-items {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      padding: $header-content-padding;
+    }
+  }
+
+  .nav-sections-item-title {
+    @extend %u-bg-color-transition;
+    @extend %u-flex-row-xcenter-ycenter;
+    @include absolute(0, auto, auto, 0);
+    @include size($nav-section-width, $nav-section-height);
+    color: $nav-section-item-color;
+    background: $nav-section-item-bg;
+    max-height: none;
+    font-weight: bold;
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      display: none;
+    }
+
+    &:focus {
+      outline: 0 none;
+    }
+
+    > a {
+      color: $nav-section-item-color;
+
+      &:hover {
+        color: $nav-section-item-color;
+        text-decoration: none;
+      }
+
+      &:focus {
+        outline: 0 none;
+      }
+    }
+
+    &[aria-controls="store.links"] {
+      @include ms-icon('user', $nav-section-icon-size);
+      left: $nav-section-width;
+
+      @include respond-to-down(smm) {
+        width: $nav-section-height;
+      }
+
+      @include respond-to-up(smm) {
+        &:before {
+          display: none;
+        }
+      }
+
+      .nav-sections-item-switch {
+        @include respond-to-down(smm) {
+          @include sr-only();
+        }
+      }
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        display: none;
+      }
+    }
+
+    &[aria-controls="store.settings"] {
+      @include ms-icon('settings', $nav-section-icon-size);
+      left: $nav-section-width * 2;
+
+      @include respond-to-down(smm) {
+        left: $nav-section-width + $nav-section-height;
+        width: $nav-section-height;
+      }
+
+      @include respond-to-up(smm) {
+        &:before {
+          display: none;
+        }
+      }
+
+      .nav-sections-item-switch {
+        @include respond-to-down(smm) {
+          @include sr-only();
+        }
+      }
+
+      @include respond-to-up($tweakpoint-nav-toggle) {
+        display: none;
+      }
+    }
+
+    &.active {
+      background: $nav-section-item-active-bg;
+
+      > a {
+        color: $nav-section-item-active-color;
+      }
+
+      &:focus {
+        background-color: $nhsuk-focus-color;
+        border-bottom: $nhsuk-focus-width solid $nhsuk-focus-text-color;
+        box-shadow: none;
+        color: $nhsuk-focus-text-color;
+        outline: $nhsuk-focus-width solid transparent;
+        outline-offset: $nhsuk-focus-width;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .nav-sections-item-content {
+    padding-top: $nav-section-height;
+
+    @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+      height: calc(100vh - #{$header-content-min-height-sm * 2});
+    }
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      padding-top: 0;
+    }
+
+    .switcher-language,
+    .navigation,
+    .header.links {
+      background: $nav-section-item-active-bg;
+    }
+  }
+
+
+  #store\.links,
+  #store\.settings {
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      display: none !important;
+    }
+  }
+
+  .customer-welcome .customer-menu--account {
+    @include respond-to-down($tweakpoint-nav-toggle, $breakpoints, true) {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+
+#store\.menu {
+  @include respond-to-up($tweakpoint-nav-toggle) {
+    border-top: 1px solid $nhsuk-secondary-border-color;
+  }
+}
+
+.section-item-title.nav-sections-item-title {
+  &:hover {
+    cursor: pointer;
+  }
+}

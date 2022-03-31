@@ -1,0 +1,62 @@
+.shipping-tracking-popup {
+  background: #f0f4f5;
+  color: $body-color;
+  padding: $container-padding;
+
+  .page-main {
+    text-align: center;
+  }
+
+  .actions {
+    text-align: center;
+  }
+
+  .subtitle {
+    margin-bottom: spacers(3);
+  }
+
+  .page-title {
+    @extend %nhs-h3;
+    padding: spacers(2);
+    font-weight: normal;
+    background: gray(4);
+  }
+}
+
+
+.order.tracking {
+  padding: spacers(2);
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  margin-bottom: spacers(5);
+
+  th,
+  td {
+    padding: spacers(2);
+    text-align: center;
+    border: 1px solid $nhsuk-border-color;
+
+    @include respond-to-down($order-table-breakpoint) {
+      display: block;
+    }
+  }
+
+  th {
+    @include respond-to-down($order-table-breakpoint) {
+      border-bottom: 0 none;
+      padding-bottom: 0;
+    }
+  }
+
+  td {
+    @include respond-to-down($order-table-breakpoint) {
+      border-top: 0 none;
+      padding-top: 0;
+    }
+  }
+
+  .table-caption {
+    @include sr-only();
+  }
+}

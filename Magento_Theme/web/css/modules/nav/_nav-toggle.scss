@@ -1,0 +1,77 @@
+/**
+ * Nav Hamburger Menu
+ */
+.action.nav-toggle {
+  @extend %u-bg-color-transition;
+  @include ms-icon($menu-icon, $menu-icon-size);
+  @include size($menu-button-width, $menu-button-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: $menu-margin-right;
+  padding: 0;
+
+  @include respond-to-up($tweakpoint-nav-toggle) {
+    display: none;
+  }
+
+  > span {
+    @extend %u-sr-only;
+  }
+
+  &:before {
+    text-align: center;
+  }
+
+
+  // Hamburger toggle state
+  .nav-open & {
+    background: $menu-active-background;
+    overflow: hidden;
+    @include ms-icon('x', $menu-icon-size - 6px);
+
+    &:before {
+      animation: icon-swap-slide $transition-duration $transition-timing-ease-in-out-quad;
+      animation-fill-mode: both;
+    }
+  }
+
+  .cms-no-route & {
+    display: none;
+  }
+}
+
+@keyframes icon-swap-slide {
+  0%, 20% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  75%, 100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes icon-swap-slide-x {
+  0%, 20% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  75%, 100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes icon-swap-slide-x-r {
+  0%, 20% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  75%, 100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

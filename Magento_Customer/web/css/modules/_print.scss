@@ -1,0 +1,219 @@
+.account.page-print {
+  margin: 0 auto;
+  width: 990px;
+
+  .logo {
+    display: block;
+    margin: spacers(4) 0;
+  }
+
+  .nhsuk-header__logo .nhsuk-logo__background {
+    fill: #005eb8;
+  }
+
+  .nhsuk-header__logo .nhsuk-logo__text {
+    fill: #ffffff;
+  }
+
+  .nhsuk-header__logo .nhsuk-logo__text-supply {
+    fill: $body-color;
+  }
+
+  .nhsuk-header__service-name {
+    color: $body-color;
+  }
+
+  .items-qty {
+    margin: 0;
+  }
+
+  table {
+    font-size: 100%;
+  }
+
+  /*tfoot,
+  thead {
+    border-top: $dashboard-block-title-border;
+    border-bottom: $dashboard-block-title-border;
+  }
+
+  thead th,
+  tfoot th {
+    padding: spacers(2);
+  }
+
+  tfoot th {
+    text-align: right;
+    padding-right: spacers(3);
+  }
+
+  tbody tr {
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+  tfoot td {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  tbody td {
+    padding: spacers(2) 0;
+
+    &.col > span {
+      width: auto;
+    }
+
+    .price-excluding-tax .price,
+    .price-including-tax .price {
+      font-size: inherit;
+    }
+
+    .price-excluding-tax:before,
+    .price-including-tax:before {
+      display: inline;
+      top: 0;
+    }
+  }
+
+  tbody ul,
+  tbody dl,
+  tbody ol,
+  tbody .item-options {
+    margin-bottom: 0;
+
+    dt,
+    dd {
+      display: inline;
+      margin: 0 spacers(2) 0 0;
+    }
+  }*/
+
+  .page-title-wrapper {
+    .page-title,
+    .order-status {
+      display: inline-block;
+      font-size: 100%;
+      top: auto;
+    }
+  }
+
+  .block-order-details-view {
+    margin-top: 0;
+
+    .block-title > strong {
+      font-size: 1.5rem !important;
+    }
+  }
+
+  .page-main .main .order-title {
+    border-bottom: 0;
+  }
+
+  .order-title strong {
+    @extend %nhs-h5;
+    display: block;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  /* button actions not needed in print mode */
+  .actions-toolbar {
+    display: none;
+  }
+}
+
+
+.sales-order-print,
+.sales-order-printinvoice {
+  .nhsuk-header__logo {
+    display: block;
+    float: none;
+    margin-bottom: spacers(4) * 1.7;
+    margin-top: spacers(4);
+  }
+
+  .page-title {
+    margin-bottom: 0;
+  }
+
+  .order-date {
+    margin-top: spacers(2);
+  }
+
+  .order-status {
+    margin-left: spacers(2);
+  }
+
+  .page-title-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: spacers(4);
+
+    .order-date {
+      margin: 0;
+      margin-left: auto;
+    }
+  }
+
+  .block-order-details-view {
+    margin-top: spacers(5) !important;
+  }
+}
+
+.nhsuk-header__link {
+  &:after {
+    display: none;
+  }
+}
+
+.page-print {
+  address {
+    display: block;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .box,
+  .box-content {
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .table-order-items.shipment,
+  .table-order-items.creditmemo,
+  .table-order-items.invoice {
+    thead {
+      display: table-header-group;
+      height: auto;
+      overflow: auto;
+      position: relative;
+      width: auto;
+    }
+
+    th,
+    td {
+      padding-bottom: 16px;
+      padding-right: 24px;
+      padding-top: 16px;
+      font-size: 1.1875rem;
+      line-height: 1.47368;
+      border-bottom: 1px solid #d8dde0;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    thead th {
+      border-bottom: 2px solid #d8dde0;
+      font-weight: bold;
+    }
+
+
+  }
+}

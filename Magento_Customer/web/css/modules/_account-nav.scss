@@ -1,0 +1,36 @@
+.account-nav {
+  padding: $account-nav-padding;
+  background: $account-nav-bg;
+  color: $account-nav-color;
+
+  .items {
+    margin-bottom: 0;
+  }
+
+  li {
+    display: block;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+  }
+
+  .delimiter {
+    display: block;
+    width: 100%;
+    height: 0;
+    border-bottom: $account-nav-seperator;
+  }
+
+  a {
+    display: inline-block;
+    white-space: normal; /* set to normal rather than nowrap to stop adding right margin on mobile and making text fall off screen */
+    color: $account-nav-color;
+    text-decoration: none
+  }
+
+  .current {
+    background: $account-nav-bg-active;
+    font-weight: bold;
+    border-left: 4px solid $nhsuk-link-color;
+  }
+}
+

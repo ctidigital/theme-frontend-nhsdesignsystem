@@ -1,0 +1,109 @@
+.fotorama [role="button"] {
+  -webkit-appearance: none;
+  border: 0 none;
+  text-align: left;
+}
+
+.fotorama__nav-wrap .fotorama_vertical_ratio .fotorama__img {
+  left: 0;
+}
+
+.fotorama.fotorama--fullscreen {
+  z-index: $fotorama-fullscreen-z !important;
+}
+
+.fotorama {
+  .fotorama__nav--dots .fotorama__nav__frame {
+    @include size(24px, 46px);
+    margin-top: spacers(2);
+  }
+  .fotorama__dot {
+    @include size(18px);
+    border-radius: 1000px;
+    border-color: theme-color(light);
+  }
+
+  .fotorama__active {
+    .fotorama__dot {
+      background-color: theme-color(light);
+      border-color: theme-color(light);
+    }
+  }
+}
+
+.fotorama .fotorama__nav {
+  padding: $fotorama-nav-padding;
+}
+
+.fotorama__nav-wrap  .fotorama__thumb-border {
+  border: $fotorama-active-border;
+}
+
+.gallery-placeholder .fotorama__wrap {
+  @include respond-to-up($category-layout-breakpoint) {
+    @include size($fotorama-media-width, $fotorama-media-height);
+  }
+}
+
+.gallery-placeholder .loading-mask {
+  position: relative;
+}
+
+body {
+  .fotorama__thumb {
+    background: transparent;
+  }
+
+  .fotorama__arr,
+  .fotorama__arr:hover {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .fotorama__thumb__arr:hover,
+  .fotorama__thumb__arr {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .fotorama__nav-wrap .fotorama__thumb-border {
+    border-color: $color_nhsuk-blue;
+    border-width: 4px;
+  }
+
+  .fotorama__spinner.fotorama__spinner--show {
+    background-size: contain;
+  }
+
+  .fotorama__wrap--css3 .fotorama__spinner {
+    animation-duration: 4s;
+  }
+}
+
+.fotorama__fullscreen .fotorama__zoom-out,
+.fotorama__fullscreen .fotorama__zoom-in,
+.fotorama__arr .fotorama__arr__arr,
+.fotorama__fullscreen-icon {
+  background-color: $white;
+}
+
+body .fotorama__zoom-out,
+body .fotorama__zoom-in {
+  &.max-zoom {
+    opacity: 0.33 !important;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
+
+    &:hover:after,
+    &:focus:after {
+      display: none;
+    }
+  }
+
+
+}
+
+
+
+// 272 x 204
+// 360 x 270

@@ -1,0 +1,16 @@
+.actions-toolbar {
+  margin: spacers(4) 0 spacers(4);
+
+  > .secondary {
+    margin: 0;
+  }
+
+  > .secondary .action.back {
+    display: inline-block;
+
+    @include respond-to-up($tweakpoint-nav-toggle) {
+      display: none;
+      font-feature-settings: normal;
+    }
+  }
+}

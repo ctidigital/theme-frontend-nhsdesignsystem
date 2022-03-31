@@ -1,0 +1,23 @@
+.action.sorter-action {
+  box-sizing: border-box;
+  padding: 0;
+  text-decoration: none;
+  margin-left: spacers(3);
+  font-feature-settings: normal;
+
+  @include respond-to-down(smm) {
+    margin-left: spacers(1);
+  }
+
+  &.sort-asc {
+    @include ms-icon($toolbar-direction-up-icon, $toolbar-direction-icon-size);
+  }
+
+  &.sort-desc {
+    @include ms-icon($toolbar-direction-down-icon, $toolbar-direction-icon-size);
+  }
+
+  span {
+    @extend %u-sr-only;
+  }
+}
